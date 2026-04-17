@@ -104,6 +104,7 @@ export default function MarketGlobe({ markets, selectedMarketId, onSelect }: Mar
           }}
         />
       </div>
+      <p className="mt-3 text-xs text-text-3">Click a highlighted marker to select a market.</p>
     </div>
   );
 }

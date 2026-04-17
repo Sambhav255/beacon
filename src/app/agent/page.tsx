@@ -62,6 +62,7 @@ export default function AgentPage() {
   const [showShortcutHelp, setShowShortcutHelp] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [pickerMode, setPickerMode] = useState<"globe" | "list">("globe");
+  const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const kitRef = useRef<HTMLDivElement>(null);
 
   const currentMarket = useMemo(
@@ -96,6 +97,7 @@ export default function AgentPage() {
     ?.starter_pack ?? []) as Array<Record<string, unknown>>;
   const outreachEmails = ((stageOutputs.outreach as { emails?: Array<Record<string, unknown>> } | undefined)?.emails ??
     []) as Array<Record<string, unknown>>;
+  const hasKitOutput = Object.keys(stageOutputs).length > 0;
 
   function loadCachedResult(marketId: string) {
     const cache = (cacheData as Record<string, { stages: Record<string, unknown> }>)[marketId];
@@ -263,9 +265,11 @@ export default function AgentPage() {
     pdf.save(`beacon-${selectedMarketId}.pdf`);
   }
 
-  async function copyValue(value: string) {
+  async function copyValue(value: string, key: string) {
     await navigator.clipboard.writeText(value);
     setToast("Copied to clipboard");
+    setCopiedKey(key);
+    setTimeout(() => setCopiedKey(null), 1200);
     setTimeout(() => setToast(""), 1200);
   }
 
@@ -331,7 +335,9 @@ export default function AgentPage() {
             <div className="mb-3 flex items-center justify-between">
               <div className="micro">Market selector</div>
               <button
-                onClick={() => setPickerMode((prev) => (prev === "globe" ? "list" : "globe"))}
+                onClick={() =>
+                  setPickerMode((prev) => (prev === "globe" ? "list" : "globe"))
+                }
                 className="border border-border px-3 py-1 text-xs text-text-2 hover:text-text"
               >
                 {pickerMode === "globe" ? "List view" : "Globe view"}
@@ -367,25 +373,33 @@ export default function AgentPage() {
                 {currentMarket ? currentMarket.name : <span className="text-text-3">Select a market</span>}
               </p>
             </div>
+            <div className="flex flex-wrap gap-3">
+              <button
+                onClick={() => runAgent(false)}
+                disabled={running || !selectedMarketId}
+                className="min-h-11 bg-accent px-5 py-2 font-medium text-bg hover:bg-accent-hover disabled:opacity-50"
+              >
+                {running ? "Running cached kit..." : "Run cached"}
+              </button>
+              <button
+                onClick={() => runAgent(true)}
+                disabled={running || !selectedMarketId}
+                className="min-h-11 border border-border px-5 py-2 text-text-2 hover:border-border-strong hover:text-text"
+              >
+                {running ? "Running live..." : "Run live"}
+              </button>
+              <button
+                onClick={exportPdf}
+                className="min-h-11 border border-border px-5 py-2 text-text-2 hover:border-border-strong hover:text-text"
+              >
+                Export PDF
+              </button>
+            </div>
             <button
-              onClick={() => runAgent(false)}
-              disabled={running || !selectedMarketId}
-              className="min-h-11 bg-accent px-5 py-2 font-medium text-bg hover:bg-accent-hover disabled:opacity-50"
+              onClick={() => setShowInternals((prev) => !prev)}
+              className="mt-3 min-h-11 border border-border px-5 py-2 text-text-2 hover:border-border-strong hover:text-text"
             >
-              {running ? "Running..." : "Run cached"}
-            </button>
-            <button
-              onClick={() => runAgent(true)}
-              disabled={running || !selectedMarketId}
-              className="ml-3 min-h-11 border border-border px-5 py-2 text-text-2 hover:border-border-strong hover:text-text"
-            >
-              Run live
-            </button>
-            <button
-              onClick={exportPdf}
-              className="ml-3 min-h-11 border border-border px-5 py-2 text-text-2 hover:border-border-strong hover:text-text"
-            >
-              Export PDF
+              {showInternals ? "Hide transparency panel" : "Show transparency panel"}
             </button>
           </div>
 
@@ -408,13 +422,16 @@ export default function AgentPage() {
                       {isRunning && <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-accent" />}
                     </div>
                   </div>
-                  {!latest && (
-                    <div className="space-y-2">
-                      <div className="h-3 w-2/3 animate-pulse bg-surface-alt" />
-                      <div className="h-3 w-full animate-pulse bg-surface-alt" />
-                      <div className="h-3 w-4/5 animate-pulse bg-surface-alt" />
-                    </div>
-                  )}
+                  {!latest &&
+                    (running ? (
+                      <div className="space-y-2">
+                        <div className="h-3 w-2/3 animate-pulse bg-surface-alt" />
+                        <div className="h-3 w-full animate-pulse bg-surface-alt" />
+                        <div className="h-3 w-4/5 animate-pulse bg-surface-alt" />
+                      </div>
+                    ) : (
+                      <p className="text-xs text-text-3">No output yet. Start a run to populate this stage.</p>
+                    ))}
                   <AnimatePresence mode="wait">
                     {latest?.output !== undefined && (
                       <motion.pre
@@ -436,6 +453,14 @@ export default function AgentPage() {
           </div>
 
           <section ref={kitRef} className="mt-10 space-y-8 rounded border border-border bg-surface p-6">
+            {!hasKitOutput && (
+              <div className="rounded border border-dashed border-border p-4">
+                <p className="text-sm text-text-2">
+                  No kit generated yet. Select a market, click <span className="text-text">Run cached</span>, then
+                  review each section below.
+                </p>
+              </div>
+            )}
             <div>
               <div className="micro mb-2">Kit header</div>
               <h2 className="h2">{currentMarket?.name ?? "Market"} market entry kit</h2>
@@ -552,9 +577,9 @@ export default function AgentPage() {
               <div className="mt-3 flex gap-3">
                 <button
                   className="border border-border px-3 py-1 text-xs text-text-2 hover:text-text"
-                  onClick={() => copyValue(JSON.stringify(stageOutputs.outreach, null, 2))}
+                  onClick={() => copyValue(JSON.stringify(stageOutputs.outreach, null, 2), "outreach")}
                 >
-                  Copy outreach drafts
+                  {copiedKey === "outreach" ? "Copied outreach drafts" : "Copy outreach drafts"}
                 </button>
               </div>
             </article>
@@ -564,17 +589,22 @@ export default function AgentPage() {
               <div className="mt-3 flex flex-wrap gap-3">
                 <button
                   className="border border-border px-3 py-1 text-xs text-text-2 hover:text-text"
-                  onClick={() => copyValue(JSON.stringify((stageOutputs.content as any)?.linkedin_post ?? {}, null, 2))}
+                  onClick={() =>
+                    copyValue(JSON.stringify((stageOutputs.content as any)?.linkedin_post ?? {}, null, 2), "linkedin")
+                  }
                 >
-                  Copy LinkedIn post
+                  {copiedKey === "linkedin" ? "Copied LinkedIn post" : "Copy LinkedIn post"}
                 </button>
                 <button
                   className="border border-border px-3 py-1 text-xs text-text-2 hover:text-text"
                   onClick={() =>
-                    copyValue(JSON.stringify((stageOutputs.content as any)?.newsletter_blurb ?? {}, null, 2))
+                    copyValue(
+                      JSON.stringify((stageOutputs.content as any)?.newsletter_blurb ?? {}, null, 2),
+                      "newsletter",
+                    )
                   }
                 >
-                  Copy newsletter blurb
+                  {copiedKey === "newsletter" ? "Copied newsletter blurb" : "Copy newsletter blurb"}
                 </button>
               </div>
             </article>
