@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 interface LogEntry {
   market: string;
@@ -12,12 +12,11 @@ interface LogEntry {
 }
 
 export default function LogsPage() {
-  const [logs, setLogs] = useState<LogEntry[]>([]);
-
-  useEffect(() => {
+  const [logs] = useState<LogEntry[]>(() => {
+    if (typeof window === "undefined") return [];
     const entries = JSON.parse(localStorage.getItem("beacon_run_logs") ?? "[]") as LogEntry[];
-    setLogs(entries.slice(0, 10));
-  }, []);
+    return entries.slice(0, 10);
+  });
 
   return (
     <main className="mx-auto min-h-screen w-full max-w-6xl px-6 py-12">

@@ -9,7 +9,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu } from "lucide-react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 const STAGE_ORDER: StageId[] = ["context", "signals", "prospects", "assets", "outreach", "content"];
 const MARKET_COORDS: Record<string, { lat: number; lng: number }> = {
@@ -62,6 +62,7 @@ export default function AgentPage() {
   const [pickerMode, setPickerMode] = useState<"globe" | "list">("globe");
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const kitRef = useRef<HTMLDivElement>(null);
+  const runAgentRef = useRef<(forceLive?: boolean) => Promise<void>>(async () => {});
 
   const currentMarket = useMemo(
     () => ((selectedMarketId ? (marketsData as MarketsMap)[selectedMarketId] : null) as Market | null),
@@ -95,6 +96,9 @@ export default function AgentPage() {
     ?.starter_pack ?? []) as Array<Record<string, unknown>>;
   const outreachEmails = ((stageOutputs.outreach as { emails?: Array<Record<string, unknown>> } | undefined)?.emails ??
     []) as Array<Record<string, unknown>>;
+  const contentOutput = (stageOutputs.content as
+    | { linkedin_post?: Record<string, unknown>; newsletter_blurb?: Record<string, unknown> }
+    | undefined) ?? { };
   const hasKitOutput = Object.keys(stageOutputs).length > 0;
   const latestStageEvents = useMemo(() => {
     const latest: Partial<Record<StageId, StageEvent>> = {};
@@ -106,7 +110,7 @@ export default function AgentPage() {
     return latest;
   }, [events]);
 
-  function loadCachedResult(marketId: string) {
+  const loadCachedResult = useCallback((marketId: string) => {
     const cache = (cacheData as Record<string, { stages: Record<string, unknown> }>)[marketId];
     if (!cache) return false;
 
@@ -118,17 +122,17 @@ export default function AgentPage() {
     setIsCachedView(true);
     setTimeout(() => kitRef.current?.scrollIntoView({ behavior: "smooth" }), 100);
     return true;
-  }
+  }, []);
 
-  function loadCachedStage(marketId: string, stage: StageId) {
+  const loadCachedStage = useCallback((marketId: string, stage: StageId) => {
     const cache = (cacheData as Record<string, { stages: Record<string, unknown> }>)[marketId];
     const cachedOutput = cache?.stages?.[stage];
     if (cachedOutput === undefined) return false;
     setEvents((prev) => [...prev, { stage, status: "complete", output: cachedOutput }]);
     return true;
-  }
+  }, []);
 
-  async function runAgent(forceLive = false) {
+  const runAgent = useCallback(async (forceLive = false) => {
     if (!selectedMarketId) {
       setToast("Select a market first.");
       return;
@@ -211,7 +215,10 @@ export default function AgentPage() {
     const existing = JSON.parse(localStorage.getItem("beacon_run_logs") ?? "[]") as Array<Record<string, unknown>>;
     localStorage.setItem("beacon_run_logs", JSON.stringify([logEntry, ...existing].slice(0, 10)));
     setTimeout(() => kitRef.current?.scrollIntoView({ behavior: "smooth" }), 250);
-  }
+  }, [events, loadCachedResult, loadCachedStage, selectedMarketId, stageOutputs]);
+  useEffect(() => {
+    runAgentRef.current = runAgent;
+  }, [runAgent]);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -225,7 +232,7 @@ export default function AgentPage() {
       }
       if (event.key === "Enter") {
         event.preventDefault();
-        void runAgent(false);
+        void runAgentRef.current(false);
       }
       if (event.key === "/") {
         event.preventDefault();
@@ -234,7 +241,7 @@ export default function AgentPage() {
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [selectedMarketId]);
+  }, []);
 
   async function askFollowUp() {
     setChatOpen(true);
@@ -619,7 +626,7 @@ export default function AgentPage() {
                 <button
                   className="border border-border px-3 py-1 text-xs text-text-2 hover:text-text"
                   onClick={() =>
-                    copyValue(JSON.stringify((stageOutputs.content as any)?.linkedin_post ?? {}, null, 2), "linkedin")
+                    copyValue(JSON.stringify(contentOutput.linkedin_post ?? {}, null, 2), "linkedin")
                   }
                 >
                   {copiedKey === "linkedin" ? "Copied LinkedIn post" : "Copy LinkedIn post"}
@@ -628,7 +635,7 @@ export default function AgentPage() {
                   className="border border-border px-3 py-1 text-xs text-text-2 hover:text-text"
                   onClick={() =>
                     copyValue(
-                      JSON.stringify((stageOutputs.content as any)?.newsletter_blurb ?? {}, null, 2),
+                      JSON.stringify(contentOutput.newsletter_blurb ?? {}, null, 2),
                       "newsletter",
                     )
                   }
