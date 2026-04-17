@@ -16,24 +16,25 @@ const STAGE_META: Record<string, { purpose: string; inputSchema: string; outputS
     outputSchema: '{ "headline_signal": {...}, "supporting_signals": [...], "pattern": string }',
   },
   prospects: {
-    purpose: "Rank 10 prospect archetypes using timing and trigger specificity.",
+    purpose: "Rank 5 prospect archetypes using timing and trigger specificity.",
     inputSchema: '{ "market": string, "signals": [...], "archetype_catalog": [...] }',
     outputSchema: '{ "prospects": [...], "sequencing_note": string }',
   },
   assets: {
-    purpose: "Match prospects to high-leverage Ko starter prompts and benchmark context.",
+    purpose: "Match prospects to 3 high-leverage Ko starter prompts and benchmark context.",
     inputSchema: '{ "market": string, "prospects": [...], "asset_catalog": {...} }',
     outputSchema: '{ "starter_pack": [...], "curation_logic": string }',
   },
   outreach: {
-    purpose: "Draft concise outreach linked to signals and tailored CTA types.",
+    purpose: "Draft 3 concise outreach emails linked to signals and tailored CTA types.",
     inputSchema: '{ "market": string, "top_prospects": [...], "starter_pack": {...} }',
     outputSchema: '{ "emails": [...], "follow_up_variant": {...} }',
   },
   content: {
-    purpose: "Generate a two-week content sprint aligned to the market thesis.",
+    purpose: "Generate one LinkedIn post, newsletter blurb, and video topic aligned to the thesis.",
     inputSchema: '{ "market": string, "signals": [...], "prospects": [...], "starter_pack": {...} }',
-    outputSchema: '{ "linkedin_post": {...}, "newsletter_blurb": {...}, "video_topic": {...} }',
+    outputSchema:
+      '{ "linkedin_post": { "hook", "body", "cta" }, "newsletter_blurb": { "headline", "body" }, "video_topic": { "working_title", "thesis", "three_key_points", "suggested_expert" } }',
   },
 };
 

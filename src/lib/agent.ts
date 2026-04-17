@@ -20,6 +20,16 @@ const STAGE_TEMPERATURE: Record<StageId, number> = {
   content: 0.7,
 };
 
+/** Caps completion size to cut Groq cost; tuned to match compact prompts in prompts.ts */
+const STAGE_MAX_TOKENS: Record<StageId, number> = {
+  context: 480,
+  signals: 520,
+  prospects: 900,
+  assets: 560,
+  outreach: 600,
+  content: 640,
+};
+
 function safeParseJSON(payload: string) {
   try {
     return JSON.parse(payload);
@@ -52,27 +62,30 @@ function buildFallbackStageOutput(stage: StageId, market: Market, context: Recor
   }
 
   if (stage === "prospects") {
-    const base = market.prospect_archetypes[0];
+    const archetypes = market.prospect_archetypes;
     return {
-      prospects: Array.from({ length: 10 }).map((_, idx) => ({
-        rank: idx + 1,
-        archetype: base?.archetype ?? "BESS prospect archetype",
-        description: base?.description ?? "Prospect profile from market signals.",
-        trigger: base?.trigger ?? "Fresh market trigger detected.",
-        pain: base?.pain ?? "Needs market-entry intelligence.",
-        matched_modo_asset: market.modo_research[0]?.title ?? "Modo market research",
-        matched_ko_prompt: market.ko_starter_prompts[0]?.text ?? "Compare market entry routes for this geography.",
-        channel: base?.channel ?? "Email",
-        priority: base?.priority ?? "medium",
-        reasoning: "Prioritized from recent signal relevance.",
-      })),
+      prospects: Array.from({ length: 5 }).map((_, idx) => {
+        const base = archetypes[idx % Math.max(archetypes.length, 1)];
+        return {
+          rank: idx + 1,
+          archetype: base?.archetype ?? `Prospect archetype ${idx + 1}`,
+          description: base?.description ?? "Prospect profile from market signals.",
+          trigger: base?.trigger ?? "Fresh market trigger detected.",
+          pain: base?.pain ?? "Needs market-entry intelligence.",
+          matched_modo_asset: market.modo_research[0]?.title ?? "Modo market research",
+          matched_ko_prompt: market.ko_starter_prompts[idx % Math.max(market.ko_starter_prompts.length, 1)]?.text ?? "Compare market entry routes for this geography.",
+          channel: base?.channel ?? "Email",
+          priority: idx === 0 ? "high" : idx === 1 ? "medium" : "watch",
+          reasoning: "Prioritized from recent signal relevance.",
+        };
+      }),
       sequencing_note: "Start with high-priority profiles this week, then medium profiles in week two.",
     };
   }
 
   if (stage === "assets") {
     return {
-      starter_pack: Array.from({ length: 8 }).map((_, idx) => ({
+      starter_pack: Array.from({ length: 3 }).map((_, idx) => ({
         id: `p${idx + 1}`,
         prompt_text:
           market.ko_starter_prompts[idx % market.ko_starter_prompts.length]?.text ??
@@ -90,7 +103,7 @@ function buildFallbackStageOutput(stage: StageId, market: Market, context: Recor
   if (stage === "outreach") {
     const prospects = (context.prospects as { prospects?: Array<Record<string, string>> })?.prospects ?? [];
     return {
-      emails: Array.from({ length: 4 }).map((_, idx) => ({
+      emails: Array.from({ length: 3 }).map((_, idx) => ({
         to_archetype: prospects[idx]?.archetype ?? "Growth target archetype",
         subject: `${market.name} signal worth discussing`,
         body: `We have been tracking a fresh ${market.name} signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.`,
@@ -132,7 +145,7 @@ async function callGroq(stage: StageId, context: Record<string, unknown>) {
   const response = await groq.chat.completions.create({
     model: MODEL_PRIMARY,
     temperature: STAGE_TEMPERATURE[stage],
-    max_tokens: 1200,
+    max_tokens: STAGE_MAX_TOKENS[stage],
     response_format: { type: "json_object" },
     messages: [
       { role: "system", content: STAGE_PROMPTS[stage] },
@@ -149,7 +162,7 @@ async function callGroqFallback(stage: StageId, context: Record<string, unknown>
   const response = await groq.chat.completions.create({
     model: MODEL_FALLBACK,
     temperature: STAGE_TEMPERATURE[stage],
-    max_tokens: 1200,
+    max_tokens: STAGE_MAX_TOKENS[stage],
     response_format: { type: "json_object" },
     messages: [
       { role: "system", content: STAGE_PROMPTS[stage] },

@@ -112,12 +112,22 @@ function renderStagePreview(stage: StageId, output: unknown) {
   }
 
   if (stage === "content") {
-    const linkedin = (data.linkedin_post as Record<string, unknown> | undefined) ?? {};
-    const newsletter = (data.newsletter_blurb as Record<string, unknown> | undefined) ?? {};
+    const rawLi = data.linkedin_post;
+    const rawNw = data.newsletter_blurb;
+    const linkedin =
+      typeof rawLi === "string"
+        ? { hook: rawLi, body: "", cta: "" }
+        : ((rawLi as Record<string, unknown> | undefined) ?? {});
+    const newsletter =
+      typeof rawNw === "string"
+        ? { headline: rawNw, body: "" }
+        : ((rawNw as Record<string, unknown> | undefined) ?? {});
+    const hook = linkedin.hook ?? linkedin.title ?? linkedin.subject;
+    const headline = newsletter.headline ?? newsletter.title ?? newsletter.subject;
     return (
       <div className="space-y-1 text-xs text-text-2">
-        <p className="text-text">{String(linkedin.hook ?? "No LinkedIn hook yet.")}</p>
-        <p>{String(newsletter.headline ?? "No newsletter headline yet.")}</p>
+        <p className="text-text">{hook ? String(hook) : "No LinkedIn hook yet."}</p>
+        <p>{headline ? String(headline) : "No newsletter headline yet."}</p>
       </div>
     );
   }
@@ -247,7 +257,7 @@ export default function AgentPage() {
 
   const displayedStarterPack = useMemo(() => {
     const seen = new Set<string>();
-    return starterPack.filter((item) => {
+    const unique = starterPack.filter((item) => {
       const key = [
         String(item.prompt_text ?? item.text ?? ""),
         String(item.persona ?? ""),
@@ -257,6 +267,7 @@ export default function AgentPage() {
       seen.add(key);
       return true;
     });
+    return unique.slice(0, 3);
   }, [starterPack]);
 
   const outreachEmails = useMemo(() => {
@@ -267,7 +278,7 @@ export default function AgentPage() {
 
   const displayedOutreachEmails = useMemo(() => {
     const seen = new Set<string>();
-    return outreachEmails.filter((email) => {
+    const unique = outreachEmails.filter((email) => {
       const key = [
         String(email.subject ?? ""),
         String(email.body ?? ""),
@@ -278,14 +289,25 @@ export default function AgentPage() {
       seen.add(key);
       return true;
     });
+    return unique.slice(0, 3);
   }, [outreachEmails]);
 
   const headlineSignal = (signalsOutput.headline_signal as Record<string, unknown> | undefined) ?? {};
   const supportingSignals = (signalsOutput.supporting_signals as Array<Record<string, unknown>> | undefined) ?? [];
   const outreachObject = Array.isArray(outreachOutput) ? {} : outreachOutput;
   const followUpVariant = (outreachObject.follow_up_variant as Record<string, unknown> | undefined) ?? {};
-  const linkedinPost = (contentOutput.linkedin_post as Record<string, unknown> | string | undefined) ?? {};
-  const newsletterBlurb = (contentOutput.newsletter_blurb as Record<string, unknown> | string | undefined) ?? {};
+  const linkedinPost = useMemo((): Record<string, unknown> | string => {
+    const raw = contentOutput.linkedin_post;
+    if (typeof raw === "string") return raw;
+    const o = (raw as Record<string, unknown> | undefined) ?? {};
+    return { ...o, hook: o.hook ?? o.title ?? o.subject ?? "" };
+  }, [contentOutput.linkedin_post]);
+  const newsletterBlurb = useMemo((): Record<string, unknown> | string => {
+    const raw = contentOutput.newsletter_blurb;
+    if (typeof raw === "string") return raw;
+    const o = (raw as Record<string, unknown> | undefined) ?? {};
+    return { ...o, headline: o.headline ?? o.title ?? o.subject ?? "" };
+  }, [contentOutput.newsletter_blurb]);
   const videoTopic = (contentOutput.video_topic as Record<string, unknown> | string | undefined) ?? {};
   const groundingNotes = Array.isArray(contextOutput.grounding_notes)
     ? contextOutput.grounding_notes.map((note) => String(note))
