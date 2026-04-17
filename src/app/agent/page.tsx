@@ -4,11 +4,12 @@ import marketsData from "@/data/markets.json";
 import cacheData from "@/data/cache/index.json";
 import { STAGE_PROMPTS } from "@/lib/prompts";
 import type { Market, MarketsMap, StageEvent, StageId } from "@/lib/types";
+import { Command } from "cmdk";
 import { AnimatePresence, motion } from "framer-motion";
 import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
 import Link from "next/link";
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 const STAGE_ORDER: StageId[] = ["context", "signals", "prospects", "assets", "outreach", "content"];
 
@@ -37,6 +38,9 @@ export default function AgentPage() {
   const [chatAnswer, setChatAnswer] = useState("");
   const [isCachedView, setIsCachedView] = useState(false);
   const [liveFailureNotice, setLiveFailureNotice] = useState("");
+  const [commandOpen, setCommandOpen] = useState(false);
+  const [showInternals, setShowInternals] = useState(true);
+  const [showShortcutHelp, setShowShortcutHelp] = useState(false);
   const kitRef = useRef<HTMLDivElement>(null);
 
   const currentMarket = useMemo(
@@ -137,6 +141,29 @@ export default function AgentPage() {
     setHistory((prev) => [{ marketId: selectedMarketId, ts: Date.now(), outputs: stageOutputs }, ...prev].slice(0, 8));
     setTimeout(() => kitRef.current?.scrollIntoView({ behavior: "smooth" }), 250);
   }
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      const isMac = navigator.platform.toLowerCase().includes("mac");
+      const commandPressed = isMac ? event.metaKey : event.ctrlKey;
+      if (!commandPressed) return;
+
+      if (event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        setCommandOpen(true);
+      }
+      if (event.key === "Enter") {
+        event.preventDefault();
+        void runAgent(false);
+      }
+      if (event.key === "/") {
+        event.preventDefault();
+        setShowInternals((prev) => !prev);
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [selectedMarketId]);
 
   async function askFollowUp() {
     const res = await fetch("/api/chat", {
@@ -446,7 +473,8 @@ export default function AgentPage() {
           </section>
         </section>
 
-        <aside className="rounded border border-border bg-surface p-4">
+        {showInternals && (
+          <aside className="rounded border border-border bg-surface p-4">
           <div className="micro mb-3">Agent internals · For the curious</div>
           <div className="mb-2 flex flex-wrap gap-2">
             {STAGE_ORDER.map((stage) => (
@@ -471,7 +499,23 @@ export default function AgentPage() {
               {JSON.stringify(stageOutputs[selectedStage] ?? {}, null, 2)}
             </pre>
           </div>
-        </aside>
+          </aside>
+        )}
+      </div>
+
+      <div
+        className="fixed bottom-5 left-5 rounded-full border border-border bg-surface px-3 py-1 text-xs text-text-2"
+        onMouseEnter={() => setShowShortcutHelp(true)}
+        onMouseLeave={() => setShowShortcutHelp(false)}
+      >
+        ?
+        {showShortcutHelp && (
+          <div className="absolute bottom-9 left-0 w-60 rounded border border-border bg-surface p-3 text-left">
+            <p className="mb-1">Cmd/Ctrl+K: market switcher</p>
+            <p className="mb-1">Cmd/Ctrl+Enter: run agent</p>
+            <p>Cmd/Ctrl+/: toggle internals</p>
+          </div>
+        )}
       </div>
 
       <AnimatePresence>
@@ -486,6 +530,28 @@ export default function AgentPage() {
           </motion.div>
         )}
       </AnimatePresence>
+      <Command.Dialog
+        open={commandOpen}
+        onOpenChange={setCommandOpen}
+        label="Market switcher"
+        className="fixed left-1/2 top-24 z-50 w-[90vw] max-w-xl -translate-x-1/2 rounded border border-border bg-surface p-2"
+      >
+        <Command.Input className="w-full border border-border bg-bg px-3 py-2 text-sm" placeholder="Select market..." />
+        <Command.List className="mt-2 max-h-72 overflow-auto">
+          {markets.map((market) => (
+            <Command.Item
+              key={market.id}
+              className="cursor-pointer px-3 py-2 text-sm text-text-2 hover:bg-surface-alt hover:text-text"
+              onSelect={() => {
+                setSelectedMarketId(market.id);
+                setCommandOpen(false);
+              }}
+            >
+              {market.name}
+            </Command.Item>
+          ))}
+        </Command.List>
+      </Command.Dialog>
     </main>
   );
 }
