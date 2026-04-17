@@ -37,6 +37,7 @@ export default function Home() {
           <div className="micro mb-3">Grounded</div>
           <h3 className="serif mb-2 text-xl">In real Modo research</h3>
           <p className="text-sm text-text-2">Every output ties back to published market research and signals.</p>
+          <p className="mt-2 text-xs text-text-3">FCA-authorised benchmarks where applicable.</p>
         </article>
         <article>
           <div className="micro mb-3">Agentic</div>

@@ -55,6 +55,10 @@ export default function AgentPage() {
   }, [events]);
   const prospectList = ((stageOutputs.prospects as { prospects?: Array<Record<string, unknown>> } | undefined)
     ?.prospects ?? []) as Array<Record<string, unknown>>;
+  const starterPack = ((stageOutputs.assets as { starter_pack?: Array<Record<string, unknown>> } | undefined)
+    ?.starter_pack ?? []) as Array<Record<string, unknown>>;
+  const outreachEmails = ((stageOutputs.outreach as { emails?: Array<Record<string, unknown>> } | undefined)?.emails ??
+    []) as Array<Record<string, unknown>>;
 
   function loadCachedResult(marketId: string) {
     const cache = (cacheData as Record<string, { stages: Record<string, unknown> }>)[marketId];
@@ -297,6 +301,10 @@ export default function AgentPage() {
                 <p className="mt-2 inline-block border border-warning px-2 py-1 text-xs text-warning">cached</p>
               )}
               {liveFailureNotice && <p className="mt-2 text-sm text-warning">{liveFailureNotice}</p>}
+              <p className="mt-3 text-xs text-text-3">
+                All citations reference Modo Energy&apos;s published research. Benchmarks referenced are
+                FCA-authorised where applicable.
+              </p>
             </div>
 
             <article>
@@ -345,11 +353,53 @@ export default function AgentPage() {
             </article>
             <article>
               <div className="micro mb-2">Ko starter pack</div>
-              <pre className="overflow-auto text-sm text-text-2">{JSON.stringify(stageOutputs.assets, null, 2)}</pre>
+              {starterPack.length === 0 ? (
+                <pre className="overflow-auto text-sm text-text-2">{JSON.stringify(stageOutputs.assets, null, 2)}</pre>
+              ) : (
+                <div className="space-y-3">
+                  {starterPack.map((item, index) => {
+                    const benchmarks = (item.benchmarks_exercised as string[] | undefined) ?? [];
+                    const hasFcaBenchmark = benchmarks.some((entry) => /me bess gb|fca|regulated/i.test(entry));
+                    return (
+                      <div key={`${item.id ?? index}`} className="rounded border border-border p-3">
+                        <div className="flex items-start justify-between gap-3">
+                          <p className="text-sm text-text">{String(item.prompt_text ?? "Prompt")}</p>
+                          {hasFcaBenchmark && (
+                            <span className="shrink-0 border border-warning px-2 py-0.5 text-[11px] text-warning">
+                              FCA-regulated
+                            </span>
+                          )}
+                        </div>
+                        <p className="mt-1 text-xs text-text-2">{String(item.persona ?? "")}</p>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
             </article>
             <article>
               <div className="micro mb-2">Outreach drafts</div>
-              <pre className="overflow-auto text-sm text-text-2">{JSON.stringify(stageOutputs.outreach, null, 2)}</pre>
+              {outreachEmails.length === 0 ? (
+                <pre className="overflow-auto text-sm text-text-2">{JSON.stringify(stageOutputs.outreach, null, 2)}</pre>
+              ) : (
+                <div className="space-y-3">
+                  {outreachEmails.map((email, index) => {
+                    const ctaLine = String(email.cta_line ?? "");
+                    const containsRegulated = /fca|regulated|me bess gb/i.test(ctaLine);
+                    return (
+                      <div key={`${email.subject ?? index}`} className="rounded border border-border p-3">
+                        <p className="text-sm text-text">{String(email.subject ?? "Draft")}</p>
+                        <p className="mt-1 text-xs text-text-2">{String(email.body ?? "")}</p>
+                        <p
+                          className={`mt-2 text-xs ${containsRegulated ? "font-medium text-accent" : "text-text-2"}`}
+                        >
+                          {ctaLine}
+                        </p>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
               <div className="mt-3 flex gap-3">
                 <button
                   className="border border-border px-3 py-1 text-xs text-text-2 hover:text-text"
