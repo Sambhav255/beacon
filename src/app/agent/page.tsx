@@ -41,6 +41,7 @@ function stageLabel(stage: StageId) {
 }
 
 export default function AgentPage() {
+  const compactPre = "overflow-y-auto overflow-x-hidden whitespace-pre-wrap break-words text-xs text-text-2";
   const markets = Object.values(marketsData as MarketsMap);
   const [selectedMarketId, setSelectedMarketId] = useState<string | null>(null);
   const [events, setEvents] = useState<StageEvent[]>([]);
@@ -90,15 +91,60 @@ export default function AgentPage() {
     }
     return outputMap;
   }, [events]);
-  const prospectList = ((stageOutputs.prospects as { prospects?: Array<Record<string, unknown>> } | undefined)
-    ?.prospects ?? []) as Array<Record<string, unknown>>;
-  const starterPack = ((stageOutputs.assets as { starter_pack?: Array<Record<string, unknown>> } | undefined)
-    ?.starter_pack ?? []) as Array<Record<string, unknown>>;
-  const outreachEmails = ((stageOutputs.outreach as { emails?: Array<Record<string, unknown>> } | undefined)?.emails ??
-    []) as Array<Record<string, unknown>>;
-  const contentOutput = (stageOutputs.content as
-    | { linkedin_post?: Record<string, unknown>; newsletter_blurb?: Record<string, unknown> }
-    | undefined) ?? { };
+  const contextOutput = useMemo(() => (stageOutputs.context as Record<string, unknown> | undefined) ?? {}, [stageOutputs]);
+  const signalsOutput = useMemo(() => (stageOutputs.signals as Record<string, unknown> | undefined) ?? {}, [stageOutputs]);
+  const prospectsOutput = useMemo(
+    () => (stageOutputs.prospects as Record<string, unknown> | Array<Record<string, unknown>> | undefined) ?? {},
+    [stageOutputs],
+  );
+  const assetsOutput = useMemo(
+    () => (stageOutputs.assets as Record<string, unknown> | Array<Record<string, unknown>> | undefined) ?? {},
+    [stageOutputs],
+  );
+  const outreachOutput = useMemo(
+    () => (stageOutputs.outreach as Record<string, unknown> | Array<Record<string, unknown>> | undefined) ?? {},
+    [stageOutputs],
+  );
+  const contentOutput = useMemo(() => (stageOutputs.content as Record<string, unknown> | undefined) ?? {}, [stageOutputs]);
+
+  const prospectList = useMemo(() => {
+    if (Array.isArray(prospectsOutput)) return prospectsOutput;
+    const nested = prospectsOutput.prospects;
+    return Array.isArray(nested) ? nested : [];
+  }, [prospectsOutput]);
+
+  const starterPack = useMemo(() => {
+    if (Array.isArray(assetsOutput)) return assetsOutput;
+    const nested = assetsOutput.starter_pack;
+    return Array.isArray(nested) ? nested : [];
+  }, [assetsOutput]);
+
+  const outreachEmails = useMemo(() => {
+    if (Array.isArray(outreachOutput)) return outreachOutput;
+    const nested = outreachOutput.emails;
+    return Array.isArray(nested) ? nested : [];
+  }, [outreachOutput]);
+
+  useEffect(() => {
+    if (process.env.NODE_ENV !== "development") return;
+    if (prospectList.length > 0 || starterPack.length > 0 || outreachEmails.length > 0) {
+      console.log("Kit renderer data shape", {
+        prospectsOutput,
+        prospectList,
+        assetsOutput,
+        starterPack,
+        outreachOutput,
+        outreachEmails,
+      });
+    }
+  }, [assetsOutput, outreachEmails, outreachOutput, prospectList, prospectsOutput, starterPack]);
+
+  const headlineSignal = (signalsOutput.headline_signal as Record<string, unknown> | undefined) ?? {};
+  const supportingSignals = (signalsOutput.supporting_signals as Array<Record<string, unknown>> | undefined) ?? [];
+  const followUpVariant = (outreachOutput.follow_up_variant as Record<string, unknown> | undefined) ?? {};
+  const linkedinPost = (contentOutput.linkedin_post as Record<string, unknown> | string | undefined) ?? {};
+  const newsletterBlurb = (contentOutput.newsletter_blurb as Record<string, unknown> | string | undefined) ?? {};
+  const videoTopic = (contentOutput.video_topic as Record<string, unknown> | string | undefined) ?? {};
   const hasKitOutput = Object.keys(stageOutputs).length > 0;
   const latestStageEvents = useMemo(() => {
     const latest: Partial<Record<StageId, StageEvent>> = {};
@@ -465,7 +511,7 @@ export default function AgentPage() {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="max-h-44 overflow-auto text-xs text-text-2"
+                        className="max-h-44 overflow-y-auto overflow-x-hidden whitespace-pre-wrap break-words text-xs text-text-2"
                       >
                         {JSON.stringify(latest.output, null, 2)}
                       </motion.pre>
@@ -512,22 +558,62 @@ export default function AgentPage() {
 
             <article>
               <div className="micro mb-2">Executive summary</div>
-              <pre className="overflow-auto text-sm text-text-2">{JSON.stringify(stageOutputs.context, null, 2)}</pre>
+              <div className="space-y-3">
+                <p className="text-base text-text">
+                  {String(contextOutput.market_state ?? "No market state generated yet.")}
+                </p>
+                <p className="text-sm text-text-2">{String(contextOutput.modo_position ?? "No positioning generated yet.")}</p>
+                <div>
+                  <p className="text-xs text-text-3">Modo research grounding this kit</p>
+                  <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-text-2">
+                    {((contextOutput.grounding_notes as string[] | undefined) ?? []).map((note, index) => (
+                      <li key={`${note}-${index}`}>{note}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </article>
             <article>
               <div className="micro mb-2">Market snapshot</div>
-              <pre className="overflow-auto text-sm text-text-2">
-                {JSON.stringify(currentMarket?.market_snapshot ?? {}, null, 2)}
-              </pre>
+              <div className="rounded border border-border">
+                {Object.entries((currentMarket?.market_snapshot as Record<string, unknown> | undefined) ?? {}).map(
+                  ([label, value]) => (
+                    <div key={label} className="grid grid-cols-[180px_1fr] border-b border-border px-3 py-2 last:border-b-0">
+                      <span className="text-sm text-text-3">{label.replaceAll("_", " ")}</span>
+                      <span className="text-sm text-text">{String(value)}</span>
+                    </div>
+                  ),
+                )}
+              </div>
             </article>
             <article>
               <div className="micro mb-2">Active signals</div>
-              <pre className="overflow-auto text-sm text-text-2">{JSON.stringify(stageOutputs.signals, null, 2)}</pre>
+              <div className="space-y-3">
+                <div className="rounded border border-border border-l-[3px] border-l-signal bg-bg px-4 py-3">
+                  <h3 className="serif text-xl text-text">
+                    {String(headlineSignal.title ?? headlineSignal.headline ?? "No headline signal yet.")}
+                  </h3>
+                  <p className="mt-2 text-sm text-text-2">
+                    {String(headlineSignal.implication ?? headlineSignal.so_what ?? "No implication available.")}
+                  </p>
+                </div>
+                <div className="space-y-2">
+                  {supportingSignals.map((signal, index) => (
+                    <div key={`${String(signal.headline ?? "signal")}-${index}`} className="rounded border border-border p-3">
+                      <p className="micro mb-1">{String(signal.date ?? "")}</p>
+                      <p className="text-sm text-text">{String(signal.headline ?? "")}</p>
+                      <p className="mt-1 text-xs text-text-3">
+                        {String(signal.commercial_implication ?? signal.so_what ?? "")}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </article>
             <article>
               <div className="micro mb-2">Prospect deck</div>
               {prospectList.length === 0 ? (
-                <pre className="overflow-auto text-sm text-text-2">{JSON.stringify(stageOutputs.prospects, null, 2)}</pre>
+                <p className="text-sm text-text-3">No prospects generated yet.</p>
               ) : (
                 <motion.div
                   initial="hidden"
@@ -540,17 +626,47 @@ export default function AgentPage() {
                 >
                   {prospectList.map((prospect, index) => (
                     <motion.div
-                      key={`${prospect.rank ?? index}`}
+                      key={`${String(prospect.rank ?? index + 1)}-${String(prospect.archetype ?? "prospect")}-${index}`}
                       variants={{
                         hidden: { opacity: 0, y: 6 },
                         show: { opacity: 1, y: 0 },
                       }}
-                      className="rounded border border-border p-3"
+                      className="rounded border border-border p-4"
                     >
-                      <div className="text-sm text-text">
-                        {String(prospect.rank ?? index + 1)}. {String(prospect.archetype ?? "Prospect")}
+                      <p className="micro">Rank {String(prospect.rank ?? index + 1)}</p>
+                      <h3 className="serif mt-1 text-xl text-text">{String(prospect.archetype ?? "Prospect")}</h3>
+                      <p className="mt-2 text-sm text-text-2">{String(prospect.description ?? "")}</p>
+                      <p className="mt-3 text-sm">
+                        <span className="text-text-3">Trigger:</span>{" "}
+                        <span className="text-signal">{String(prospect.trigger ?? "")}</span>
+                      </p>
+                      <p className="mt-1 text-sm">
+                        <span className="text-text-3">Pain:</span> <span className="text-text">{String(prospect.pain ?? "")}</span>
+                      </p>
+                      <p className="mt-1 text-sm">
+                        <span className="text-text-3">Modo asset:</span>{" "}
+                        <span className="text-text">{String(prospect.matched_modo_asset ?? "")}</span>
+                      </p>
+                      <div className="mt-2 rounded border border-border bg-bg px-3 py-2 text-xs text-text-2">
+                        <span className="text-text-3">Ko prompt:</span>{" "}
+                        {String(prospect.matched_ko_prompt ?? "")}
                       </div>
-                      <div className="mt-1 text-xs text-text-2">{String(prospect.trigger ?? "")}</div>
+                      <p className="mt-2 text-sm">
+                        <span className="text-text-3">Channel:</span> {String(prospect.channel ?? "")}
+                      </p>
+                      <div className="mt-3">
+                        <span
+                          className={`inline-block border px-2 py-0.5 text-[11px] ${
+                            String(prospect.priority ?? "").toLowerCase() === "high"
+                              ? "border-success text-success"
+                              : String(prospect.priority ?? "").toLowerCase() === "medium"
+                                ? "border-warning text-warning"
+                                : "border-border text-text-3"
+                          }`}
+                        >
+                          {String(prospect.priority ?? "watch")}
+                        </span>
+                      </div>
                     </motion.div>
                   ))}
                 </motion.div>
@@ -559,28 +675,36 @@ export default function AgentPage() {
             <article>
               <div className="micro mb-2">Ko starter pack</div>
               {starterPack.length === 0 ? (
-                <pre className="overflow-auto text-sm text-text-2">{JSON.stringify(stageOutputs.assets, null, 2)}</pre>
+                <p className="text-sm text-text-3">No prompt pack generated yet.</p>
               ) : (
                 <div className="space-y-3">
                   {starterPack.map((item, index) => {
                     const benchmarks = (item.benchmarks_exercised as string[] | undefined) ?? [];
-                    const hasFcaBenchmark = benchmarks.some((entry) => /me bess gb|fca|regulated/i.test(entry));
+                    const promptText = String(item.prompt_text ?? item.text ?? "Prompt");
                     return (
                       <div key={`${item.id ?? index}`} className="rounded border border-border p-3">
-                        <div className="flex items-start justify-between gap-3">
-                          <p className="text-sm text-text">{String(item.prompt_text ?? "Prompt")}</p>
-                          {hasFcaBenchmark && (
-                            <span className="shrink-0 border border-warning px-2 py-0.5 text-[11px] text-warning">
-                              FCA-regulated
-                            </span>
-                          )}
+                        <div className="flex items-start justify-between gap-2">
+                          <p className="text-[15px] text-text">{promptText}</p>
+                          <button
+                            className="shrink-0 border border-border px-2 py-1 text-xs text-text-2 hover:text-text"
+                            onClick={() => copyValue(promptText, `starter-${String(item.id ?? index)}`)}
+                          >
+                            {copiedKey === `starter-${String(item.id ?? index)}` ? "Copied" : "Copy"}
+                          </button>
                         </div>
-                        <p className="mt-1 text-xs text-text-2">{String(item.persona ?? "")}</p>
-                        {!hasFcaBenchmark && (
-                          <p className="mt-1 text-xs text-text-3">
-                            TODO: validate this prompt against a regulated benchmark before external use.
-                          </p>
-                        )}
+                        <span className="mt-2 inline-block border border-border px-2 py-0.5 text-[11px] text-text-2">
+                          {String(item.persona ?? "persona")}
+                        </span>
+                        <p className="mt-2 text-xs text-text-3">
+                          {String(item.why_this_prompt ?? item.why ?? "No rationale supplied.")}
+                        </p>
+                        <div className="mt-2 flex flex-wrap gap-2">
+                          {benchmarks.map((benchmark, badgeIndex) => (
+                            <span key={`${benchmark}-${badgeIndex}`} className="border border-border px-2 py-0.5 text-[11px] text-text-2">
+                              {benchmark}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     );
                   })}
@@ -590,24 +714,28 @@ export default function AgentPage() {
             <article>
               <div className="micro mb-2">Outreach drafts</div>
               {outreachEmails.length === 0 ? (
-                <pre className="overflow-auto text-sm text-text-2">{JSON.stringify(stageOutputs.outreach, null, 2)}</pre>
+                <p className="text-sm text-text-3">No outreach drafts generated yet.</p>
               ) : (
                 <div className="space-y-3">
                   {outreachEmails.map((email, index) => {
                     const ctaLine = String(email.cta_line ?? "");
-                    const containsRegulated = /fca|regulated|me bess gb/i.test(ctaLine);
                     return (
-                      <div key={`${email.subject ?? index}`} className="rounded border border-border p-3">
-                        <p className="text-sm text-text">{String(email.subject ?? "Draft")}</p>
-                        <p className="mt-1 text-xs text-text-2">{String(email.body ?? "")}</p>
-                        <p
-                          className={`mt-2 text-xs ${containsRegulated ? "font-medium text-accent" : "text-text-2"}`}
-                        >
-                          {ctaLine}
-                        </p>
+                      <div key={`${String(email.subject ?? "draft")}-${index}`} className="rounded border border-border p-3">
+                        <h3 className="serif text-xl text-text">{String(email.subject ?? "Draft")}</h3>
+                        <p className="mt-2 text-sm text-text-2">{String(email.body ?? "")}</p>
+                        <p className="mt-2 text-sm text-signal">{ctaLine}</p>
+                        <p className="mt-2 micro">{String(email.signal_reference ?? "")}</p>
                       </div>
                     );
                   })}
+                  {Object.keys(followUpVariant).length > 0 && (
+                    <div className="rounded border border-border p-3">
+                      <span className="border border-border px-2 py-0.5 text-[11px] text-text-2">Follow-up</span>
+                      <h3 className="serif mt-2 text-xl text-text">{String(followUpVariant.subject ?? "Follow-up")}</h3>
+                      <p className="mt-2 text-sm text-text-2">{String(followUpVariant.body ?? "")}</p>
+                      <p className="mt-2 micro">{String(followUpVariant.context ?? "")}</p>
+                    </div>
+                  )}
                 </div>
               )}
               <div className="mt-3 flex gap-3">
@@ -621,7 +749,45 @@ export default function AgentPage() {
             </article>
             <article>
               <div className="micro mb-2">Content calendar</div>
-              <pre className="overflow-auto text-sm text-text-2">{JSON.stringify(stageOutputs.content, null, 2)}</pre>
+              <div className="space-y-3">
+                <div className="rounded border border-border p-3">
+                  <p className="text-lg text-text">
+                    {typeof linkedinPost === "string" ? linkedinPost : String(linkedinPost.hook ?? "No hook provided.")}
+                  </p>
+                  {typeof linkedinPost !== "string" && (
+                    <>
+                      <p className="mt-2 text-sm text-text-2">{String(linkedinPost.body ?? "")}</p>
+                      <p className="mt-2 text-xs text-text-3">{String(linkedinPost.cta ?? "")}</p>
+                    </>
+                  )}
+                </div>
+                <div className="rounded border border-border p-3">
+                  {typeof newsletterBlurb === "string" ? (
+                    <p className="text-sm text-text-2">{newsletterBlurb}</p>
+                  ) : (
+                    <>
+                      <h3 className="serif text-xl text-text">{String(newsletterBlurb.headline ?? "Newsletter blurb")}</h3>
+                      <p className="mt-2 text-sm text-text-2">{String(newsletterBlurb.body ?? "")}</p>
+                    </>
+                  )}
+                </div>
+                <div className="rounded border border-border p-3">
+                  {typeof videoTopic === "string" ? (
+                    <p className="text-sm text-text-2">{videoTopic}</p>
+                  ) : (
+                    <>
+                      <h3 className="serif text-xl text-text">{String(videoTopic.working_title ?? "Video topic")}</h3>
+                      <p className="mt-2 text-sm text-text-2">{String(videoTopic.thesis ?? "")}</p>
+                      <ol className="mt-2 list-decimal space-y-1 pl-5 text-sm text-text-2">
+                        {((videoTopic.three_key_points as string[] | undefined) ?? []).map((point, index) => (
+                          <li key={`${point}-${index}`}>{point}</li>
+                        ))}
+                      </ol>
+                      <p className="mt-2 text-xs text-text-3">{String(videoTopic.suggested_expert ?? "")}</p>
+                    </>
+                  )}
+                </div>
+              </div>
               <div className="mt-3 flex flex-wrap gap-3">
                 <button
                   className="border border-border px-3 py-1 text-xs text-text-2 hover:text-text"
@@ -716,11 +882,11 @@ export default function AgentPage() {
               Open full prompts page
             </Link>
             <div className="text-text-2">System prompt</div>
-            <pre className="max-h-36 overflow-auto border border-border bg-bg p-2">
+            <pre className="max-h-36 overflow-y-auto overflow-x-hidden whitespace-pre-wrap break-words border border-border bg-bg p-2">
               {STAGE_PROMPTS[selectedStage]}
             </pre>
             <div className="text-text-2">Raw JSON output</div>
-            <pre className="max-h-40 overflow-auto border border-border bg-bg p-2">
+            <pre className="max-h-40 overflow-y-auto overflow-x-hidden whitespace-pre-wrap break-words border border-border bg-bg p-2">
               {JSON.stringify(stageOutputs[selectedStage] ?? {}, null, 2)}
             </pre>
           </div>
@@ -735,7 +901,7 @@ export default function AgentPage() {
               <button onClick={askFollowUp} className="mt-2 w-full bg-accent px-3 py-2 text-xs text-bg">
                 Ask with this kit context
               </button>
-              {chatAnswer && <p className="mt-3 whitespace-pre-wrap text-xs text-text-2">{chatAnswer}</p>}
+              {chatAnswer && <pre className={compactPre}>{chatAnswer}</pre>}
             </div>
           )}
           </aside>
