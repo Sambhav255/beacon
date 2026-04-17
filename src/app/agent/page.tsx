@@ -150,7 +150,20 @@ export default function AgentPage() {
   const [pickerMode, setPickerMode] = useState<"globe" | "list">("globe");
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const kitRef = useRef<HTMLDivElement>(null);
+  const generationRef = useRef<HTMLDivElement>(null);
   const runAgentRef = useRef<(forceLive?: boolean) => Promise<void>>(async () => {});
+
+  const scrollToGeneration = useCallback(() => {
+    window.setTimeout(() => {
+      generationRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 80);
+  }, []);
+
+  const scrollToKit = useCallback(() => {
+    window.setTimeout(() => {
+      kitRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 120);
+  }, []);
 
   const currentMarket = useMemo(
     () => ((selectedMarketId ? (marketsData as MarketsMap)[selectedMarketId] : null) as Market | null),
@@ -301,7 +314,9 @@ export default function AgentPage() {
     ]);
     setEvents(cachedEvents);
     setIsCachedView(true);
-    setTimeout(() => kitRef.current?.scrollIntoView({ behavior: "smooth" }), 100);
+    window.setTimeout(() => {
+      generationRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 100);
     return true;
   }, []);
 
@@ -329,6 +344,7 @@ export default function AgentPage() {
       setRunning(false);
       return;
     }
+    scrollToGeneration();
     let shouldFallbackToCache = false;
     const res = await fetch("/api/agent", {
       method: "POST",
@@ -400,8 +416,8 @@ export default function AgentPage() {
     };
     const existing = JSON.parse(localStorage.getItem("beacon_run_logs") ?? "[]") as Array<Record<string, unknown>>;
     localStorage.setItem("beacon_run_logs", JSON.stringify([logEntry, ...existing].slice(0, 10)));
-    setTimeout(() => kitRef.current?.scrollIntoView({ behavior: "smooth" }), 250);
-  }, [events, loadCachedResult, loadCachedStage, selectedMarketId, stageOutputs]);
+    scrollToKit();
+  }, [events, loadCachedResult, loadCachedStage, scrollToGeneration, scrollToKit, selectedMarketId, stageOutputs]);
 
   useEffect(() => {
     if (!toast) return;
@@ -701,7 +717,8 @@ export default function AgentPage() {
             <p className="mt-2 text-xs text-text-3 md:hidden">Transparency panel appears under Run history when shown.</p>
           </div>
 
-          <div className="space-y-3">
+          <div ref={generationRef} className="scroll-mt-24 space-y-3">
+            <div className="micro mb-1">Generation</div>
             {STAGE_ORDER.map((stage) => {
               const latest = latestStageEvents[stage];
               const isRunning = running && latest?.status === "running";
