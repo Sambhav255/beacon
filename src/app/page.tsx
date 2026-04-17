@@ -49,10 +49,10 @@ export default function Home() {
 
       <section className="mx-auto w-full max-w-4xl px-8 py-24">
         <div className="micro mb-6">Built for Modo Energy · Prototype</div>
-        <h1 className="h1 mb-6">A market entry agent for Modo&apos;s growth team.</h1>
+        <h1 className="h1 mb-6">Turn one growth operator into twenty-market execution in 90 seconds.</h1>
         <p className="mb-10 max-w-2xl text-lg text-text-2">
-          Built for the person covering twenty markets, not five. Grounded in published Modo research, live
-          market signals, and a six-stage agent flow.
+          Built for Imrith&apos;s real job: expand Modo beyond five markets without lowering research quality.
+          Grounded in published Modo research, live signals, and FCA-authorised benchmark context.
         </p>
         <Link href="/agent" className="inline-block bg-accent px-6 py-3 font-medium text-bg hover:bg-accent-hover">
           Run agent
@@ -63,7 +63,7 @@ export default function Home() {
         <article>
           <div className="micro mb-3">Grounded</div>
           <h3 className="serif mb-2 text-xl">In real Modo research</h3>
-          <p className="text-sm text-text-2">Every output ties back to published market research and signals.</p>
+          <p className="text-sm text-text-2">Every output ties back to published market research and explicit signals.</p>
           <p className="mt-2 text-xs text-text-3">FCA-authorised benchmarks where applicable.</p>
         </article>
         <article>

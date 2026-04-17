@@ -477,6 +477,9 @@ export default function AgentPage() {
                 All citations reference Modo Energy&apos;s published research. Benchmarks referenced are
                 FCA-authorised where applicable.
               </p>
+              <p className="mt-2 text-xs text-text-3">
+                Generated outreach and content drafts are illustrative until reviewed by a human operator.
+              </p>
             </div>
 
             <article>
@@ -545,6 +548,11 @@ export default function AgentPage() {
                           )}
                         </div>
                         <p className="mt-1 text-xs text-text-2">{String(item.persona ?? "")}</p>
+                        {!hasFcaBenchmark && (
+                          <p className="mt-1 text-xs text-text-3">
+                            TODO: validate this prompt against a regulated benchmark before external use.
+                          </p>
+                        )}
                       </div>
                     );
                   })}

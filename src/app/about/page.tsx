@@ -49,29 +49,30 @@ export default function AboutPage() {
           outreach generation, and content derivatives. You can inspect each stage as it executes.
         </p>
         <p>
-          I built this in a day with a curated Modo-grounded data layer and a live generation pipeline. The interface
-          is intentionally restrained so the work is legible.
+          I built this in a day with a curated Modo-grounded data layer and a live generation pipeline. The FCA angle
+          is explicit because regulated benchmark credibility is one of Modo&apos;s real moats and should shape outreach.
+          The interface is intentionally restrained so the work stays legible.
         </p>
       </section>
 
       <section className="mt-16 space-y-7 text-[17px] leading-[1.7] text-text">
         <p>
-          The Day 30 version runs nightly across active expansion markets, pulls live public signals, and closes the
-          loop into outreach systems, the content calendar, and Ko prompt distribution.
+          This is v1. The right operating model is weekly iteration: run it, inspect misses, tighten prompts, and
+          improve coverage market by market.
         </p>
-        <p className="italic text-text-2">
-          If you&apos;d like to see a working version in production, I&apos;d build it in the first two weeks of the
-          role. That&apos;s the offer.
+        <p>
+          Day 30 should run nightly across active expansion markets, pull live public signals, and close the loop into
+          outreach systems, the content calendar, and Ko prompt distribution.
         </p>
       </section>
 
       <section className="mt-16 space-y-7 text-[17px] leading-[1.7] text-text">
         <p>
           This is a vision prototype, not a production system. Some signal inputs are curated for demo stability and
-          generation can fail. What it demonstrates is operating posture: the level of thinking, speed, and execution
-          expected in this role.
+          generation can fail. Generated drafts are directional, not canonical facts, until verified against source
+          research.
         </p>
-        <p>That was the point.</p>
+        <p>The point is learning velocity, not polish theater.</p>
       </section>
 
       <footer className="mt-16 space-y-2 text-[15px] leading-7 text-text-2">
