@@ -168,6 +168,10 @@ export default function AgentPage() {
         })),
     [markets],
   );
+  const globeMarketsSorted = useMemo(
+    () => [...globeMarkets].sort((a, b) => a.name.localeCompare(b.name)),
+    [globeMarkets],
+  );
 
   const stageOutputs = useMemo(() => {
     const outputMap: Record<string, unknown> = {};
@@ -550,12 +554,33 @@ export default function AgentPage() {
               </button>
             </div>
             {pickerMode === "globe" && (
-              <div className="hidden md:block">
+              <div className="hidden md:flex md:flex-row md:items-start md:justify-center md:gap-6">
                 <MarketGlobe
                   markets={globeMarkets}
                   selectedMarketId={selectedMarketId}
                   onSelect={(marketId) => setSelectedMarketId(marketId)}
                 />
+                <aside className="flex w-full max-w-[280px] shrink-0 flex-col rounded border border-border bg-bg p-3">
+                  <div className="micro mb-2">Markets</div>
+                  <p className="mb-3 text-xs text-text-3">Click a country to select it. The globe will zoom to that market.</p>
+                  <div className="max-h-[min(500px,70vh)] space-y-1 overflow-y-auto pr-1">
+                    {globeMarketsSorted.map((m) => (
+                      <button
+                        key={m.id}
+                        type="button"
+                        onClick={() => setSelectedMarketId(m.id)}
+                        className={`min-h-11 w-full rounded border px-3 py-2.5 text-left text-sm transition-colors ${
+                          selectedMarketId === m.id
+                            ? "border-accent bg-surface-alt text-accent"
+                            : "border-border text-text-2 hover:border-border-strong hover:text-text"
+                        }`}
+                      >
+                        <div className="font-medium text-text">{m.name}</div>
+                        <div className="mt-0.5 line-clamp-2 text-xs text-text-3">{m.tagline}</div>
+                      </button>
+                    ))}
+                  </div>
+                </aside>
               </div>
             )}
             <div className={`mb-4 flex flex-wrap gap-2 ${pickerMode === "globe" ? "md:hidden" : ""}`}>

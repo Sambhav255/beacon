@@ -191,7 +191,7 @@ export default function MarketGlobe({ markets, selectedMarketId, onSelect }: Mar
         )}
       </div>
       <div className="mt-3 flex w-full items-center justify-between">
-        <p className="text-xs text-text-3">Tip: use List view if you want the fastest market switching.</p>
+        <p className="text-xs text-text-3">Tip: use the market list beside the globe, or List view on smaller screens.</p>
         {selectedMarketId && (
           <button
             type="button"
