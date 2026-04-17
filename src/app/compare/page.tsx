@@ -1,10 +1,43 @@
 import marketsData from "@/data/markets.json";
 import type { MarketsMap } from "@/lib/types";
+import BackButton from "@/components/BackButton";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Compare",
 };
+
+function SnapshotRows({ snapshot }: { snapshot: Record<string, string | number> }) {
+  return (
+    <div className="rounded border border-border">
+      {Object.entries(snapshot).map(([key, value]) => (
+        <div key={key} className="grid grid-cols-[180px_1fr] border-b border-border px-3 py-2 last:border-b-0">
+          <span className="text-sm text-text-3">{key.replaceAll("_", " ")}</span>
+          <span className="text-sm text-text">{String(value)}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function SignalCards({
+  signals,
+}: {
+  signals: Array<{ date: string; type: string; headline: string; so_what: string }>;
+}) {
+  return (
+    <div className="space-y-2">
+      {signals.map((signal, index) => (
+        <article key={`${signal.headline}-${index}`} className="rounded border border-border p-3">
+          <p className="micro">{signal.date} · {signal.type}</p>
+          <p className="mt-1 text-sm text-text">{signal.headline}</p>
+          <p className="mt-1 text-xs text-text-3">{signal.so_what}</p>
+        </article>
+      ))}
+    </div>
+  );
+}
 
 export default async function ComparePage({
   searchParams,
@@ -35,30 +68,36 @@ export default async function ComparePage({
             {left.name} vs {right.name}
           </p>
         </div>
-        <a
-          href={`/compare?a=${encodeURIComponent(b)}&b=${encodeURIComponent(a)}`}
-          className="border border-border px-3 py-2 text-sm text-text-2 hover:text-text"
-        >
-          Swap
-        </a>
+        <div className="flex items-center gap-2">
+          <BackButton />
+          <Link href="/" className="border border-border px-3 py-2 text-sm text-text-2 hover:text-text">
+            Home
+          </Link>
+          <a
+            href={`/compare?a=${encodeURIComponent(b)}&b=${encodeURIComponent(a)}`}
+            className="border border-border px-3 py-2 text-sm text-text-2 hover:text-text"
+          >
+            Swap
+          </a>
+        </div>
       </div>
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <section className="max-h-[75vh] overflow-auto rounded border border-border bg-surface p-5">
           <div className="micro mb-2">{left.name}</div>
           <p className="mb-3 text-text-2">{left.tagline}</p>
-          <pre className="text-sm text-text-2">{JSON.stringify(left.market_snapshot, null, 2)}</pre>
+          <SnapshotRows snapshot={left.market_snapshot} />
           <div className="mt-4">
             <div className="micro mb-2">Signals</div>
-            <pre className="text-sm text-text-2">{JSON.stringify(left.active_signals, null, 2)}</pre>
+            <SignalCards signals={left.active_signals} />
           </div>
         </section>
         <section className="max-h-[75vh] overflow-auto rounded border border-border bg-surface p-5">
           <div className="micro mb-2">{right.name}</div>
           <p className="mb-3 text-text-2">{right.tagline}</p>
-          <pre className="text-sm text-text-2">{JSON.stringify(right.market_snapshot, null, 2)}</pre>
+          <SnapshotRows snapshot={right.market_snapshot} />
           <div className="mt-4">
             <div className="micro mb-2">Signals</div>
-            <pre className="text-sm text-text-2">{JSON.stringify(right.active_signals, null, 2)}</pre>
+            <SignalCards signals={right.active_signals} />
           </div>
         </section>
       </div>

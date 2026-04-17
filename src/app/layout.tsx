@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import GlobalNavActions from "@/components/GlobalNavActions";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://beacon.vercel.app"),
@@ -28,7 +29,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full antialiased">
-      <body className="min-h-full flex flex-col bg-bg text-text">{children}</body>
+      <body className="min-h-full flex flex-col bg-bg text-text">
+        {children}
+        <GlobalNavActions />
+      </body>
     </html>
   );
 }

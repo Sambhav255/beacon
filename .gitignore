@@ -5,3 +5,5 @@ node_modules
 .DS_Store
 *.tsbuildinfo
 beacon_app_tmp
+.vercel
+.cursor/

@@ -40,6 +40,91 @@ function stageLabel(stage: StageId) {
   }[stage];
 }
 
+function renderStagePreview(stage: StageId, output: unknown) {
+  const data = (output as Record<string, unknown> | undefined) ?? {};
+
+  if (stage === "context") {
+    return (
+      <div className="space-y-1 text-xs text-text-2">
+        <p className="text-text">{String(data.market_state ?? "No market state yet.")}</p>
+        <p>{String(data.modo_position ?? "No positioning yet.")}</p>
+      </div>
+    );
+  }
+
+  if (stage === "signals") {
+    const headline = (data.headline_signal as Record<string, unknown> | undefined) ?? {};
+    return (
+      <div className="space-y-1 text-xs text-text-2">
+        <p className="text-text">{String(headline.title ?? headline.headline ?? "No headline signal yet.")}</p>
+        <p>{String(headline.implication ?? headline.so_what ?? "")}</p>
+      </div>
+    );
+  }
+
+  if (stage === "prospects") {
+    const prospects = ((data.prospects as Array<Record<string, unknown>> | undefined) ?? []).slice(0, 3);
+    return (
+      <div className="space-y-1 text-xs text-text-2">
+        {prospects.length === 0 ? (
+          <p>No prospects yet.</p>
+        ) : (
+          prospects.map((prospect, index) => (
+            <p key={`${String(prospect.rank ?? index + 1)}-${String(prospect.archetype ?? "prospect")}-${index}`}>
+              {String(prospect.rank ?? index + 1)}. {String(prospect.archetype ?? "Prospect")}
+            </p>
+          ))
+        )}
+      </div>
+    );
+  }
+
+  if (stage === "assets") {
+    const prompts = ((data.starter_pack as Array<Record<string, unknown>> | undefined) ?? []).slice(0, 2);
+    return (
+      <div className="space-y-1 text-xs text-text-2">
+        {prompts.length === 0 ? (
+          <p>No starter prompts yet.</p>
+        ) : (
+          prompts.map((prompt, index) => (
+            <p key={`${String(prompt.id ?? index)}-${String(prompt.prompt_text ?? prompt.text ?? "prompt")}`}>
+              {String(prompt.prompt_text ?? prompt.text ?? "Prompt")}
+            </p>
+          ))
+        )}
+      </div>
+    );
+  }
+
+  if (stage === "outreach") {
+    const emails = ((data.emails as Array<Record<string, unknown>> | undefined) ?? []).slice(0, 3);
+    return (
+      <div className="space-y-1 text-xs text-text-2">
+        {emails.length === 0 ? (
+          <p>No outreach drafts yet.</p>
+        ) : (
+          emails.map((email, index) => (
+            <p key={`${String(email.subject ?? "draft")}-${index}`}>{String(email.subject ?? "Draft")}</p>
+          ))
+        )}
+      </div>
+    );
+  }
+
+  if (stage === "content") {
+    const linkedin = (data.linkedin_post as Record<string, unknown> | undefined) ?? {};
+    const newsletter = (data.newsletter_blurb as Record<string, unknown> | undefined) ?? {};
+    return (
+      <div className="space-y-1 text-xs text-text-2">
+        <p className="text-text">{String(linkedin.hook ?? "No LinkedIn hook yet.")}</p>
+        <p>{String(newsletter.headline ?? "No newsletter headline yet.")}</p>
+      </div>
+    );
+  }
+
+  return <p className="text-xs text-text-3">No output preview yet.</p>;
+}
+
 export default function AgentPage() {
   const compactPre = "overflow-y-auto overflow-x-hidden whitespace-pre-wrap break-words text-xs text-text-2";
   const markets = Object.values(marketsData as MarketsMap);
@@ -47,6 +132,8 @@ export default function AgentPage() {
   const [events, setEvents] = useState<StageEvent[]>([]);
   const [running, setRunning] = useState(false);
   const [toast, setToast] = useState("");
+  const [runMode, setRunMode] = useState<"cached" | "live" | null>(null);
+  const [liveFailed, setLiveFailed] = useState(false);
   const [history, setHistory] = useState<Array<{ marketId: string; ts: number; outputs: Record<string, unknown> }>>(
     [],
   );
@@ -113,11 +200,40 @@ export default function AgentPage() {
     return Array.isArray(nested) ? nested : [];
   }, [prospectsOutput]);
 
+  const displayedProspects = useMemo(() => {
+    const seen = new Set<string>();
+    const unique = prospectList.filter((prospect) => {
+      const key = [
+        String(prospect.archetype ?? ""),
+        String(prospect.trigger ?? ""),
+        String(prospect.pain ?? ""),
+      ].join("|");
+      if (!key || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+    return unique.slice(0, 3);
+  }, [prospectList]);
+
   const starterPack = useMemo(() => {
     if (Array.isArray(assetsOutput)) return assetsOutput;
     const nested = assetsOutput.starter_pack;
     return Array.isArray(nested) ? nested : [];
   }, [assetsOutput]);
+
+  const displayedStarterPack = useMemo(() => {
+    const seen = new Set<string>();
+    return starterPack.filter((item) => {
+      const key = [
+        String(item.prompt_text ?? item.text ?? ""),
+        String(item.persona ?? ""),
+        String(item.why_this_prompt ?? item.why ?? ""),
+      ].join("|");
+      if (!key || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  }, [starterPack]);
 
   const outreachEmails = useMemo(() => {
     if (Array.isArray(outreachOutput)) return outreachOutput;
@@ -125,26 +241,34 @@ export default function AgentPage() {
     return Array.isArray(nested) ? nested : [];
   }, [outreachOutput]);
 
-  useEffect(() => {
-    if (process.env.NODE_ENV !== "development") return;
-    if (prospectList.length > 0 || starterPack.length > 0 || outreachEmails.length > 0) {
-      console.log("Kit renderer data shape", {
-        prospectsOutput,
-        prospectList,
-        assetsOutput,
-        starterPack,
-        outreachOutput,
-        outreachEmails,
-      });
-    }
-  }, [assetsOutput, outreachEmails, outreachOutput, prospectList, prospectsOutput, starterPack]);
+  const displayedOutreachEmails = useMemo(() => {
+    const seen = new Set<string>();
+    return outreachEmails.filter((email) => {
+      const key = [
+        String(email.subject ?? ""),
+        String(email.body ?? ""),
+        String(email.cta_line ?? ""),
+        String(email.signal_reference ?? ""),
+      ].join("|");
+      if (!key || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  }, [outreachEmails]);
 
   const headlineSignal = (signalsOutput.headline_signal as Record<string, unknown> | undefined) ?? {};
   const supportingSignals = (signalsOutput.supporting_signals as Array<Record<string, unknown>> | undefined) ?? [];
-  const followUpVariant = (outreachOutput.follow_up_variant as Record<string, unknown> | undefined) ?? {};
+  const outreachObject = Array.isArray(outreachOutput) ? {} : outreachOutput;
+  const followUpVariant = (outreachObject.follow_up_variant as Record<string, unknown> | undefined) ?? {};
   const linkedinPost = (contentOutput.linkedin_post as Record<string, unknown> | string | undefined) ?? {};
   const newsletterBlurb = (contentOutput.newsletter_blurb as Record<string, unknown> | string | undefined) ?? {};
   const videoTopic = (contentOutput.video_topic as Record<string, unknown> | string | undefined) ?? {};
+  const groundingNotes = Array.isArray(contextOutput.grounding_notes)
+    ? contextOutput.grounding_notes.map((note) => String(note))
+    : typeof contextOutput.grounding_notes === "string"
+      ? [contextOutput.grounding_notes]
+      : [];
+
   const hasKitOutput = Object.keys(stageOutputs).length > 0;
   const latestStageEvents = useMemo(() => {
     const latest: Partial<Record<StageId, StageEvent>> = {};
@@ -183,6 +307,8 @@ export default function AgentPage() {
       setToast("Select a market first.");
       return;
     }
+    setRunMode(forceLive ? "live" : "cached");
+    setLiveFailed(false);
     const runStartedAt = Date.now();
     setRunning(true);
     setEvents([]);
@@ -201,7 +327,8 @@ export default function AgentPage() {
 
     if (!res.ok) {
       setLiveFailureNotice("Live run unavailable. Showing cached result.");
-      setToast("Live run failed. Loaded cached kit for demo stability.");
+      setLiveFailed(true);
+      if (forceLive) setToast("Live run failed. Loaded cached kit for demo stability.");
       loadCachedResult(selectedMarketId);
       setRunning(false);
       return;
@@ -209,6 +336,7 @@ export default function AgentPage() {
 
     if (!res.body) {
       setLiveFailureNotice("No live stream returned. Showing cached result.");
+      setLiveFailed(true);
       loadCachedResult(selectedMarketId);
       setRunning(false);
       return;
@@ -227,11 +355,12 @@ export default function AgentPage() {
         const data = JSON.parse(line.slice(6)) as StageEvent;
         setEvents((prev) => [...prev, data]);
         if (data.status === "error" && data.stage !== "done" && data.stage !== "error") {
-          setToast(`Stage ${data.stage} failed, continuing with cached output.`);
+          if (forceLive) setToast(`Stage ${data.stage} failed, continuing with cached output.`);
           loadCachedStage(selectedMarketId, data.stage);
         }
         if (data.error) {
           setLiveFailureNotice("Live run failed, showing cached result.");
+          setLiveFailed(true);
           shouldFallbackToCache = true;
         }
         if (data.stage !== "done" && data.stage !== "error" && data.status === "running") {
@@ -262,6 +391,12 @@ export default function AgentPage() {
     localStorage.setItem("beacon_run_logs", JSON.stringify([logEntry, ...existing].slice(0, 10)));
     setTimeout(() => kitRef.current?.scrollIntoView({ behavior: "smooth" }), 250);
   }, [events, loadCachedResult, loadCachedStage, selectedMarketId, stageOutputs]);
+
+  useEffect(() => {
+    if (!toast) return;
+    const timeout = setTimeout(() => setToast(""), 2500);
+    return () => clearTimeout(timeout);
+  }, [toast]);
   useEffect(() => {
     runAgentRef.current = runAgent;
   }, [runAgent]);
@@ -505,16 +640,16 @@ export default function AgentPage() {
                     ))}
                   <AnimatePresence mode="wait">
                     {latest?.output !== undefined && (
-                      <motion.pre
+                      <motion.div
                         key={`${stage}-output`}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="max-h-44 overflow-y-auto overflow-x-hidden whitespace-pre-wrap break-words text-xs text-text-2"
+                        className="max-h-44 overflow-y-auto"
                       >
-                        {JSON.stringify(latest.output, null, 2)}
-                      </motion.pre>
+                        {renderStagePreview(stage, latest.output)}
+                      </motion.div>
                     )}
                   </AnimatePresence>
                   {latest?.error && <p className="mt-2 text-xs text-warning">{latest.error}</p>}
@@ -546,7 +681,9 @@ export default function AgentPage() {
               {isCachedView && (
                 <p className="mt-2 inline-block border border-warning px-2 py-1 text-xs text-warning">cached</p>
               )}
-              {liveFailureNotice && <p className="mt-2 text-sm text-warning">{liveFailureNotice}</p>}
+              {runMode === "live" && liveFailed && liveFailureNotice && (
+                <p className="mt-2 text-sm text-warning">{liveFailureNotice}</p>
+              )}
               <p className="mt-3 text-xs text-text-3">
                 All citations reference Modo Energy&apos;s published research. Benchmarks referenced are
                 FCA-authorised where applicable.
@@ -566,7 +703,7 @@ export default function AgentPage() {
                 <div>
                   <p className="text-xs text-text-3">Modo research grounding this kit</p>
                   <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-text-2">
-                    {((contextOutput.grounding_notes as string[] | undefined) ?? []).map((note, index) => (
+                    {groundingNotes.map((note, index) => (
                       <li key={`${note}-${index}`}>{note}</li>
                     ))}
                   </ul>
@@ -612,7 +749,7 @@ export default function AgentPage() {
             </article>
             <article>
               <div className="micro mb-2">Prospect deck</div>
-              {prospectList.length === 0 ? (
+              {displayedProspects.length === 0 ? (
                 <p className="text-sm text-text-3">No prospects generated yet.</p>
               ) : (
                 <motion.div
@@ -624,7 +761,7 @@ export default function AgentPage() {
                   }}
                   className="space-y-3"
                 >
-                  {prospectList.map((prospect, index) => (
+                  {displayedProspects.map((prospect, index) => (
                     <motion.div
                       key={`${String(prospect.rank ?? index + 1)}-${String(prospect.archetype ?? "prospect")}-${index}`}
                       variants={{
@@ -674,11 +811,11 @@ export default function AgentPage() {
             </article>
             <article>
               <div className="micro mb-2">Ko starter pack</div>
-              {starterPack.length === 0 ? (
+              {displayedStarterPack.length === 0 ? (
                 <p className="text-sm text-text-3">No prompt pack generated yet.</p>
               ) : (
                 <div className="space-y-3">
-                  {starterPack.map((item, index) => {
+                  {displayedStarterPack.map((item, index) => {
                     const benchmarks = (item.benchmarks_exercised as string[] | undefined) ?? [];
                     const promptText = String(item.prompt_text ?? item.text ?? "Prompt");
                     return (
@@ -713,11 +850,11 @@ export default function AgentPage() {
             </article>
             <article>
               <div className="micro mb-2">Outreach drafts</div>
-              {outreachEmails.length === 0 ? (
+              {displayedOutreachEmails.length === 0 ? (
                 <p className="text-sm text-text-3">No outreach drafts generated yet.</p>
               ) : (
                 <div className="space-y-3">
-                  {outreachEmails.map((email, index) => {
+                  {displayedOutreachEmails.map((email, index) => {
                     const ctaLine = String(email.cta_line ?? "");
                     return (
                       <div key={`${String(email.subject ?? "draft")}-${index}`} className="rounded border border-border p-3">
@@ -828,17 +965,23 @@ export default function AgentPage() {
           <section className="mt-8 rounded border border-border bg-surface p-5">
             <div className="micro mb-3">Go deeper</div>
             <div className="space-y-2">
-              <button
-                className="w-full border border-border px-3 py-2 text-left text-sm text-text-2 hover:text-text"
-                onClick={() => {
-                  const first = String(prospectList[0]?.archetype ?? "the top prospect");
-                  const second = String(prospectList[1]?.archetype ?? "the second prospect");
-                  setChatQuestion(`Why did you prioritize ${first} over ${second}?`);
-                  setChatOpen(true);
-                }}
-              >
-                Why did you prioritize [top prospect] over [second prospect]?
-              </button>
+            {(() => {
+              const firstSuggestionText =
+                displayedProspects.length >= 2
+                  ? `Why did you prioritize the ${String(displayedProspects[0]?.archetype ?? "top prospect")} first?`
+                  : "Why did the capacity market winner rank first?";
+              return (
+                <button
+                  className="w-full border border-border px-3 py-2 text-left text-sm text-text-2 hover:text-text"
+                  onClick={() => {
+                    setChatQuestion(firstSuggestionText);
+                    setChatOpen(true);
+                  }}
+                >
+                  {firstSuggestionText}
+                </button>
+              );
+            })()}
               <button
                 className="w-full border border-border px-3 py-2 text-left text-sm text-text-2 hover:text-text"
                 onClick={() => {
@@ -885,10 +1028,10 @@ export default function AgentPage() {
             <pre className="max-h-36 overflow-y-auto overflow-x-hidden whitespace-pre-wrap break-words border border-border bg-bg p-2">
               {STAGE_PROMPTS[selectedStage]}
             </pre>
-            <div className="text-text-2">Raw JSON output</div>
-            <pre className="max-h-40 overflow-y-auto overflow-x-hidden whitespace-pre-wrap break-words border border-border bg-bg p-2">
-              {JSON.stringify(stageOutputs[selectedStage] ?? {}, null, 2)}
-            </pre>
+            <div className="text-text-2">Stage output preview</div>
+            <div className="max-h-40 overflow-y-auto border border-border bg-bg p-2">
+              {renderStagePreview(selectedStage, stageOutputs[selectedStage])}
+            </div>
           </div>
           {chatOpen && (
             <div className="mt-4 border-t border-border pt-3">
@@ -929,9 +1072,17 @@ export default function AgentPage() {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
-            className="fixed bottom-6 right-6 border border-border bg-surface px-3 py-2 text-xs text-text-2"
+            className="fixed bottom-6 right-6 flex items-center gap-2 border border-border bg-surface px-3 py-2 text-xs text-text-2"
           >
-            {toast}
+            <span>{toast}</span>
+            <button
+              type="button"
+              aria-label="Dismiss notification"
+              className="text-text-3 hover:text-text"
+              onClick={() => setToast("")}
+            >
+              ×
+            </button>
           </motion.div>
         )}
       </AnimatePresence>

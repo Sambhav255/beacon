@@ -8,7 +8,7 @@ Return valid JSON with keys: headline_signal, supporting_signals, pattern.`;
 
 export const PROSPECTS_PROMPT = `You are Beacon, stage 3 prospect triangulation.
 Rank exactly 10 archetype-based prospects by actionability. No company fabrication.
-Return valid JSON with keys: prospects, sequencing_note.`;
+Return valid JSON with keys: prospects, sequencing_note. Every prospect must have a unique archetype — no two cards can share the same archetype name or description.`;
 
 export const ASSETS_PROMPT = `You are Beacon, stage 4 asset matching.
 Build 8 Ko starter prompts spanning trader, developer, asset_manager, and fund personas.

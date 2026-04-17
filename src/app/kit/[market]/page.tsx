@@ -12,6 +12,19 @@ export async function generateMetadata({ params }: { params: Promise<{ market: s
   };
 }
 
+function SnapshotRows({ snapshot }: { snapshot: Record<string, string | number> }) {
+  return (
+    <div className="rounded border border-border">
+      {Object.entries(snapshot).map(([key, value]) => (
+        <div key={key} className="grid grid-cols-[170px_1fr] border-b border-border px-3 py-2 last:border-b-0">
+          <span className="text-sm text-text-3">{key.replaceAll("_", " ")}</span>
+          <span className="text-sm text-text">{String(value)}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default async function KitPage({
   params,
   searchParams,
@@ -46,15 +59,33 @@ export default async function KitPage({
       <div className="space-y-6 rounded border border-border bg-surface p-6">
         <section>
           <div className="micro mb-2">Market snapshot</div>
-          <pre className="text-sm text-text-2">{JSON.stringify(selected.market_snapshot, null, 2)}</pre>
+          <SnapshotRows snapshot={selected.market_snapshot} />
         </section>
         <section>
           <div className="micro mb-2">Research</div>
-          <pre className="text-sm text-text-2">{JSON.stringify(selected.modo_research, null, 2)}</pre>
+          <div className="space-y-3">
+            {selected.modo_research.map((item) => (
+              <article key={item.url} className="rounded border border-border p-3">
+                <p className="text-sm text-text">{item.title}</p>
+                <p className="mt-1 text-xs text-text-3">{item.summary}</p>
+                <a href={item.url} className="mt-2 inline-block text-xs text-accent hover:text-accent-hover">
+                  Source
+                </a>
+              </article>
+            ))}
+          </div>
         </section>
         <section>
           <div className="micro mb-2">Active signals</div>
-          <pre className="text-sm text-text-2">{JSON.stringify(selected.active_signals, null, 2)}</pre>
+          <div className="space-y-2">
+            {selected.active_signals.map((signal, index) => (
+              <article key={`${signal.headline}-${index}`} className="rounded border border-border p-3">
+                <p className="micro">{signal.date} · {signal.type}</p>
+                <p className="mt-1 text-sm text-text">{signal.headline}</p>
+                <p className="mt-1 text-xs text-text-3">{signal.so_what}</p>
+              </article>
+            ))}
+          </div>
         </section>
       </div>
     </main>

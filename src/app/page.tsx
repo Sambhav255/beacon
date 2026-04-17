@@ -51,8 +51,8 @@ export default function Home() {
         <div className="micro mb-6">Built for Modo Energy · Prototype</div>
         <h1 className="h1 mb-6">Turn one growth operator into twenty-market execution in 90 seconds.</h1>
         <p className="mb-10 max-w-2xl text-lg text-text-2">
-          Built for Imrith&apos;s real job: expand Modo beyond five markets without lowering research quality.
-          Grounded in published Modo research, live signals, and FCA-authorised benchmark context.
+          Built for real growth execution: expand into new markets without lowering research quality. Grounded in
+          published Modo research, live signals, and FCA-authorised benchmark context.
         </p>
         <p className="mb-8 max-w-2xl text-sm text-text-2">
           One operator sets direction. Beacon automates the first pass across context, prospects, outreach, and content
