@@ -1,12 +1,20 @@
+"use client";
+
 import Link from "next/link";
+import { Menu } from "lucide-react";
+import { useState } from "react";
 
 export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
   return (
     <main className="min-h-screen">
       <nav className="border-b border-border">
         <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-8 py-5">
           <div className="h3 serif">Beacon</div>
-          <div className="flex gap-8 text-sm text-text-2">
+          <button className="md:hidden" onClick={() => setMenuOpen((prev) => !prev)} aria-label="Open menu">
+            <Menu className="h-6 w-6 text-text-2" />
+          </button>
+          <div className="hidden gap-8 text-sm text-text-2 md:flex">
             <Link href="/agent" className="hover:text-text">
               Agent
             </Link>
@@ -21,6 +29,22 @@ export default function Home() {
             </Link>
           </div>
         </div>
+        {menuOpen && (
+          <div className="space-y-2 border-t border-border px-8 py-3 text-sm text-text-2 md:hidden">
+            <Link href="/agent" className="block py-2">
+              Agent
+            </Link>
+            <Link href="/about" className="block py-2">
+              About
+            </Link>
+            <Link href="/prompts" className="block py-2">
+              Prompts
+            </Link>
+            <Link href="/logs" className="block py-2">
+              Logs
+            </Link>
+          </div>
+        )}
       </nav>
 
       <section className="mx-auto w-full max-w-4xl px-8 py-24">

@@ -8,6 +8,7 @@ import { Command } from "cmdk";
 import { AnimatePresence, motion } from "framer-motion";
 import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
+import { Menu } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 
@@ -42,6 +43,7 @@ export default function AgentPage() {
   const [commandOpen, setCommandOpen] = useState(false);
   const [showInternals, setShowInternals] = useState(true);
   const [showShortcutHelp, setShowShortcutHelp] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const kitRef = useRef<HTMLDivElement>(null);
 
   const currentMarket = useMemo(
@@ -240,7 +242,10 @@ export default function AgentPage() {
           <Link href="/" className="h3 serif">
             Beacon
           </Link>
-          <div className="flex gap-8 text-sm text-text-2">
+          <button className="md:hidden" onClick={() => setMenuOpen((prev) => !prev)} aria-label="Open menu">
+            <Menu className="h-6 w-6 text-text-2" />
+          </button>
+          <div className="hidden gap-8 text-sm text-text-2 md:flex">
             <Link href="/about" className="hover:text-text">
               About
             </Link>
@@ -255,6 +260,22 @@ export default function AgentPage() {
             </Link>
           </div>
         </div>
+        {menuOpen && (
+          <div className="space-y-2 border-t border-border px-8 py-3 text-sm text-text-2 md:hidden">
+            <Link href="/about" className="block py-2">
+              About
+            </Link>
+            <Link href="/compare" className="block py-2">
+              Compare
+            </Link>
+            <Link href="/prompts" className="block py-2">
+              Prompts
+            </Link>
+            <Link href="/logs" className="block py-2">
+              Logs
+            </Link>
+          </div>
+        )}
       </nav>
 
       <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-6 px-6 py-8 lg:grid-cols-[220px_1fr_340px]">
@@ -279,7 +300,7 @@ export default function AgentPage() {
                 <button
                   key={m.id}
                   onClick={() => setSelectedMarketId(m.id)}
-                  className={`border px-3 py-2 text-sm ${
+                  className={`min-h-11 border px-3 py-2 text-sm ${
                     selectedMarketId === m.id
                       ? "border-accent bg-surface-alt text-accent"
                       : "border-border text-text-2 hover:border-border-strong"
@@ -292,20 +313,20 @@ export default function AgentPage() {
             <button
               onClick={() => runAgent(false)}
               disabled={running}
-              className="bg-accent px-5 py-2 font-medium text-bg hover:bg-accent-hover disabled:opacity-50"
+              className="min-h-11 bg-accent px-5 py-2 font-medium text-bg hover:bg-accent-hover disabled:opacity-50"
             >
               {running ? "Running..." : "Run cached"}
             </button>
             <button
               onClick={() => runAgent(true)}
               disabled={running}
-              className="ml-3 border border-border px-5 py-2 text-text-2 hover:border-border-strong hover:text-text"
+              className="ml-3 min-h-11 border border-border px-5 py-2 text-text-2 hover:border-border-strong hover:text-text"
             >
               Run live
             </button>
             <button
               onClick={exportPdf}
-              className="ml-3 border border-border px-5 py-2 text-text-2 hover:border-border-strong hover:text-text"
+              className="ml-3 min-h-11 border border-border px-5 py-2 text-text-2 hover:border-border-strong hover:text-text"
             >
               Export PDF
             </button>
