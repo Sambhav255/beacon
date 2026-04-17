@@ -149,7 +149,17 @@ export default function AgentPage() {
       body: JSON.stringify({ marketId: selectedMarketId }),
     });
 
+    if (!res.ok) {
+      setLiveFailureNotice("Live run unavailable. Showing cached result.");
+      setToast("Live run failed. Loaded cached kit for demo stability.");
+      loadCachedResult(selectedMarketId);
+      setRunning(false);
+      return;
+    }
+
     if (!res.body) {
+      setLiveFailureNotice("No live stream returned. Showing cached result.");
+      loadCachedResult(selectedMarketId);
       setRunning(false);
       return;
     }

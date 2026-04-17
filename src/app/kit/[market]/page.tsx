@@ -8,7 +8,7 @@ export async function generateMetadata({ params }: { params: Promise<{ market: s
   const { market } = await params;
   const selected = (marketsData as MarketsMap)[market];
   return {
-    title: selected ? `${selected.name} Kit` : "Kit",
+    title: selected ? selected.name : "Kit",
   };
 }
 
