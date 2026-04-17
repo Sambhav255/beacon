@@ -564,6 +564,9 @@ export default function AgentPage() {
             ))}
           </div>
           <div className="space-y-2 text-xs">
+            <Link href="/prompts" className="text-accent hover:text-accent-hover">
+              Open full prompts page
+            </Link>
             <div className="text-text-2">System prompt</div>
             <pre className="max-h-36 overflow-auto border border-border bg-bg p-2">
               {STAGE_PROMPTS[selectedStage]}

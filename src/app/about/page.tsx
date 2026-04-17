@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "About",
@@ -72,6 +73,12 @@ export default function AboutPage() {
       <footer className="mt-16 space-y-2 text-[15px] leading-7 text-text-2">
         <p>Built by Sambhav Lamichhane. April 17, 2026.</p>
         <p>For Imrith Sangha and the Modo Energy growth team.</p>
+        <p>
+          Prompt transparency:{" "}
+          <Link href="/prompts" className="text-accent hover:text-accent-hover">
+            View all system prompts
+          </Link>
+        </p>
       </footer>
     </main>
   );
