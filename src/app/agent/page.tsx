@@ -53,6 +53,8 @@ export default function AgentPage() {
     }
     return outputMap;
   }, [events]);
+  const prospectList = ((stageOutputs.prospects as { prospects?: Array<Record<string, unknown>> } | undefined)
+    ?.prospects ?? []) as Array<Record<string, unknown>>;
 
   function loadCachedResult(marketId: string) {
     const cache = (cacheData as Record<string, { stages: Record<string, unknown> }>)[marketId];
@@ -241,6 +243,7 @@ export default function AgentPage() {
           <div className="space-y-3">
             {STAGE_ORDER.map((stage) => {
               const latest = [...events].reverse().find((event) => event.stage === stage);
+              const isRunning = running && latest?.status === "running";
               return (
                 <motion.div
                   key={stage}
@@ -251,13 +254,32 @@ export default function AgentPage() {
                 >
                   <div className="mb-2 flex items-center justify-between">
                     <div className="text-sm">{stageLabel(stage)}</div>
-                    <div className="micro">{latest?.status ?? "pending"}</div>
+                    <div className="micro flex items-center gap-2">
+                      {latest?.status ?? "pending"}
+                      {isRunning && <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-accent" />}
+                    </div>
                   </div>
-                  {latest?.output !== undefined && (
-                    <pre className="max-h-44 overflow-auto text-xs text-text-2">
-                      {JSON.stringify(latest.output, null, 2)}
-                    </pre>
+                  {!latest && (
+                    <div className="space-y-2">
+                      <div className="h-3 w-2/3 animate-pulse bg-surface-alt" />
+                      <div className="h-3 w-full animate-pulse bg-surface-alt" />
+                      <div className="h-3 w-4/5 animate-pulse bg-surface-alt" />
+                    </div>
                   )}
+                  <AnimatePresence mode="wait">
+                    {latest?.output !== undefined && (
+                      <motion.pre
+                        key={`${stage}-output`}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="max-h-44 overflow-auto text-xs text-text-2"
+                      >
+                        {JSON.stringify(latest.output, null, 2)}
+                      </motion.pre>
+                    )}
+                  </AnimatePresence>
                   {latest?.error && <p className="mt-2 text-xs text-warning">{latest.error}</p>}
                 </motion.div>
               );
@@ -291,7 +313,35 @@ export default function AgentPage() {
             </article>
             <article>
               <div className="micro mb-2">Prospect deck</div>
-              <pre className="overflow-auto text-sm text-text-2">{JSON.stringify(stageOutputs.prospects, null, 2)}</pre>
+              {prospectList.length === 0 ? (
+                <pre className="overflow-auto text-sm text-text-2">{JSON.stringify(stageOutputs.prospects, null, 2)}</pre>
+              ) : (
+                <motion.div
+                  initial="hidden"
+                  animate="show"
+                  variants={{
+                    hidden: {},
+                    show: { transition: { staggerChildren: 0.05 } },
+                  }}
+                  className="space-y-3"
+                >
+                  {prospectList.map((prospect, index) => (
+                    <motion.div
+                      key={`${prospect.rank ?? index}`}
+                      variants={{
+                        hidden: { opacity: 0, y: 6 },
+                        show: { opacity: 1, y: 0 },
+                      }}
+                      className="rounded border border-border p-3"
+                    >
+                      <div className="text-sm text-text">
+                        {String(prospect.rank ?? index + 1)}. {String(prospect.archetype ?? "Prospect")}
+                      </div>
+                      <div className="mt-1 text-xs text-text-2">{String(prospect.trigger ?? "")}</div>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              )}
             </article>
             <article>
               <div className="micro mb-2">Ko starter pack</div>
