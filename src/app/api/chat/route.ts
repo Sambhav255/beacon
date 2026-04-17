@@ -1,11 +1,25 @@
+/**
+ * Security audit (Perspective 1):
+ * - Validates and bounds user-provided chat input before model calls.
+ * - Sanitizes market label passed to LLM context.
+ * - Avoids exposing raw request payload shapes to downstream calls.
+ */
 import { MODEL_FALLBACK, MODEL_PRIMARY, getGroqClient, hasGroqKey } from "@/lib/groq";
 import { NextRequest } from "next/server";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
 
+function sanitizeTextInput(value: unknown, maxLength: number): string {
+  if (typeof value !== "string") return "";
+  return value.replace(/[\u0000-\u001F\u007F]/g, "").trim().slice(0, maxLength);
+}
+
 export async function POST(req: NextRequest) {
-  const { question, kit, market } = await req.json();
+  const payload = (await req.json()) as { question?: unknown; kit?: unknown; market?: unknown };
+  const question = sanitizeTextInput(payload.question, 600);
+  const market = sanitizeTextInput(payload.market, 120) || "unknown";
+  const kit = payload.kit ?? {};
 
   if (!question) {
     return Response.json({ error: "Missing question." }, { status: 400 });
