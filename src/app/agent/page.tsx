@@ -533,8 +533,8 @@ export default function AgentPage() {
         )}
       </nav>
 
-      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-6 px-6 py-8 lg:grid-cols-[220px_1fr_340px]">
-        <aside className="rounded border border-border bg-surface p-4">
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-6 px-6 py-8 lg:grid-cols-[220px_minmax(0,1fr)] 2xl:grid-cols-[220px_minmax(0,1fr)_minmax(260px,320px)]">
+        <aside className="rounded border border-border bg-surface p-4 lg:row-start-1">
           <div className="micro mb-3">Run history</div>
           <div className="space-y-2 text-sm text-text-2">
             {history.length === 0 && <p>No runs yet.</p>}
@@ -547,7 +547,7 @@ export default function AgentPage() {
           </div>
         </aside>
 
-        <section>
+        <section className="min-w-0 lg:row-start-1">
           <div className="mb-5 rounded border border-border bg-surface p-5">
             <div className="mb-3 flex items-center justify-between">
               <div className="micro">Market selector</div>
@@ -561,7 +561,7 @@ export default function AgentPage() {
               </button>
             </div>
             {pickerMode === "globe" && (
-              <div className="hidden md:flex md:w-full md:flex-nowrap md:flex-row md:items-start md:justify-start md:gap-6">
+              <div className="hidden min-w-0 md:flex md:w-full md:flex-nowrap md:flex-row md:items-start md:justify-start md:gap-6 md:overflow-x-auto md:pb-1">
                 <MarketGlobe
                   markets={globeMarkets}
                   selectedMarketId={selectedMarketId}
@@ -1037,7 +1037,7 @@ export default function AgentPage() {
         </section>
 
         {showInternals && (
-          <aside className="rounded border border-border bg-surface p-4">
+          <aside className="rounded border border-border bg-surface p-4 lg:col-span-2 lg:row-start-2 2xl:col-span-1 2xl:col-start-3 2xl:row-start-1 2xl:self-start">
           <div className="micro mb-3">Agent internals · For the curious</div>
           <div className="mb-2 flex flex-wrap gap-2">
             {STAGE_ORDER.map((stage) => (
