@@ -88,3 +88,28 @@ a {
   text-transform: uppercase;
   color: var(--text-3);
 }
+
+@media print {
+  html,
+  body {
+    background: #fff !important;
+    color: #111 !important;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 10px;
+    color: #444;
+  }
+
+  section,
+  article {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  article {
+    page-break-before: auto;
+    page-break-after: always;
+  }
+}
