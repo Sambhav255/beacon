@@ -59,6 +59,10 @@ export default function AboutPage() {
           The Day 30 version runs nightly across active expansion markets, pulls live public signals, and closes the
           loop into outreach systems, the content calendar, and Ko prompt distribution.
         </p>
+        <p className="italic text-text-2">
+          If you&apos;d like to see a working version in production, I&apos;d build it in the first two weeks of the
+          role. That&apos;s the offer.
+        </p>
       </section>
 
       <section className="mt-16 space-y-7 text-[17px] leading-[1.7] text-text">
