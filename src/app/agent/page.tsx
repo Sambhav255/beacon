@@ -561,13 +561,13 @@ export default function AgentPage() {
               </button>
             </div>
             {pickerMode === "globe" && (
-              <div className="hidden md:flex md:flex-row md:items-start md:justify-center md:gap-6">
+              <div className="hidden md:flex md:w-full md:flex-nowrap md:flex-row md:items-start md:justify-start md:gap-6">
                 <MarketGlobe
                   markets={globeMarkets}
                   selectedMarketId={selectedMarketId}
                   onSelect={(marketId) => setSelectedMarketId(marketId)}
                 />
-                <aside className="flex w-full max-w-[280px] shrink-0 flex-col rounded border border-border bg-bg p-3">
+                <aside className="flex min-w-0 w-full max-w-[280px] shrink-0 flex-col rounded border border-border bg-bg p-3">
                   <div className="micro mb-2">Markets</div>
                   <p className="mb-3 text-xs text-text-3">Click a country to select it. The globe will zoom to that market.</p>
                   <div className="max-h-[min(500px,70vh)] space-y-1 overflow-y-auto pr-1">

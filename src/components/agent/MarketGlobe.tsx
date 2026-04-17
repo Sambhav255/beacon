@@ -94,7 +94,7 @@ export default function MarketGlobe({ markets, selectedMarketId, onSelect }: Mar
   }, [didInteract]);
 
   return (
-    <div className="mx-auto flex w-full max-w-[560px] flex-col items-center rounded border border-border bg-surface p-5">
+    <div className="flex w-fit max-w-full shrink-0 flex-col items-center rounded border border-border bg-surface p-5">
       <div className="mb-3 flex w-full items-center justify-between gap-3">
         <p className="text-xs text-text-3">Drag to rotate, scroll to zoom, click a marker to select a market.</p>
         <div className="flex items-center gap-2">
