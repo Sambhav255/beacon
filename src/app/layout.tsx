@@ -2,8 +2,23 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Beacon",
-  description: "Market entry agent for Modo Energy's growth team.",
+  metadataBase: new URL("https://beacon.vercel.app"),
+  title: {
+    default: "Beacon",
+    template: "Beacon · %s",
+  },
+  description: "A vision prototype by Sambhav Lamichhane.",
+  openGraph: {
+    title: "Beacon — Market Entry Agent for Modo Energy",
+    description: "A vision prototype by Sambhav Lamichhane.",
+    images: ["/opengraph-image"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Beacon — Market Entry Agent for Modo Energy",
+    description: "A vision prototype by Sambhav Lamichhane.",
+    images: ["/opengraph-image"],
+  },
 };
 
 export default function RootLayout({

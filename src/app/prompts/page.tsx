@@ -1,4 +1,9 @@
 import { STAGE_PROMPTS } from "@/lib/prompts";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Prompts",
+};
 
 export default function PromptsPage() {
   return (

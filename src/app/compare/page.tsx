@@ -1,5 +1,10 @@
 import marketsData from "@/data/markets.json";
 import type { MarketsMap } from "@/lib/types";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Compare",
+};
 
 export default async function ComparePage({
   searchParams,

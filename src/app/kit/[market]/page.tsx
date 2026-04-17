@@ -1,6 +1,15 @@
 import marketsData from "@/data/markets.json";
 import type { MarketsMap } from "@/lib/types";
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export async function generateMetadata({ params }: { params: Promise<{ market: string }> }): Promise<Metadata> {
+  const { market } = await params;
+  const selected = (marketsData as MarketsMap)[market];
+  return {
+    title: selected ? `${selected.name} Kit` : "Kit",
+  };
+}
 
 export default async function KitPage({ params }: { params: Promise<{ market: string }> }) {
   const { market } = await params;
