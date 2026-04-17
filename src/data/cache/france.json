@@ -1,0 +1,301 @@
+{
+  "marketId": "france",
+  "generatedAt": "2026-04-17T10:51:22.896Z",
+  "stages": {
+    "context": {
+      "market_state": "CfD redesign changes co-location economics.",
+      "modo_position": "How CRE redesign changes co-located battery strategy.",
+      "grounding_notes": [
+        "France CfD redesign and co-located battery economics"
+      ]
+    },
+    "signals": {
+      "headline_signal": {
+        "title": "CRE confirms CfD redesign parameters",
+        "implication": "Solar developers now need co-location models."
+      },
+      "supporting_signals": [
+        {
+          "date": "2026-Q1",
+          "type": "regulation",
+          "headline": "CRE confirms CfD redesign parameters",
+          "so_what": "Solar developers now need co-location models."
+        }
+      ],
+      "pattern": "Signal set indicates immediate GTM timing for targeted outreach."
+    },
+    "prospects": {
+      "prospects": [
+        {
+          "rank": 1,
+          "archetype": "French solar developer considering co-location",
+          "description": "Solar developer modeling first battery attachment.",
+          "trigger": "CRE announcement responses",
+          "pain": "No internal BESS optimization framework.",
+          "matched_modo_asset": "France CfD redesign and co-located battery economics",
+          "matched_ko_prompt": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+          "channel": "Direct email",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 2,
+          "archetype": "French solar developer considering co-location",
+          "description": "Solar developer modeling first battery attachment.",
+          "trigger": "CRE announcement responses",
+          "pain": "No internal BESS optimization framework.",
+          "matched_modo_asset": "France CfD redesign and co-located battery economics",
+          "matched_ko_prompt": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+          "channel": "Direct email",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 3,
+          "archetype": "French solar developer considering co-location",
+          "description": "Solar developer modeling first battery attachment.",
+          "trigger": "CRE announcement responses",
+          "pain": "No internal BESS optimization framework.",
+          "matched_modo_asset": "France CfD redesign and co-located battery economics",
+          "matched_ko_prompt": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+          "channel": "Direct email",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 4,
+          "archetype": "French solar developer considering co-location",
+          "description": "Solar developer modeling first battery attachment.",
+          "trigger": "CRE announcement responses",
+          "pain": "No internal BESS optimization framework.",
+          "matched_modo_asset": "France CfD redesign and co-located battery economics",
+          "matched_ko_prompt": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+          "channel": "Direct email",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 5,
+          "archetype": "French solar developer considering co-location",
+          "description": "Solar developer modeling first battery attachment.",
+          "trigger": "CRE announcement responses",
+          "pain": "No internal BESS optimization framework.",
+          "matched_modo_asset": "France CfD redesign and co-located battery economics",
+          "matched_ko_prompt": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+          "channel": "Direct email",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 6,
+          "archetype": "French solar developer considering co-location",
+          "description": "Solar developer modeling first battery attachment.",
+          "trigger": "CRE announcement responses",
+          "pain": "No internal BESS optimization framework.",
+          "matched_modo_asset": "France CfD redesign and co-located battery economics",
+          "matched_ko_prompt": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+          "channel": "Direct email",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 7,
+          "archetype": "French solar developer considering co-location",
+          "description": "Solar developer modeling first battery attachment.",
+          "trigger": "CRE announcement responses",
+          "pain": "No internal BESS optimization framework.",
+          "matched_modo_asset": "France CfD redesign and co-located battery economics",
+          "matched_ko_prompt": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+          "channel": "Direct email",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 8,
+          "archetype": "French solar developer considering co-location",
+          "description": "Solar developer modeling first battery attachment.",
+          "trigger": "CRE announcement responses",
+          "pain": "No internal BESS optimization framework.",
+          "matched_modo_asset": "France CfD redesign and co-located battery economics",
+          "matched_ko_prompt": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+          "channel": "Direct email",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 9,
+          "archetype": "French solar developer considering co-location",
+          "description": "Solar developer modeling first battery attachment.",
+          "trigger": "CRE announcement responses",
+          "pain": "No internal BESS optimization framework.",
+          "matched_modo_asset": "France CfD redesign and co-located battery economics",
+          "matched_ko_prompt": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+          "channel": "Direct email",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 10,
+          "archetype": "French solar developer considering co-location",
+          "description": "Solar developer modeling first battery attachment.",
+          "trigger": "CRE announcement responses",
+          "pain": "No internal BESS optimization framework.",
+          "matched_modo_asset": "France CfD redesign and co-located battery economics",
+          "matched_ko_prompt": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+          "channel": "Direct email",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        }
+      ],
+      "sequencing_note": "Start with high-priority profiles this week, then medium profiles in week two."
+    },
+    "assets": {
+      "starter_pack": [
+        {
+          "id": "p1",
+          "prompt_text": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+          "persona": "developer",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Co-location economics"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        },
+        {
+          "id": "p2",
+          "prompt_text": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+          "persona": "developer",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Co-location economics"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        },
+        {
+          "id": "p3",
+          "prompt_text": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+          "persona": "developer",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Co-location economics"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        },
+        {
+          "id": "p4",
+          "prompt_text": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+          "persona": "developer",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Co-location economics"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        },
+        {
+          "id": "p5",
+          "prompt_text": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+          "persona": "developer",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Co-location economics"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        },
+        {
+          "id": "p6",
+          "prompt_text": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+          "persona": "developer",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Co-location economics"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        },
+        {
+          "id": "p7",
+          "prompt_text": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+          "persona": "developer",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Co-location economics"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        },
+        {
+          "id": "p8",
+          "prompt_text": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+          "persona": "developer",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Co-location economics"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        }
+      ],
+      "curation_logic": "Prompts selected to balance near-term outreach and market-structure understanding."
+    },
+    "outreach": {
+      "emails": [
+        {
+          "to_archetype": "French solar developer considering co-location",
+          "subject": "France signal worth discussing",
+          "body": "We have been tracking a fresh France signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+          "cta_type": "research_link",
+          "cta_line": "Open to me sending the two-minute brief?",
+          "signal_reference": "CRE confirms CfD redesign parameters"
+        },
+        {
+          "to_archetype": "French solar developer considering co-location",
+          "subject": "France signal worth discussing",
+          "body": "We have been tracking a fresh France signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+          "cta_type": "research_link",
+          "cta_line": "Open to me sending the two-minute brief?",
+          "signal_reference": "CRE confirms CfD redesign parameters"
+        },
+        {
+          "to_archetype": "French solar developer considering co-location",
+          "subject": "France signal worth discussing",
+          "body": "We have been tracking a fresh France signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+          "cta_type": "research_link",
+          "cta_line": "Open to me sending the two-minute brief?",
+          "signal_reference": "CRE confirms CfD redesign parameters"
+        },
+        {
+          "to_archetype": "French solar developer considering co-location",
+          "subject": "France signal worth discussing",
+          "body": "We have been tracking a fresh France signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+          "cta_type": "research_link",
+          "cta_line": "Open to me sending the two-minute brief?",
+          "signal_reference": "CRE confirms CfD redesign parameters"
+        }
+      ],
+      "follow_up_variant": {
+        "context": "French solar developer considering co-location",
+        "subject": "Follow-up on France benchmark note",
+        "body": "One extra data point from this week changed our base case. Happy to send the updated cut."
+      }
+    },
+    "content": {
+      "linkedin_post": {
+        "hook": "France storage strategy just changed.",
+        "body": "Modo's latest market read points to a sharper entry window in France. The key is matching signals to the right outreach sequence.",
+        "cta": "Read the latest Modo research.",
+        "character_count": 260
+      },
+      "newsletter_blurb": {
+        "headline": "France market entry watch",
+        "body": "A new signal cluster in France changed outreach priorities this week. We mapped the top profiles and attached Ko-ready prompts."
+      },
+      "video_topic": {
+        "working_title": "France: the first-move playbook",
+        "thesis": "The first 30 days in France are won by signal speed and grounded outreach.",
+        "three_key_points": [
+          "Signal timing",
+          "Prospect sequencing",
+          "Asset-to-message mapping"
+        ],
+        "suggested_expert": "Market analyst with BESS GTM experience"
+      }
+    }
+  }
+}

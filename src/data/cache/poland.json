@@ -1,0 +1,301 @@
+{
+  "marketId": "poland",
+  "generatedAt": "2026-04-17T10:51:22.888Z",
+  "stages": {
+    "context": {
+      "market_state": "From 28 MW to 8-9 GW by 2030.",
+      "modo_position": "Utility-scale BESS in Poland could reach 8-9 GW by 2030.",
+      "grounding_notes": [
+        "Poland's battery energy storage buildout outlook"
+      ]
+    },
+    "signals": {
+      "headline_signal": {
+        "title": "UC84 Grid Act enforces 30-month permit window",
+        "implication": "Developers with grid agreements face urgency."
+      },
+      "supporting_signals": [
+        {
+          "date": "2026-04",
+          "type": "regulation",
+          "headline": "UC84 Grid Act enforces 30-month permit window",
+          "so_what": "Developers with grid agreements face urgency."
+        }
+      ],
+      "pattern": "Signal set indicates immediate GTM timing for targeted outreach."
+    },
+    "prospects": {
+      "prospects": [
+        {
+          "rank": 1,
+          "archetype": "Capacity market winner",
+          "description": "Developer that won 2024-2025 auction capacity.",
+          "trigger": "Recent capacity registry allocation",
+          "pain": "Needs confidence in post-auction revenue assumptions.",
+          "matched_modo_asset": "Poland's battery energy storage buildout outlook",
+          "matched_ko_prompt": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+          "channel": "LinkedIn + warm intro",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 2,
+          "archetype": "Capacity market winner",
+          "description": "Developer that won 2024-2025 auction capacity.",
+          "trigger": "Recent capacity registry allocation",
+          "pain": "Needs confidence in post-auction revenue assumptions.",
+          "matched_modo_asset": "Poland's battery energy storage buildout outlook",
+          "matched_ko_prompt": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+          "channel": "LinkedIn + warm intro",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 3,
+          "archetype": "Capacity market winner",
+          "description": "Developer that won 2024-2025 auction capacity.",
+          "trigger": "Recent capacity registry allocation",
+          "pain": "Needs confidence in post-auction revenue assumptions.",
+          "matched_modo_asset": "Poland's battery energy storage buildout outlook",
+          "matched_ko_prompt": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+          "channel": "LinkedIn + warm intro",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 4,
+          "archetype": "Capacity market winner",
+          "description": "Developer that won 2024-2025 auction capacity.",
+          "trigger": "Recent capacity registry allocation",
+          "pain": "Needs confidence in post-auction revenue assumptions.",
+          "matched_modo_asset": "Poland's battery energy storage buildout outlook",
+          "matched_ko_prompt": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+          "channel": "LinkedIn + warm intro",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 5,
+          "archetype": "Capacity market winner",
+          "description": "Developer that won 2024-2025 auction capacity.",
+          "trigger": "Recent capacity registry allocation",
+          "pain": "Needs confidence in post-auction revenue assumptions.",
+          "matched_modo_asset": "Poland's battery energy storage buildout outlook",
+          "matched_ko_prompt": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+          "channel": "LinkedIn + warm intro",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 6,
+          "archetype": "Capacity market winner",
+          "description": "Developer that won 2024-2025 auction capacity.",
+          "trigger": "Recent capacity registry allocation",
+          "pain": "Needs confidence in post-auction revenue assumptions.",
+          "matched_modo_asset": "Poland's battery energy storage buildout outlook",
+          "matched_ko_prompt": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+          "channel": "LinkedIn + warm intro",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 7,
+          "archetype": "Capacity market winner",
+          "description": "Developer that won 2024-2025 auction capacity.",
+          "trigger": "Recent capacity registry allocation",
+          "pain": "Needs confidence in post-auction revenue assumptions.",
+          "matched_modo_asset": "Poland's battery energy storage buildout outlook",
+          "matched_ko_prompt": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+          "channel": "LinkedIn + warm intro",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 8,
+          "archetype": "Capacity market winner",
+          "description": "Developer that won 2024-2025 auction capacity.",
+          "trigger": "Recent capacity registry allocation",
+          "pain": "Needs confidence in post-auction revenue assumptions.",
+          "matched_modo_asset": "Poland's battery energy storage buildout outlook",
+          "matched_ko_prompt": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+          "channel": "LinkedIn + warm intro",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 9,
+          "archetype": "Capacity market winner",
+          "description": "Developer that won 2024-2025 auction capacity.",
+          "trigger": "Recent capacity registry allocation",
+          "pain": "Needs confidence in post-auction revenue assumptions.",
+          "matched_modo_asset": "Poland's battery energy storage buildout outlook",
+          "matched_ko_prompt": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+          "channel": "LinkedIn + warm intro",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 10,
+          "archetype": "Capacity market winner",
+          "description": "Developer that won 2024-2025 auction capacity.",
+          "trigger": "Recent capacity registry allocation",
+          "pain": "Needs confidence in post-auction revenue assumptions.",
+          "matched_modo_asset": "Poland's battery energy storage buildout outlook",
+          "matched_ko_prompt": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+          "channel": "LinkedIn + warm intro",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        }
+      ],
+      "sequencing_note": "Start with high-priority profiles this week, then medium profiles in week two."
+    },
+    "assets": {
+      "starter_pack": [
+        {
+          "id": "p1",
+          "prompt_text": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+          "persona": "developer",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Capacity market analysis"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        },
+        {
+          "id": "p2",
+          "prompt_text": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+          "persona": "developer",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Capacity market analysis"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        },
+        {
+          "id": "p3",
+          "prompt_text": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+          "persona": "developer",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Capacity market analysis"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        },
+        {
+          "id": "p4",
+          "prompt_text": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+          "persona": "developer",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Capacity market analysis"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        },
+        {
+          "id": "p5",
+          "prompt_text": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+          "persona": "developer",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Capacity market analysis"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        },
+        {
+          "id": "p6",
+          "prompt_text": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+          "persona": "developer",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Capacity market analysis"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        },
+        {
+          "id": "p7",
+          "prompt_text": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+          "persona": "developer",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Capacity market analysis"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        },
+        {
+          "id": "p8",
+          "prompt_text": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+          "persona": "developer",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Capacity market analysis"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        }
+      ],
+      "curation_logic": "Prompts selected to balance near-term outreach and market-structure understanding."
+    },
+    "outreach": {
+      "emails": [
+        {
+          "to_archetype": "Capacity market winner",
+          "subject": "Poland signal worth discussing",
+          "body": "We have been tracking a fresh Poland signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+          "cta_type": "research_link",
+          "cta_line": "Open to me sending the two-minute brief?",
+          "signal_reference": "UC84 Grid Act enforces 30-month permit window"
+        },
+        {
+          "to_archetype": "Capacity market winner",
+          "subject": "Poland signal worth discussing",
+          "body": "We have been tracking a fresh Poland signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+          "cta_type": "research_link",
+          "cta_line": "Open to me sending the two-minute brief?",
+          "signal_reference": "UC84 Grid Act enforces 30-month permit window"
+        },
+        {
+          "to_archetype": "Capacity market winner",
+          "subject": "Poland signal worth discussing",
+          "body": "We have been tracking a fresh Poland signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+          "cta_type": "research_link",
+          "cta_line": "Open to me sending the two-minute brief?",
+          "signal_reference": "UC84 Grid Act enforces 30-month permit window"
+        },
+        {
+          "to_archetype": "Capacity market winner",
+          "subject": "Poland signal worth discussing",
+          "body": "We have been tracking a fresh Poland signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+          "cta_type": "research_link",
+          "cta_line": "Open to me sending the two-minute brief?",
+          "signal_reference": "UC84 Grid Act enforces 30-month permit window"
+        }
+      ],
+      "follow_up_variant": {
+        "context": "Capacity market winner",
+        "subject": "Follow-up on Poland benchmark note",
+        "body": "One extra data point from this week changed our base case. Happy to send the updated cut."
+      }
+    },
+    "content": {
+      "linkedin_post": {
+        "hook": "Poland storage strategy just changed.",
+        "body": "Modo's latest market read points to a sharper entry window in Poland. The key is matching signals to the right outreach sequence.",
+        "cta": "Read the latest Modo research.",
+        "character_count": 260
+      },
+      "newsletter_blurb": {
+        "headline": "Poland market entry watch",
+        "body": "A new signal cluster in Poland changed outreach priorities this week. We mapped the top profiles and attached Ko-ready prompts."
+      },
+      "video_topic": {
+        "working_title": "Poland: the first-move playbook",
+        "thesis": "The first 30 days in Poland are won by signal speed and grounded outreach.",
+        "three_key_points": [
+          "Signal timing",
+          "Prospect sequencing",
+          "Asset-to-message mapping"
+        ],
+        "suggested_expert": "Market analyst with BESS GTM experience"
+      }
+    }
+  }
+}

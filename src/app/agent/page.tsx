@@ -1,6 +1,7 @@
 "use client";
 
 import marketsData from "@/data/markets.json";
+import cacheData from "@/data/cache/index.json";
 import { STAGE_PROMPTS } from "@/lib/prompts";
 import type { Market, MarketsMap, StageEvent, StageId } from "@/lib/types";
 import { AnimatePresence, motion } from "framer-motion";
@@ -34,6 +35,8 @@ export default function AgentPage() {
   const [selectedStage, setSelectedStage] = useState<StageId>("context");
   const [chatQuestion, setChatQuestion] = useState("");
   const [chatAnswer, setChatAnswer] = useState("");
+  const [isCachedView, setIsCachedView] = useState(false);
+  const [liveFailureNotice, setLiveFailureNotice] = useState("");
   const kitRef = useRef<HTMLDivElement>(null);
 
   const currentMarket = useMemo(
@@ -51,10 +54,30 @@ export default function AgentPage() {
     return outputMap;
   }, [events]);
 
-  async function runAgent() {
+  function loadCachedResult(marketId: string) {
+    const cache = (cacheData as Record<string, { stages: Record<string, unknown> }>)[marketId];
+    if (!cache) return false;
+
+    const cachedEvents = STAGE_ORDER.flatMap((stage) => [
+      { stage, status: "running" as const },
+      { stage, status: "complete" as const, output: cache.stages[stage] },
+    ]);
+    setEvents(cachedEvents);
+    setIsCachedView(true);
+    setTimeout(() => kitRef.current?.scrollIntoView({ behavior: "smooth" }), 100);
+    return true;
+  }
+
+  async function runAgent(forceLive = false) {
     setRunning(true);
     setEvents([]);
     setChatAnswer("");
+    setLiveFailureNotice("");
+    if (!forceLive && loadCachedResult(selectedMarketId)) {
+      setRunning(false);
+      return;
+    }
+    let shouldFallbackToCache = false;
     const res = await fetch("/api/agent", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -78,10 +101,19 @@ export default function AgentPage() {
       for (const line of lines) {
         const data = JSON.parse(line.slice(6)) as StageEvent;
         setEvents((prev) => [...prev, data]);
+        if (data.error) {
+          setLiveFailureNotice("Live run failed, showing cached result.");
+          shouldFallbackToCache = true;
+        }
         if (data.stage !== "done" && data.stage !== "error" && data.status === "running") {
           setSelectedStage(data.stage);
         }
       }
+    }
+    if (shouldFallbackToCache) {
+      loadCachedResult(selectedMarketId);
+    } else {
+      setIsCachedView(false);
     }
     setRunning(false);
     setHistory((prev) => [{ marketId: selectedMarketId, ts: Date.now(), outputs: stageOutputs }, ...prev].slice(0, 8));
@@ -173,11 +205,18 @@ export default function AgentPage() {
               ))}
             </div>
             <button
-              onClick={runAgent}
+              onClick={() => runAgent(false)}
               disabled={running}
               className="bg-accent px-5 py-2 font-medium text-bg hover:bg-accent-hover disabled:opacity-50"
             >
-              {running ? "Running..." : "Run agent"}
+              {running ? "Running..." : "Run cached"}
+            </button>
+            <button
+              onClick={() => runAgent(true)}
+              disabled={running}
+              className="ml-3 border border-border px-5 py-2 text-text-2 hover:border-border-strong hover:text-text"
+            >
+              Run live
             </button>
             <button
               onClick={exportPdf}
@@ -220,6 +259,10 @@ export default function AgentPage() {
               <p className="text-text-2">
                 Generated for {currentMarket.name}. {currentMarket.tagline}
               </p>
+              {isCachedView && (
+                <p className="mt-2 inline-block border border-warning px-2 py-1 text-xs text-warning">cached</p>
+              )}
+              {liveFailureNotice && <p className="mt-2 text-sm text-warning">{liveFailureNotice}</p>}
             </div>
 
             <article>

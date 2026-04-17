@@ -1,0 +1,301 @@
+{
+  "marketId": "germany",
+  "generatedAt": "2026-04-17T10:51:22.893Z",
+  "stages": {
+    "context": {
+      "market_state": "The pipeline is there and the grid process changed.",
+      "modo_position": "Guide to Germany's new grid connection process.",
+      "grounding_notes": [
+        "How to apply under Germany's Reifegradverfahren"
+      ]
+    },
+    "signals": {
+      "headline_signal": {
+        "title": "Reifegradverfahren changes grid applications",
+        "implication": "Developers need an immediate process reset."
+      },
+      "supporting_signals": [
+        {
+          "date": "2026-Q1",
+          "type": "regulation",
+          "headline": "Reifegradverfahren changes grid applications",
+          "so_what": "Developers need an immediate process reset."
+        }
+      ],
+      "pattern": "Signal set indicates immediate GTM timing for targeted outreach."
+    },
+    "prospects": {
+      "prospects": [
+        {
+          "rank": 1,
+          "archetype": "Developer navigating Reifegradverfahren",
+          "description": "German BESS developer with in-flight applications.",
+          "trigger": "Connection applications under old or new regime",
+          "pain": "Unclear eligibility and documentation pathway.",
+          "matched_modo_asset": "How to apply under Germany's Reifegradverfahren",
+          "matched_ko_prompt": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+          "channel": "Direct email",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 2,
+          "archetype": "Developer navigating Reifegradverfahren",
+          "description": "German BESS developer with in-flight applications.",
+          "trigger": "Connection applications under old or new regime",
+          "pain": "Unclear eligibility and documentation pathway.",
+          "matched_modo_asset": "How to apply under Germany's Reifegradverfahren",
+          "matched_ko_prompt": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+          "channel": "Direct email",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 3,
+          "archetype": "Developer navigating Reifegradverfahren",
+          "description": "German BESS developer with in-flight applications.",
+          "trigger": "Connection applications under old or new regime",
+          "pain": "Unclear eligibility and documentation pathway.",
+          "matched_modo_asset": "How to apply under Germany's Reifegradverfahren",
+          "matched_ko_prompt": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+          "channel": "Direct email",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 4,
+          "archetype": "Developer navigating Reifegradverfahren",
+          "description": "German BESS developer with in-flight applications.",
+          "trigger": "Connection applications under old or new regime",
+          "pain": "Unclear eligibility and documentation pathway.",
+          "matched_modo_asset": "How to apply under Germany's Reifegradverfahren",
+          "matched_ko_prompt": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+          "channel": "Direct email",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 5,
+          "archetype": "Developer navigating Reifegradverfahren",
+          "description": "German BESS developer with in-flight applications.",
+          "trigger": "Connection applications under old or new regime",
+          "pain": "Unclear eligibility and documentation pathway.",
+          "matched_modo_asset": "How to apply under Germany's Reifegradverfahren",
+          "matched_ko_prompt": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+          "channel": "Direct email",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 6,
+          "archetype": "Developer navigating Reifegradverfahren",
+          "description": "German BESS developer with in-flight applications.",
+          "trigger": "Connection applications under old or new regime",
+          "pain": "Unclear eligibility and documentation pathway.",
+          "matched_modo_asset": "How to apply under Germany's Reifegradverfahren",
+          "matched_ko_prompt": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+          "channel": "Direct email",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 7,
+          "archetype": "Developer navigating Reifegradverfahren",
+          "description": "German BESS developer with in-flight applications.",
+          "trigger": "Connection applications under old or new regime",
+          "pain": "Unclear eligibility and documentation pathway.",
+          "matched_modo_asset": "How to apply under Germany's Reifegradverfahren",
+          "matched_ko_prompt": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+          "channel": "Direct email",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 8,
+          "archetype": "Developer navigating Reifegradverfahren",
+          "description": "German BESS developer with in-flight applications.",
+          "trigger": "Connection applications under old or new regime",
+          "pain": "Unclear eligibility and documentation pathway.",
+          "matched_modo_asset": "How to apply under Germany's Reifegradverfahren",
+          "matched_ko_prompt": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+          "channel": "Direct email",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 9,
+          "archetype": "Developer navigating Reifegradverfahren",
+          "description": "German BESS developer with in-flight applications.",
+          "trigger": "Connection applications under old or new regime",
+          "pain": "Unclear eligibility and documentation pathway.",
+          "matched_modo_asset": "How to apply under Germany's Reifegradverfahren",
+          "matched_ko_prompt": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+          "channel": "Direct email",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 10,
+          "archetype": "Developer navigating Reifegradverfahren",
+          "description": "German BESS developer with in-flight applications.",
+          "trigger": "Connection applications under old or new regime",
+          "pain": "Unclear eligibility and documentation pathway.",
+          "matched_modo_asset": "How to apply under Germany's Reifegradverfahren",
+          "matched_ko_prompt": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+          "channel": "Direct email",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        }
+      ],
+      "sequencing_note": "Start with high-priority profiles this week, then medium profiles in week two."
+    },
+    "assets": {
+      "starter_pack": [
+        {
+          "id": "p1",
+          "prompt_text": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+          "persona": "developer",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Regulatory analysis"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        },
+        {
+          "id": "p2",
+          "prompt_text": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+          "persona": "developer",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Regulatory analysis"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        },
+        {
+          "id": "p3",
+          "prompt_text": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+          "persona": "developer",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Regulatory analysis"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        },
+        {
+          "id": "p4",
+          "prompt_text": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+          "persona": "developer",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Regulatory analysis"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        },
+        {
+          "id": "p5",
+          "prompt_text": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+          "persona": "developer",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Regulatory analysis"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        },
+        {
+          "id": "p6",
+          "prompt_text": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+          "persona": "developer",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Regulatory analysis"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        },
+        {
+          "id": "p7",
+          "prompt_text": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+          "persona": "developer",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Regulatory analysis"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        },
+        {
+          "id": "p8",
+          "prompt_text": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+          "persona": "developer",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Regulatory analysis"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        }
+      ],
+      "curation_logic": "Prompts selected to balance near-term outreach and market-structure understanding."
+    },
+    "outreach": {
+      "emails": [
+        {
+          "to_archetype": "Developer navigating Reifegradverfahren",
+          "subject": "Germany signal worth discussing",
+          "body": "We have been tracking a fresh Germany signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+          "cta_type": "research_link",
+          "cta_line": "Open to me sending the two-minute brief?",
+          "signal_reference": "Reifegradverfahren changes grid applications"
+        },
+        {
+          "to_archetype": "Developer navigating Reifegradverfahren",
+          "subject": "Germany signal worth discussing",
+          "body": "We have been tracking a fresh Germany signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+          "cta_type": "research_link",
+          "cta_line": "Open to me sending the two-minute brief?",
+          "signal_reference": "Reifegradverfahren changes grid applications"
+        },
+        {
+          "to_archetype": "Developer navigating Reifegradverfahren",
+          "subject": "Germany signal worth discussing",
+          "body": "We have been tracking a fresh Germany signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+          "cta_type": "research_link",
+          "cta_line": "Open to me sending the two-minute brief?",
+          "signal_reference": "Reifegradverfahren changes grid applications"
+        },
+        {
+          "to_archetype": "Developer navigating Reifegradverfahren",
+          "subject": "Germany signal worth discussing",
+          "body": "We have been tracking a fresh Germany signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+          "cta_type": "research_link",
+          "cta_line": "Open to me sending the two-minute brief?",
+          "signal_reference": "Reifegradverfahren changes grid applications"
+        }
+      ],
+      "follow_up_variant": {
+        "context": "Developer navigating Reifegradverfahren",
+        "subject": "Follow-up on Germany benchmark note",
+        "body": "One extra data point from this week changed our base case. Happy to send the updated cut."
+      }
+    },
+    "content": {
+      "linkedin_post": {
+        "hook": "Germany storage strategy just changed.",
+        "body": "Modo's latest market read points to a sharper entry window in Germany. The key is matching signals to the right outreach sequence.",
+        "cta": "Read the latest Modo research.",
+        "character_count": 260
+      },
+      "newsletter_blurb": {
+        "headline": "Germany market entry watch",
+        "body": "A new signal cluster in Germany changed outreach priorities this week. We mapped the top profiles and attached Ko-ready prompts."
+      },
+      "video_topic": {
+        "working_title": "Germany: the first-move playbook",
+        "thesis": "The first 30 days in Germany are won by signal speed and grounded outreach.",
+        "three_key_points": [
+          "Signal timing",
+          "Prospect sequencing",
+          "Asset-to-message mapping"
+        ],
+        "suggested_expert": "Market analyst with BESS GTM experience"
+      }
+    }
+  }
+}

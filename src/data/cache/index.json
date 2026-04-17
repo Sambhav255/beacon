@@ -1,0 +1,1507 @@
+{
+  "poland": {
+    "marketId": "poland",
+    "generatedAt": "2026-04-17T10:51:22.888Z",
+    "stages": {
+      "context": {
+        "market_state": "From 28 MW to 8-9 GW by 2030.",
+        "modo_position": "Utility-scale BESS in Poland could reach 8-9 GW by 2030.",
+        "grounding_notes": [
+          "Poland's battery energy storage buildout outlook"
+        ]
+      },
+      "signals": {
+        "headline_signal": {
+          "title": "UC84 Grid Act enforces 30-month permit window",
+          "implication": "Developers with grid agreements face urgency."
+        },
+        "supporting_signals": [
+          {
+            "date": "2026-04",
+            "type": "regulation",
+            "headline": "UC84 Grid Act enforces 30-month permit window",
+            "so_what": "Developers with grid agreements face urgency."
+          }
+        ],
+        "pattern": "Signal set indicates immediate GTM timing for targeted outreach."
+      },
+      "prospects": {
+        "prospects": [
+          {
+            "rank": 1,
+            "archetype": "Capacity market winner",
+            "description": "Developer that won 2024-2025 auction capacity.",
+            "trigger": "Recent capacity registry allocation",
+            "pain": "Needs confidence in post-auction revenue assumptions.",
+            "matched_modo_asset": "Poland's battery energy storage buildout outlook",
+            "matched_ko_prompt": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+            "channel": "LinkedIn + warm intro",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 2,
+            "archetype": "Capacity market winner",
+            "description": "Developer that won 2024-2025 auction capacity.",
+            "trigger": "Recent capacity registry allocation",
+            "pain": "Needs confidence in post-auction revenue assumptions.",
+            "matched_modo_asset": "Poland's battery energy storage buildout outlook",
+            "matched_ko_prompt": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+            "channel": "LinkedIn + warm intro",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 3,
+            "archetype": "Capacity market winner",
+            "description": "Developer that won 2024-2025 auction capacity.",
+            "trigger": "Recent capacity registry allocation",
+            "pain": "Needs confidence in post-auction revenue assumptions.",
+            "matched_modo_asset": "Poland's battery energy storage buildout outlook",
+            "matched_ko_prompt": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+            "channel": "LinkedIn + warm intro",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 4,
+            "archetype": "Capacity market winner",
+            "description": "Developer that won 2024-2025 auction capacity.",
+            "trigger": "Recent capacity registry allocation",
+            "pain": "Needs confidence in post-auction revenue assumptions.",
+            "matched_modo_asset": "Poland's battery energy storage buildout outlook",
+            "matched_ko_prompt": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+            "channel": "LinkedIn + warm intro",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 5,
+            "archetype": "Capacity market winner",
+            "description": "Developer that won 2024-2025 auction capacity.",
+            "trigger": "Recent capacity registry allocation",
+            "pain": "Needs confidence in post-auction revenue assumptions.",
+            "matched_modo_asset": "Poland's battery energy storage buildout outlook",
+            "matched_ko_prompt": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+            "channel": "LinkedIn + warm intro",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 6,
+            "archetype": "Capacity market winner",
+            "description": "Developer that won 2024-2025 auction capacity.",
+            "trigger": "Recent capacity registry allocation",
+            "pain": "Needs confidence in post-auction revenue assumptions.",
+            "matched_modo_asset": "Poland's battery energy storage buildout outlook",
+            "matched_ko_prompt": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+            "channel": "LinkedIn + warm intro",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 7,
+            "archetype": "Capacity market winner",
+            "description": "Developer that won 2024-2025 auction capacity.",
+            "trigger": "Recent capacity registry allocation",
+            "pain": "Needs confidence in post-auction revenue assumptions.",
+            "matched_modo_asset": "Poland's battery energy storage buildout outlook",
+            "matched_ko_prompt": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+            "channel": "LinkedIn + warm intro",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 8,
+            "archetype": "Capacity market winner",
+            "description": "Developer that won 2024-2025 auction capacity.",
+            "trigger": "Recent capacity registry allocation",
+            "pain": "Needs confidence in post-auction revenue assumptions.",
+            "matched_modo_asset": "Poland's battery energy storage buildout outlook",
+            "matched_ko_prompt": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+            "channel": "LinkedIn + warm intro",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 9,
+            "archetype": "Capacity market winner",
+            "description": "Developer that won 2024-2025 auction capacity.",
+            "trigger": "Recent capacity registry allocation",
+            "pain": "Needs confidence in post-auction revenue assumptions.",
+            "matched_modo_asset": "Poland's battery energy storage buildout outlook",
+            "matched_ko_prompt": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+            "channel": "LinkedIn + warm intro",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 10,
+            "archetype": "Capacity market winner",
+            "description": "Developer that won 2024-2025 auction capacity.",
+            "trigger": "Recent capacity registry allocation",
+            "pain": "Needs confidence in post-auction revenue assumptions.",
+            "matched_modo_asset": "Poland's battery energy storage buildout outlook",
+            "matched_ko_prompt": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+            "channel": "LinkedIn + warm intro",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          }
+        ],
+        "sequencing_note": "Start with high-priority profiles this week, then medium profiles in week two."
+      },
+      "assets": {
+        "starter_pack": [
+          {
+            "id": "p1",
+            "prompt_text": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+            "persona": "developer",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Capacity market analysis"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          },
+          {
+            "id": "p2",
+            "prompt_text": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+            "persona": "developer",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Capacity market analysis"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          },
+          {
+            "id": "p3",
+            "prompt_text": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+            "persona": "developer",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Capacity market analysis"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          },
+          {
+            "id": "p4",
+            "prompt_text": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+            "persona": "developer",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Capacity market analysis"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          },
+          {
+            "id": "p5",
+            "prompt_text": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+            "persona": "developer",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Capacity market analysis"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          },
+          {
+            "id": "p6",
+            "prompt_text": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+            "persona": "developer",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Capacity market analysis"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          },
+          {
+            "id": "p7",
+            "prompt_text": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+            "persona": "developer",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Capacity market analysis"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          },
+          {
+            "id": "p8",
+            "prompt_text": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030?",
+            "persona": "developer",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Capacity market analysis"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          }
+        ],
+        "curation_logic": "Prompts selected to balance near-term outreach and market-structure understanding."
+      },
+      "outreach": {
+        "emails": [
+          {
+            "to_archetype": "Capacity market winner",
+            "subject": "Poland signal worth discussing",
+            "body": "We have been tracking a fresh Poland signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+            "cta_type": "research_link",
+            "cta_line": "Open to me sending the two-minute brief?",
+            "signal_reference": "UC84 Grid Act enforces 30-month permit window"
+          },
+          {
+            "to_archetype": "Capacity market winner",
+            "subject": "Poland signal worth discussing",
+            "body": "We have been tracking a fresh Poland signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+            "cta_type": "research_link",
+            "cta_line": "Open to me sending the two-minute brief?",
+            "signal_reference": "UC84 Grid Act enforces 30-month permit window"
+          },
+          {
+            "to_archetype": "Capacity market winner",
+            "subject": "Poland signal worth discussing",
+            "body": "We have been tracking a fresh Poland signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+            "cta_type": "research_link",
+            "cta_line": "Open to me sending the two-minute brief?",
+            "signal_reference": "UC84 Grid Act enforces 30-month permit window"
+          },
+          {
+            "to_archetype": "Capacity market winner",
+            "subject": "Poland signal worth discussing",
+            "body": "We have been tracking a fresh Poland signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+            "cta_type": "research_link",
+            "cta_line": "Open to me sending the two-minute brief?",
+            "signal_reference": "UC84 Grid Act enforces 30-month permit window"
+          }
+        ],
+        "follow_up_variant": {
+          "context": "Capacity market winner",
+          "subject": "Follow-up on Poland benchmark note",
+          "body": "One extra data point from this week changed our base case. Happy to send the updated cut."
+        }
+      },
+      "content": {
+        "linkedin_post": {
+          "hook": "Poland storage strategy just changed.",
+          "body": "Modo's latest market read points to a sharper entry window in Poland. The key is matching signals to the right outreach sequence.",
+          "cta": "Read the latest Modo research.",
+          "character_count": 260
+        },
+        "newsletter_blurb": {
+          "headline": "Poland market entry watch",
+          "body": "A new signal cluster in Poland changed outreach priorities this week. We mapped the top profiles and attached Ko-ready prompts."
+        },
+        "video_topic": {
+          "working_title": "Poland: the first-move playbook",
+          "thesis": "The first 30 days in Poland are won by signal speed and grounded outreach.",
+          "three_key_points": [
+            "Signal timing",
+            "Prospect sequencing",
+            "Asset-to-message mapping"
+          ],
+          "suggested_expert": "Market analyst with BESS GTM experience"
+        }
+      }
+    }
+  },
+  "germany": {
+    "marketId": "germany",
+    "generatedAt": "2026-04-17T10:51:22.893Z",
+    "stages": {
+      "context": {
+        "market_state": "The pipeline is there and the grid process changed.",
+        "modo_position": "Guide to Germany's new grid connection process.",
+        "grounding_notes": [
+          "How to apply under Germany's Reifegradverfahren"
+        ]
+      },
+      "signals": {
+        "headline_signal": {
+          "title": "Reifegradverfahren changes grid applications",
+          "implication": "Developers need an immediate process reset."
+        },
+        "supporting_signals": [
+          {
+            "date": "2026-Q1",
+            "type": "regulation",
+            "headline": "Reifegradverfahren changes grid applications",
+            "so_what": "Developers need an immediate process reset."
+          }
+        ],
+        "pattern": "Signal set indicates immediate GTM timing for targeted outreach."
+      },
+      "prospects": {
+        "prospects": [
+          {
+            "rank": 1,
+            "archetype": "Developer navigating Reifegradverfahren",
+            "description": "German BESS developer with in-flight applications.",
+            "trigger": "Connection applications under old or new regime",
+            "pain": "Unclear eligibility and documentation pathway.",
+            "matched_modo_asset": "How to apply under Germany's Reifegradverfahren",
+            "matched_ko_prompt": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+            "channel": "Direct email",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 2,
+            "archetype": "Developer navigating Reifegradverfahren",
+            "description": "German BESS developer with in-flight applications.",
+            "trigger": "Connection applications under old or new regime",
+            "pain": "Unclear eligibility and documentation pathway.",
+            "matched_modo_asset": "How to apply under Germany's Reifegradverfahren",
+            "matched_ko_prompt": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+            "channel": "Direct email",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 3,
+            "archetype": "Developer navigating Reifegradverfahren",
+            "description": "German BESS developer with in-flight applications.",
+            "trigger": "Connection applications under old or new regime",
+            "pain": "Unclear eligibility and documentation pathway.",
+            "matched_modo_asset": "How to apply under Germany's Reifegradverfahren",
+            "matched_ko_prompt": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+            "channel": "Direct email",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 4,
+            "archetype": "Developer navigating Reifegradverfahren",
+            "description": "German BESS developer with in-flight applications.",
+            "trigger": "Connection applications under old or new regime",
+            "pain": "Unclear eligibility and documentation pathway.",
+            "matched_modo_asset": "How to apply under Germany's Reifegradverfahren",
+            "matched_ko_prompt": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+            "channel": "Direct email",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 5,
+            "archetype": "Developer navigating Reifegradverfahren",
+            "description": "German BESS developer with in-flight applications.",
+            "trigger": "Connection applications under old or new regime",
+            "pain": "Unclear eligibility and documentation pathway.",
+            "matched_modo_asset": "How to apply under Germany's Reifegradverfahren",
+            "matched_ko_prompt": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+            "channel": "Direct email",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 6,
+            "archetype": "Developer navigating Reifegradverfahren",
+            "description": "German BESS developer with in-flight applications.",
+            "trigger": "Connection applications under old or new regime",
+            "pain": "Unclear eligibility and documentation pathway.",
+            "matched_modo_asset": "How to apply under Germany's Reifegradverfahren",
+            "matched_ko_prompt": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+            "channel": "Direct email",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 7,
+            "archetype": "Developer navigating Reifegradverfahren",
+            "description": "German BESS developer with in-flight applications.",
+            "trigger": "Connection applications under old or new regime",
+            "pain": "Unclear eligibility and documentation pathway.",
+            "matched_modo_asset": "How to apply under Germany's Reifegradverfahren",
+            "matched_ko_prompt": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+            "channel": "Direct email",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 8,
+            "archetype": "Developer navigating Reifegradverfahren",
+            "description": "German BESS developer with in-flight applications.",
+            "trigger": "Connection applications under old or new regime",
+            "pain": "Unclear eligibility and documentation pathway.",
+            "matched_modo_asset": "How to apply under Germany's Reifegradverfahren",
+            "matched_ko_prompt": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+            "channel": "Direct email",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 9,
+            "archetype": "Developer navigating Reifegradverfahren",
+            "description": "German BESS developer with in-flight applications.",
+            "trigger": "Connection applications under old or new regime",
+            "pain": "Unclear eligibility and documentation pathway.",
+            "matched_modo_asset": "How to apply under Germany's Reifegradverfahren",
+            "matched_ko_prompt": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+            "channel": "Direct email",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 10,
+            "archetype": "Developer navigating Reifegradverfahren",
+            "description": "German BESS developer with in-flight applications.",
+            "trigger": "Connection applications under old or new regime",
+            "pain": "Unclear eligibility and documentation pathway.",
+            "matched_modo_asset": "How to apply under Germany's Reifegradverfahren",
+            "matched_ko_prompt": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+            "channel": "Direct email",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          }
+        ],
+        "sequencing_note": "Start with high-priority profiles this week, then medium profiles in week two."
+      },
+      "assets": {
+        "starter_pack": [
+          {
+            "id": "p1",
+            "prompt_text": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+            "persona": "developer",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Regulatory analysis"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          },
+          {
+            "id": "p2",
+            "prompt_text": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+            "persona": "developer",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Regulatory analysis"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          },
+          {
+            "id": "p3",
+            "prompt_text": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+            "persona": "developer",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Regulatory analysis"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          },
+          {
+            "id": "p4",
+            "prompt_text": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+            "persona": "developer",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Regulatory analysis"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          },
+          {
+            "id": "p5",
+            "prompt_text": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+            "persona": "developer",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Regulatory analysis"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          },
+          {
+            "id": "p6",
+            "prompt_text": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+            "persona": "developer",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Regulatory analysis"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          },
+          {
+            "id": "p7",
+            "prompt_text": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+            "persona": "developer",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Regulatory analysis"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          },
+          {
+            "id": "p8",
+            "prompt_text": "What documentation is required for a 100 MW BESS project under Reifegradverfahren?",
+            "persona": "developer",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Regulatory analysis"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          }
+        ],
+        "curation_logic": "Prompts selected to balance near-term outreach and market-structure understanding."
+      },
+      "outreach": {
+        "emails": [
+          {
+            "to_archetype": "Developer navigating Reifegradverfahren",
+            "subject": "Germany signal worth discussing",
+            "body": "We have been tracking a fresh Germany signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+            "cta_type": "research_link",
+            "cta_line": "Open to me sending the two-minute brief?",
+            "signal_reference": "Reifegradverfahren changes grid applications"
+          },
+          {
+            "to_archetype": "Developer navigating Reifegradverfahren",
+            "subject": "Germany signal worth discussing",
+            "body": "We have been tracking a fresh Germany signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+            "cta_type": "research_link",
+            "cta_line": "Open to me sending the two-minute brief?",
+            "signal_reference": "Reifegradverfahren changes grid applications"
+          },
+          {
+            "to_archetype": "Developer navigating Reifegradverfahren",
+            "subject": "Germany signal worth discussing",
+            "body": "We have been tracking a fresh Germany signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+            "cta_type": "research_link",
+            "cta_line": "Open to me sending the two-minute brief?",
+            "signal_reference": "Reifegradverfahren changes grid applications"
+          },
+          {
+            "to_archetype": "Developer navigating Reifegradverfahren",
+            "subject": "Germany signal worth discussing",
+            "body": "We have been tracking a fresh Germany signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+            "cta_type": "research_link",
+            "cta_line": "Open to me sending the two-minute brief?",
+            "signal_reference": "Reifegradverfahren changes grid applications"
+          }
+        ],
+        "follow_up_variant": {
+          "context": "Developer navigating Reifegradverfahren",
+          "subject": "Follow-up on Germany benchmark note",
+          "body": "One extra data point from this week changed our base case. Happy to send the updated cut."
+        }
+      },
+      "content": {
+        "linkedin_post": {
+          "hook": "Germany storage strategy just changed.",
+          "body": "Modo's latest market read points to a sharper entry window in Germany. The key is matching signals to the right outreach sequence.",
+          "cta": "Read the latest Modo research.",
+          "character_count": 260
+        },
+        "newsletter_blurb": {
+          "headline": "Germany market entry watch",
+          "body": "A new signal cluster in Germany changed outreach priorities this week. We mapped the top profiles and attached Ko-ready prompts."
+        },
+        "video_topic": {
+          "working_title": "Germany: the first-move playbook",
+          "thesis": "The first 30 days in Germany are won by signal speed and grounded outreach.",
+          "three_key_points": [
+            "Signal timing",
+            "Prospect sequencing",
+            "Asset-to-message mapping"
+          ],
+          "suggested_expert": "Market analyst with BESS GTM experience"
+        }
+      }
+    }
+  },
+  "spain": {
+    "marketId": "spain",
+    "generatedAt": "2026-04-17T10:51:22.893Z",
+    "stages": {
+      "context": {
+        "market_state": "Intraday liquidity defines algorithmic opportunity.",
+        "modo_position": "Liquidity conditions for algorithmic BESS trading.",
+        "grounding_notes": [
+          "Spain intraday continuous liquidity analysis"
+        ]
+      },
+      "signals": {
+        "headline_signal": {
+          "title": "Intraday liquidity debate becomes investable",
+          "implication": "Traders need clarity before scaling desks."
+        },
+        "supporting_signals": [
+          {
+            "date": "2026-04",
+            "type": "market",
+            "headline": "Intraday liquidity debate becomes investable",
+            "so_what": "Traders need clarity before scaling desks."
+          }
+        ],
+        "pattern": "Signal set indicates immediate GTM timing for targeted outreach."
+      },
+      "prospects": {
+        "prospects": [
+          {
+            "rank": 1,
+            "archetype": "Iberian algo trader",
+            "description": "Trader building Spanish BESS capability.",
+            "trigger": "Madrid BESS desk hiring",
+            "pain": "Cannot allocate without liquidity confidence.",
+            "matched_modo_asset": "Spain intraday continuous liquidity analysis",
+            "matched_ko_prompt": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+            "channel": "Direct outreach",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 2,
+            "archetype": "Iberian algo trader",
+            "description": "Trader building Spanish BESS capability.",
+            "trigger": "Madrid BESS desk hiring",
+            "pain": "Cannot allocate without liquidity confidence.",
+            "matched_modo_asset": "Spain intraday continuous liquidity analysis",
+            "matched_ko_prompt": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+            "channel": "Direct outreach",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 3,
+            "archetype": "Iberian algo trader",
+            "description": "Trader building Spanish BESS capability.",
+            "trigger": "Madrid BESS desk hiring",
+            "pain": "Cannot allocate without liquidity confidence.",
+            "matched_modo_asset": "Spain intraday continuous liquidity analysis",
+            "matched_ko_prompt": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+            "channel": "Direct outreach",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 4,
+            "archetype": "Iberian algo trader",
+            "description": "Trader building Spanish BESS capability.",
+            "trigger": "Madrid BESS desk hiring",
+            "pain": "Cannot allocate without liquidity confidence.",
+            "matched_modo_asset": "Spain intraday continuous liquidity analysis",
+            "matched_ko_prompt": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+            "channel": "Direct outreach",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 5,
+            "archetype": "Iberian algo trader",
+            "description": "Trader building Spanish BESS capability.",
+            "trigger": "Madrid BESS desk hiring",
+            "pain": "Cannot allocate without liquidity confidence.",
+            "matched_modo_asset": "Spain intraday continuous liquidity analysis",
+            "matched_ko_prompt": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+            "channel": "Direct outreach",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 6,
+            "archetype": "Iberian algo trader",
+            "description": "Trader building Spanish BESS capability.",
+            "trigger": "Madrid BESS desk hiring",
+            "pain": "Cannot allocate without liquidity confidence.",
+            "matched_modo_asset": "Spain intraday continuous liquidity analysis",
+            "matched_ko_prompt": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+            "channel": "Direct outreach",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 7,
+            "archetype": "Iberian algo trader",
+            "description": "Trader building Spanish BESS capability.",
+            "trigger": "Madrid BESS desk hiring",
+            "pain": "Cannot allocate without liquidity confidence.",
+            "matched_modo_asset": "Spain intraday continuous liquidity analysis",
+            "matched_ko_prompt": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+            "channel": "Direct outreach",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 8,
+            "archetype": "Iberian algo trader",
+            "description": "Trader building Spanish BESS capability.",
+            "trigger": "Madrid BESS desk hiring",
+            "pain": "Cannot allocate without liquidity confidence.",
+            "matched_modo_asset": "Spain intraday continuous liquidity analysis",
+            "matched_ko_prompt": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+            "channel": "Direct outreach",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 9,
+            "archetype": "Iberian algo trader",
+            "description": "Trader building Spanish BESS capability.",
+            "trigger": "Madrid BESS desk hiring",
+            "pain": "Cannot allocate without liquidity confidence.",
+            "matched_modo_asset": "Spain intraday continuous liquidity analysis",
+            "matched_ko_prompt": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+            "channel": "Direct outreach",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 10,
+            "archetype": "Iberian algo trader",
+            "description": "Trader building Spanish BESS capability.",
+            "trigger": "Madrid BESS desk hiring",
+            "pain": "Cannot allocate without liquidity confidence.",
+            "matched_modo_asset": "Spain intraday continuous liquidity analysis",
+            "matched_ko_prompt": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+            "channel": "Direct outreach",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          }
+        ],
+        "sequencing_note": "Start with high-priority profiles this week, then medium profiles in week two."
+      },
+      "assets": {
+        "starter_pack": [
+          {
+            "id": "p1",
+            "prompt_text": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+            "persona": "trader",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Liquidity analysis"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          },
+          {
+            "id": "p2",
+            "prompt_text": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+            "persona": "trader",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Liquidity analysis"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          },
+          {
+            "id": "p3",
+            "prompt_text": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+            "persona": "trader",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Liquidity analysis"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          },
+          {
+            "id": "p4",
+            "prompt_text": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+            "persona": "trader",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Liquidity analysis"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          },
+          {
+            "id": "p5",
+            "prompt_text": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+            "persona": "trader",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Liquidity analysis"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          },
+          {
+            "id": "p6",
+            "prompt_text": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+            "persona": "trader",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Liquidity analysis"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          },
+          {
+            "id": "p7",
+            "prompt_text": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+            "persona": "trader",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Liquidity analysis"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          },
+          {
+            "id": "p8",
+            "prompt_text": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+            "persona": "trader",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Liquidity analysis"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          }
+        ],
+        "curation_logic": "Prompts selected to balance near-term outreach and market-structure understanding."
+      },
+      "outreach": {
+        "emails": [
+          {
+            "to_archetype": "Iberian algo trader",
+            "subject": "Spain signal worth discussing",
+            "body": "We have been tracking a fresh Spain signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+            "cta_type": "research_link",
+            "cta_line": "Open to me sending the two-minute brief?",
+            "signal_reference": "Intraday liquidity debate becomes investable"
+          },
+          {
+            "to_archetype": "Iberian algo trader",
+            "subject": "Spain signal worth discussing",
+            "body": "We have been tracking a fresh Spain signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+            "cta_type": "research_link",
+            "cta_line": "Open to me sending the two-minute brief?",
+            "signal_reference": "Intraday liquidity debate becomes investable"
+          },
+          {
+            "to_archetype": "Iberian algo trader",
+            "subject": "Spain signal worth discussing",
+            "body": "We have been tracking a fresh Spain signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+            "cta_type": "research_link",
+            "cta_line": "Open to me sending the two-minute brief?",
+            "signal_reference": "Intraday liquidity debate becomes investable"
+          },
+          {
+            "to_archetype": "Iberian algo trader",
+            "subject": "Spain signal worth discussing",
+            "body": "We have been tracking a fresh Spain signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+            "cta_type": "research_link",
+            "cta_line": "Open to me sending the two-minute brief?",
+            "signal_reference": "Intraday liquidity debate becomes investable"
+          }
+        ],
+        "follow_up_variant": {
+          "context": "Iberian algo trader",
+          "subject": "Follow-up on Spain benchmark note",
+          "body": "One extra data point from this week changed our base case. Happy to send the updated cut."
+        }
+      },
+      "content": {
+        "linkedin_post": {
+          "hook": "Spain storage strategy just changed.",
+          "body": "Modo's latest market read points to a sharper entry window in Spain. The key is matching signals to the right outreach sequence.",
+          "cta": "Read the latest Modo research.",
+          "character_count": 260
+        },
+        "newsletter_blurb": {
+          "headline": "Spain market entry watch",
+          "body": "A new signal cluster in Spain changed outreach priorities this week. We mapped the top profiles and attached Ko-ready prompts."
+        },
+        "video_topic": {
+          "working_title": "Spain: the first-move playbook",
+          "thesis": "The first 30 days in Spain are won by signal speed and grounded outreach.",
+          "three_key_points": [
+            "Signal timing",
+            "Prospect sequencing",
+            "Asset-to-message mapping"
+          ],
+          "suggested_expert": "Market analyst with BESS GTM experience"
+        }
+      }
+    }
+  },
+  "italy": {
+    "marketId": "italy",
+    "generatedAt": "2026-04-17T10:51:22.895Z",
+    "stages": {
+      "context": {
+        "market_state": "MACSE clarifies capacity, merchant tail stays open.",
+        "modo_position": "MACSE and merchant outlook for Italian BESS.",
+        "grounding_notes": [
+          "Italian BESS market analysis"
+        ]
+      },
+      "signals": {
+        "headline_signal": {
+          "title": "MACSE outcomes reshape project economics",
+          "implication": "Winners now need robust merchant tail models."
+        },
+        "supporting_signals": [
+          {
+            "date": "2026-Q1",
+            "type": "market",
+            "headline": "MACSE outcomes reshape project economics",
+            "so_what": "Winners now need robust merchant tail models."
+          }
+        ],
+        "pattern": "Signal set indicates immediate GTM timing for targeted outreach."
+      },
+      "prospects": {
+        "prospects": [
+          {
+            "rank": 1,
+            "archetype": "MACSE winner modeling merchant tail",
+            "description": "Developer with capacity allocation.",
+            "trigger": "Public MACSE results",
+            "pain": "IRR depends on merchant scenario confidence.",
+            "matched_modo_asset": "Italian BESS market analysis",
+            "matched_ko_prompt": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+            "channel": "Direct email",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 2,
+            "archetype": "MACSE winner modeling merchant tail",
+            "description": "Developer with capacity allocation.",
+            "trigger": "Public MACSE results",
+            "pain": "IRR depends on merchant scenario confidence.",
+            "matched_modo_asset": "Italian BESS market analysis",
+            "matched_ko_prompt": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+            "channel": "Direct email",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 3,
+            "archetype": "MACSE winner modeling merchant tail",
+            "description": "Developer with capacity allocation.",
+            "trigger": "Public MACSE results",
+            "pain": "IRR depends on merchant scenario confidence.",
+            "matched_modo_asset": "Italian BESS market analysis",
+            "matched_ko_prompt": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+            "channel": "Direct email",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 4,
+            "archetype": "MACSE winner modeling merchant tail",
+            "description": "Developer with capacity allocation.",
+            "trigger": "Public MACSE results",
+            "pain": "IRR depends on merchant scenario confidence.",
+            "matched_modo_asset": "Italian BESS market analysis",
+            "matched_ko_prompt": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+            "channel": "Direct email",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 5,
+            "archetype": "MACSE winner modeling merchant tail",
+            "description": "Developer with capacity allocation.",
+            "trigger": "Public MACSE results",
+            "pain": "IRR depends on merchant scenario confidence.",
+            "matched_modo_asset": "Italian BESS market analysis",
+            "matched_ko_prompt": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+            "channel": "Direct email",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 6,
+            "archetype": "MACSE winner modeling merchant tail",
+            "description": "Developer with capacity allocation.",
+            "trigger": "Public MACSE results",
+            "pain": "IRR depends on merchant scenario confidence.",
+            "matched_modo_asset": "Italian BESS market analysis",
+            "matched_ko_prompt": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+            "channel": "Direct email",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 7,
+            "archetype": "MACSE winner modeling merchant tail",
+            "description": "Developer with capacity allocation.",
+            "trigger": "Public MACSE results",
+            "pain": "IRR depends on merchant scenario confidence.",
+            "matched_modo_asset": "Italian BESS market analysis",
+            "matched_ko_prompt": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+            "channel": "Direct email",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 8,
+            "archetype": "MACSE winner modeling merchant tail",
+            "description": "Developer with capacity allocation.",
+            "trigger": "Public MACSE results",
+            "pain": "IRR depends on merchant scenario confidence.",
+            "matched_modo_asset": "Italian BESS market analysis",
+            "matched_ko_prompt": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+            "channel": "Direct email",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 9,
+            "archetype": "MACSE winner modeling merchant tail",
+            "description": "Developer with capacity allocation.",
+            "trigger": "Public MACSE results",
+            "pain": "IRR depends on merchant scenario confidence.",
+            "matched_modo_asset": "Italian BESS market analysis",
+            "matched_ko_prompt": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+            "channel": "Direct email",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 10,
+            "archetype": "MACSE winner modeling merchant tail",
+            "description": "Developer with capacity allocation.",
+            "trigger": "Public MACSE results",
+            "pain": "IRR depends on merchant scenario confidence.",
+            "matched_modo_asset": "Italian BESS market analysis",
+            "matched_ko_prompt": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+            "channel": "Direct email",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          }
+        ],
+        "sequencing_note": "Start with high-priority profiles this week, then medium profiles in week two."
+      },
+      "assets": {
+        "starter_pack": [
+          {
+            "id": "p1",
+            "prompt_text": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+            "persona": "developer",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Merchant tail modeling"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          },
+          {
+            "id": "p2",
+            "prompt_text": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+            "persona": "developer",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Merchant tail modeling"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          },
+          {
+            "id": "p3",
+            "prompt_text": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+            "persona": "developer",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Merchant tail modeling"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          },
+          {
+            "id": "p4",
+            "prompt_text": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+            "persona": "developer",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Merchant tail modeling"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          },
+          {
+            "id": "p5",
+            "prompt_text": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+            "persona": "developer",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Merchant tail modeling"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          },
+          {
+            "id": "p6",
+            "prompt_text": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+            "persona": "developer",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Merchant tail modeling"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          },
+          {
+            "id": "p7",
+            "prompt_text": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+            "persona": "developer",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Merchant tail modeling"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          },
+          {
+            "id": "p8",
+            "prompt_text": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+            "persona": "developer",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Merchant tail modeling"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          }
+        ],
+        "curation_logic": "Prompts selected to balance near-term outreach and market-structure understanding."
+      },
+      "outreach": {
+        "emails": [
+          {
+            "to_archetype": "MACSE winner modeling merchant tail",
+            "subject": "Italy signal worth discussing",
+            "body": "We have been tracking a fresh Italy signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+            "cta_type": "research_link",
+            "cta_line": "Open to me sending the two-minute brief?",
+            "signal_reference": "MACSE outcomes reshape project economics"
+          },
+          {
+            "to_archetype": "MACSE winner modeling merchant tail",
+            "subject": "Italy signal worth discussing",
+            "body": "We have been tracking a fresh Italy signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+            "cta_type": "research_link",
+            "cta_line": "Open to me sending the two-minute brief?",
+            "signal_reference": "MACSE outcomes reshape project economics"
+          },
+          {
+            "to_archetype": "MACSE winner modeling merchant tail",
+            "subject": "Italy signal worth discussing",
+            "body": "We have been tracking a fresh Italy signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+            "cta_type": "research_link",
+            "cta_line": "Open to me sending the two-minute brief?",
+            "signal_reference": "MACSE outcomes reshape project economics"
+          },
+          {
+            "to_archetype": "MACSE winner modeling merchant tail",
+            "subject": "Italy signal worth discussing",
+            "body": "We have been tracking a fresh Italy signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+            "cta_type": "research_link",
+            "cta_line": "Open to me sending the two-minute brief?",
+            "signal_reference": "MACSE outcomes reshape project economics"
+          }
+        ],
+        "follow_up_variant": {
+          "context": "MACSE winner modeling merchant tail",
+          "subject": "Follow-up on Italy benchmark note",
+          "body": "One extra data point from this week changed our base case. Happy to send the updated cut."
+        }
+      },
+      "content": {
+        "linkedin_post": {
+          "hook": "Italy storage strategy just changed.",
+          "body": "Modo's latest market read points to a sharper entry window in Italy. The key is matching signals to the right outreach sequence.",
+          "cta": "Read the latest Modo research.",
+          "character_count": 260
+        },
+        "newsletter_blurb": {
+          "headline": "Italy market entry watch",
+          "body": "A new signal cluster in Italy changed outreach priorities this week. We mapped the top profiles and attached Ko-ready prompts."
+        },
+        "video_topic": {
+          "working_title": "Italy: the first-move playbook",
+          "thesis": "The first 30 days in Italy are won by signal speed and grounded outreach.",
+          "three_key_points": [
+            "Signal timing",
+            "Prospect sequencing",
+            "Asset-to-message mapping"
+          ],
+          "suggested_expert": "Market analyst with BESS GTM experience"
+        }
+      }
+    }
+  },
+  "france": {
+    "marketId": "france",
+    "generatedAt": "2026-04-17T10:51:22.896Z",
+    "stages": {
+      "context": {
+        "market_state": "CfD redesign changes co-location economics.",
+        "modo_position": "How CRE redesign changes co-located battery strategy.",
+        "grounding_notes": [
+          "France CfD redesign and co-located battery economics"
+        ]
+      },
+      "signals": {
+        "headline_signal": {
+          "title": "CRE confirms CfD redesign parameters",
+          "implication": "Solar developers now need co-location models."
+        },
+        "supporting_signals": [
+          {
+            "date": "2026-Q1",
+            "type": "regulation",
+            "headline": "CRE confirms CfD redesign parameters",
+            "so_what": "Solar developers now need co-location models."
+          }
+        ],
+        "pattern": "Signal set indicates immediate GTM timing for targeted outreach."
+      },
+      "prospects": {
+        "prospects": [
+          {
+            "rank": 1,
+            "archetype": "French solar developer considering co-location",
+            "description": "Solar developer modeling first battery attachment.",
+            "trigger": "CRE announcement responses",
+            "pain": "No internal BESS optimization framework.",
+            "matched_modo_asset": "France CfD redesign and co-located battery economics",
+            "matched_ko_prompt": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+            "channel": "Direct email",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 2,
+            "archetype": "French solar developer considering co-location",
+            "description": "Solar developer modeling first battery attachment.",
+            "trigger": "CRE announcement responses",
+            "pain": "No internal BESS optimization framework.",
+            "matched_modo_asset": "France CfD redesign and co-located battery economics",
+            "matched_ko_prompt": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+            "channel": "Direct email",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 3,
+            "archetype": "French solar developer considering co-location",
+            "description": "Solar developer modeling first battery attachment.",
+            "trigger": "CRE announcement responses",
+            "pain": "No internal BESS optimization framework.",
+            "matched_modo_asset": "France CfD redesign and co-located battery economics",
+            "matched_ko_prompt": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+            "channel": "Direct email",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 4,
+            "archetype": "French solar developer considering co-location",
+            "description": "Solar developer modeling first battery attachment.",
+            "trigger": "CRE announcement responses",
+            "pain": "No internal BESS optimization framework.",
+            "matched_modo_asset": "France CfD redesign and co-located battery economics",
+            "matched_ko_prompt": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+            "channel": "Direct email",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 5,
+            "archetype": "French solar developer considering co-location",
+            "description": "Solar developer modeling first battery attachment.",
+            "trigger": "CRE announcement responses",
+            "pain": "No internal BESS optimization framework.",
+            "matched_modo_asset": "France CfD redesign and co-located battery economics",
+            "matched_ko_prompt": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+            "channel": "Direct email",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 6,
+            "archetype": "French solar developer considering co-location",
+            "description": "Solar developer modeling first battery attachment.",
+            "trigger": "CRE announcement responses",
+            "pain": "No internal BESS optimization framework.",
+            "matched_modo_asset": "France CfD redesign and co-located battery economics",
+            "matched_ko_prompt": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+            "channel": "Direct email",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 7,
+            "archetype": "French solar developer considering co-location",
+            "description": "Solar developer modeling first battery attachment.",
+            "trigger": "CRE announcement responses",
+            "pain": "No internal BESS optimization framework.",
+            "matched_modo_asset": "France CfD redesign and co-located battery economics",
+            "matched_ko_prompt": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+            "channel": "Direct email",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 8,
+            "archetype": "French solar developer considering co-location",
+            "description": "Solar developer modeling first battery attachment.",
+            "trigger": "CRE announcement responses",
+            "pain": "No internal BESS optimization framework.",
+            "matched_modo_asset": "France CfD redesign and co-located battery economics",
+            "matched_ko_prompt": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+            "channel": "Direct email",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 9,
+            "archetype": "French solar developer considering co-location",
+            "description": "Solar developer modeling first battery attachment.",
+            "trigger": "CRE announcement responses",
+            "pain": "No internal BESS optimization framework.",
+            "matched_modo_asset": "France CfD redesign and co-located battery economics",
+            "matched_ko_prompt": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+            "channel": "Direct email",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          },
+          {
+            "rank": 10,
+            "archetype": "French solar developer considering co-location",
+            "description": "Solar developer modeling first battery attachment.",
+            "trigger": "CRE announcement responses",
+            "pain": "No internal BESS optimization framework.",
+            "matched_modo_asset": "France CfD redesign and co-located battery economics",
+            "matched_ko_prompt": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+            "channel": "Direct email",
+            "priority": "high",
+            "reasoning": "Prioritized from recent signal relevance."
+          }
+        ],
+        "sequencing_note": "Start with high-priority profiles this week, then medium profiles in week two."
+      },
+      "assets": {
+        "starter_pack": [
+          {
+            "id": "p1",
+            "prompt_text": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+            "persona": "developer",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Co-location economics"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          },
+          {
+            "id": "p2",
+            "prompt_text": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+            "persona": "developer",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Co-location economics"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          },
+          {
+            "id": "p3",
+            "prompt_text": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+            "persona": "developer",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Co-location economics"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          },
+          {
+            "id": "p4",
+            "prompt_text": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+            "persona": "developer",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Co-location economics"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          },
+          {
+            "id": "p5",
+            "prompt_text": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+            "persona": "developer",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Co-location economics"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          },
+          {
+            "id": "p6",
+            "prompt_text": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+            "persona": "developer",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Co-location economics"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          },
+          {
+            "id": "p7",
+            "prompt_text": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+            "persona": "developer",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Co-location economics"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          },
+          {
+            "id": "p8",
+            "prompt_text": "Under France's redesigned solar CfD, what revenue uplift can a 20 MW battery add to a 100 MW solar asset?",
+            "persona": "developer",
+            "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+            "benchmarks_exercised": [
+              "Co-location economics"
+            ],
+            "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+          }
+        ],
+        "curation_logic": "Prompts selected to balance near-term outreach and market-structure understanding."
+      },
+      "outreach": {
+        "emails": [
+          {
+            "to_archetype": "French solar developer considering co-location",
+            "subject": "France signal worth discussing",
+            "body": "We have been tracking a fresh France signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+            "cta_type": "research_link",
+            "cta_line": "Open to me sending the two-minute brief?",
+            "signal_reference": "CRE confirms CfD redesign parameters"
+          },
+          {
+            "to_archetype": "French solar developer considering co-location",
+            "subject": "France signal worth discussing",
+            "body": "We have been tracking a fresh France signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+            "cta_type": "research_link",
+            "cta_line": "Open to me sending the two-minute brief?",
+            "signal_reference": "CRE confirms CfD redesign parameters"
+          },
+          {
+            "to_archetype": "French solar developer considering co-location",
+            "subject": "France signal worth discussing",
+            "body": "We have been tracking a fresh France signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+            "cta_type": "research_link",
+            "cta_line": "Open to me sending the two-minute brief?",
+            "signal_reference": "CRE confirms CfD redesign parameters"
+          },
+          {
+            "to_archetype": "French solar developer considering co-location",
+            "subject": "France signal worth discussing",
+            "body": "We have been tracking a fresh France signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+            "cta_type": "research_link",
+            "cta_line": "Open to me sending the two-minute brief?",
+            "signal_reference": "CRE confirms CfD redesign parameters"
+          }
+        ],
+        "follow_up_variant": {
+          "context": "French solar developer considering co-location",
+          "subject": "Follow-up on France benchmark note",
+          "body": "One extra data point from this week changed our base case. Happy to send the updated cut."
+        }
+      },
+      "content": {
+        "linkedin_post": {
+          "hook": "France storage strategy just changed.",
+          "body": "Modo's latest market read points to a sharper entry window in France. The key is matching signals to the right outreach sequence.",
+          "cta": "Read the latest Modo research.",
+          "character_count": 260
+        },
+        "newsletter_blurb": {
+          "headline": "France market entry watch",
+          "body": "A new signal cluster in France changed outreach priorities this week. We mapped the top profiles and attached Ko-ready prompts."
+        },
+        "video_topic": {
+          "working_title": "France: the first-move playbook",
+          "thesis": "The first 30 days in France are won by signal speed and grounded outreach.",
+          "three_key_points": [
+            "Signal timing",
+            "Prospect sequencing",
+            "Asset-to-message mapping"
+          ],
+          "suggested_expert": "Market analyst with BESS GTM experience"
+        }
+      }
+    }
+  }
+}

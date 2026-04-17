@@ -1,0 +1,301 @@
+{
+  "marketId": "italy",
+  "generatedAt": "2026-04-17T10:51:22.895Z",
+  "stages": {
+    "context": {
+      "market_state": "MACSE clarifies capacity, merchant tail stays open.",
+      "modo_position": "MACSE and merchant outlook for Italian BESS.",
+      "grounding_notes": [
+        "Italian BESS market analysis"
+      ]
+    },
+    "signals": {
+      "headline_signal": {
+        "title": "MACSE outcomes reshape project economics",
+        "implication": "Winners now need robust merchant tail models."
+      },
+      "supporting_signals": [
+        {
+          "date": "2026-Q1",
+          "type": "market",
+          "headline": "MACSE outcomes reshape project economics",
+          "so_what": "Winners now need robust merchant tail models."
+        }
+      ],
+      "pattern": "Signal set indicates immediate GTM timing for targeted outreach."
+    },
+    "prospects": {
+      "prospects": [
+        {
+          "rank": 1,
+          "archetype": "MACSE winner modeling merchant tail",
+          "description": "Developer with capacity allocation.",
+          "trigger": "Public MACSE results",
+          "pain": "IRR depends on merchant scenario confidence.",
+          "matched_modo_asset": "Italian BESS market analysis",
+          "matched_ko_prompt": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+          "channel": "Direct email",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 2,
+          "archetype": "MACSE winner modeling merchant tail",
+          "description": "Developer with capacity allocation.",
+          "trigger": "Public MACSE results",
+          "pain": "IRR depends on merchant scenario confidence.",
+          "matched_modo_asset": "Italian BESS market analysis",
+          "matched_ko_prompt": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+          "channel": "Direct email",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 3,
+          "archetype": "MACSE winner modeling merchant tail",
+          "description": "Developer with capacity allocation.",
+          "trigger": "Public MACSE results",
+          "pain": "IRR depends on merchant scenario confidence.",
+          "matched_modo_asset": "Italian BESS market analysis",
+          "matched_ko_prompt": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+          "channel": "Direct email",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 4,
+          "archetype": "MACSE winner modeling merchant tail",
+          "description": "Developer with capacity allocation.",
+          "trigger": "Public MACSE results",
+          "pain": "IRR depends on merchant scenario confidence.",
+          "matched_modo_asset": "Italian BESS market analysis",
+          "matched_ko_prompt": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+          "channel": "Direct email",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 5,
+          "archetype": "MACSE winner modeling merchant tail",
+          "description": "Developer with capacity allocation.",
+          "trigger": "Public MACSE results",
+          "pain": "IRR depends on merchant scenario confidence.",
+          "matched_modo_asset": "Italian BESS market analysis",
+          "matched_ko_prompt": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+          "channel": "Direct email",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 6,
+          "archetype": "MACSE winner modeling merchant tail",
+          "description": "Developer with capacity allocation.",
+          "trigger": "Public MACSE results",
+          "pain": "IRR depends on merchant scenario confidence.",
+          "matched_modo_asset": "Italian BESS market analysis",
+          "matched_ko_prompt": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+          "channel": "Direct email",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 7,
+          "archetype": "MACSE winner modeling merchant tail",
+          "description": "Developer with capacity allocation.",
+          "trigger": "Public MACSE results",
+          "pain": "IRR depends on merchant scenario confidence.",
+          "matched_modo_asset": "Italian BESS market analysis",
+          "matched_ko_prompt": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+          "channel": "Direct email",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 8,
+          "archetype": "MACSE winner modeling merchant tail",
+          "description": "Developer with capacity allocation.",
+          "trigger": "Public MACSE results",
+          "pain": "IRR depends on merchant scenario confidence.",
+          "matched_modo_asset": "Italian BESS market analysis",
+          "matched_ko_prompt": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+          "channel": "Direct email",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 9,
+          "archetype": "MACSE winner modeling merchant tail",
+          "description": "Developer with capacity allocation.",
+          "trigger": "Public MACSE results",
+          "pain": "IRR depends on merchant scenario confidence.",
+          "matched_modo_asset": "Italian BESS market analysis",
+          "matched_ko_prompt": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+          "channel": "Direct email",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 10,
+          "archetype": "MACSE winner modeling merchant tail",
+          "description": "Developer with capacity allocation.",
+          "trigger": "Public MACSE results",
+          "pain": "IRR depends on merchant scenario confidence.",
+          "matched_modo_asset": "Italian BESS market analysis",
+          "matched_ko_prompt": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+          "channel": "Direct email",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        }
+      ],
+      "sequencing_note": "Start with high-priority profiles this week, then medium profiles in week two."
+    },
+    "assets": {
+      "starter_pack": [
+        {
+          "id": "p1",
+          "prompt_text": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+          "persona": "developer",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Merchant tail modeling"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        },
+        {
+          "id": "p2",
+          "prompt_text": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+          "persona": "developer",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Merchant tail modeling"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        },
+        {
+          "id": "p3",
+          "prompt_text": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+          "persona": "developer",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Merchant tail modeling"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        },
+        {
+          "id": "p4",
+          "prompt_text": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+          "persona": "developer",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Merchant tail modeling"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        },
+        {
+          "id": "p5",
+          "prompt_text": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+          "persona": "developer",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Merchant tail modeling"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        },
+        {
+          "id": "p6",
+          "prompt_text": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+          "persona": "developer",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Merchant tail modeling"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        },
+        {
+          "id": "p7",
+          "prompt_text": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+          "persona": "developer",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Merchant tail modeling"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        },
+        {
+          "id": "p8",
+          "prompt_text": "For a MACSE-winning 50 MW BESS in Italy, what is the expected merchant revenue contribution in 2026-2030?",
+          "persona": "developer",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Merchant tail modeling"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        }
+      ],
+      "curation_logic": "Prompts selected to balance near-term outreach and market-structure understanding."
+    },
+    "outreach": {
+      "emails": [
+        {
+          "to_archetype": "MACSE winner modeling merchant tail",
+          "subject": "Italy signal worth discussing",
+          "body": "We have been tracking a fresh Italy signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+          "cta_type": "research_link",
+          "cta_line": "Open to me sending the two-minute brief?",
+          "signal_reference": "MACSE outcomes reshape project economics"
+        },
+        {
+          "to_archetype": "MACSE winner modeling merchant tail",
+          "subject": "Italy signal worth discussing",
+          "body": "We have been tracking a fresh Italy signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+          "cta_type": "research_link",
+          "cta_line": "Open to me sending the two-minute brief?",
+          "signal_reference": "MACSE outcomes reshape project economics"
+        },
+        {
+          "to_archetype": "MACSE winner modeling merchant tail",
+          "subject": "Italy signal worth discussing",
+          "body": "We have been tracking a fresh Italy signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+          "cta_type": "research_link",
+          "cta_line": "Open to me sending the two-minute brief?",
+          "signal_reference": "MACSE outcomes reshape project economics"
+        },
+        {
+          "to_archetype": "MACSE winner modeling merchant tail",
+          "subject": "Italy signal worth discussing",
+          "body": "We have been tracking a fresh Italy signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+          "cta_type": "research_link",
+          "cta_line": "Open to me sending the two-minute brief?",
+          "signal_reference": "MACSE outcomes reshape project economics"
+        }
+      ],
+      "follow_up_variant": {
+        "context": "MACSE winner modeling merchant tail",
+        "subject": "Follow-up on Italy benchmark note",
+        "body": "One extra data point from this week changed our base case. Happy to send the updated cut."
+      }
+    },
+    "content": {
+      "linkedin_post": {
+        "hook": "Italy storage strategy just changed.",
+        "body": "Modo's latest market read points to a sharper entry window in Italy. The key is matching signals to the right outreach sequence.",
+        "cta": "Read the latest Modo research.",
+        "character_count": 260
+      },
+      "newsletter_blurb": {
+        "headline": "Italy market entry watch",
+        "body": "A new signal cluster in Italy changed outreach priorities this week. We mapped the top profiles and attached Ko-ready prompts."
+      },
+      "video_topic": {
+        "working_title": "Italy: the first-move playbook",
+        "thesis": "The first 30 days in Italy are won by signal speed and grounded outreach.",
+        "three_key_points": [
+          "Signal timing",
+          "Prospect sequencing",
+          "Asset-to-message mapping"
+        ],
+        "suggested_expert": "Market analyst with BESS GTM experience"
+      }
+    }
+  }
+}

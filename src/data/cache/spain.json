@@ -1,0 +1,301 @@
+{
+  "marketId": "spain",
+  "generatedAt": "2026-04-17T10:51:22.893Z",
+  "stages": {
+    "context": {
+      "market_state": "Intraday liquidity defines algorithmic opportunity.",
+      "modo_position": "Liquidity conditions for algorithmic BESS trading.",
+      "grounding_notes": [
+        "Spain intraday continuous liquidity analysis"
+      ]
+    },
+    "signals": {
+      "headline_signal": {
+        "title": "Intraday liquidity debate becomes investable",
+        "implication": "Traders need clarity before scaling desks."
+      },
+      "supporting_signals": [
+        {
+          "date": "2026-04",
+          "type": "market",
+          "headline": "Intraday liquidity debate becomes investable",
+          "so_what": "Traders need clarity before scaling desks."
+        }
+      ],
+      "pattern": "Signal set indicates immediate GTM timing for targeted outreach."
+    },
+    "prospects": {
+      "prospects": [
+        {
+          "rank": 1,
+          "archetype": "Iberian algo trader",
+          "description": "Trader building Spanish BESS capability.",
+          "trigger": "Madrid BESS desk hiring",
+          "pain": "Cannot allocate without liquidity confidence.",
+          "matched_modo_asset": "Spain intraday continuous liquidity analysis",
+          "matched_ko_prompt": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+          "channel": "Direct outreach",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 2,
+          "archetype": "Iberian algo trader",
+          "description": "Trader building Spanish BESS capability.",
+          "trigger": "Madrid BESS desk hiring",
+          "pain": "Cannot allocate without liquidity confidence.",
+          "matched_modo_asset": "Spain intraday continuous liquidity analysis",
+          "matched_ko_prompt": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+          "channel": "Direct outreach",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 3,
+          "archetype": "Iberian algo trader",
+          "description": "Trader building Spanish BESS capability.",
+          "trigger": "Madrid BESS desk hiring",
+          "pain": "Cannot allocate without liquidity confidence.",
+          "matched_modo_asset": "Spain intraday continuous liquidity analysis",
+          "matched_ko_prompt": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+          "channel": "Direct outreach",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 4,
+          "archetype": "Iberian algo trader",
+          "description": "Trader building Spanish BESS capability.",
+          "trigger": "Madrid BESS desk hiring",
+          "pain": "Cannot allocate without liquidity confidence.",
+          "matched_modo_asset": "Spain intraday continuous liquidity analysis",
+          "matched_ko_prompt": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+          "channel": "Direct outreach",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 5,
+          "archetype": "Iberian algo trader",
+          "description": "Trader building Spanish BESS capability.",
+          "trigger": "Madrid BESS desk hiring",
+          "pain": "Cannot allocate without liquidity confidence.",
+          "matched_modo_asset": "Spain intraday continuous liquidity analysis",
+          "matched_ko_prompt": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+          "channel": "Direct outreach",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 6,
+          "archetype": "Iberian algo trader",
+          "description": "Trader building Spanish BESS capability.",
+          "trigger": "Madrid BESS desk hiring",
+          "pain": "Cannot allocate without liquidity confidence.",
+          "matched_modo_asset": "Spain intraday continuous liquidity analysis",
+          "matched_ko_prompt": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+          "channel": "Direct outreach",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 7,
+          "archetype": "Iberian algo trader",
+          "description": "Trader building Spanish BESS capability.",
+          "trigger": "Madrid BESS desk hiring",
+          "pain": "Cannot allocate without liquidity confidence.",
+          "matched_modo_asset": "Spain intraday continuous liquidity analysis",
+          "matched_ko_prompt": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+          "channel": "Direct outreach",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 8,
+          "archetype": "Iberian algo trader",
+          "description": "Trader building Spanish BESS capability.",
+          "trigger": "Madrid BESS desk hiring",
+          "pain": "Cannot allocate without liquidity confidence.",
+          "matched_modo_asset": "Spain intraday continuous liquidity analysis",
+          "matched_ko_prompt": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+          "channel": "Direct outreach",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 9,
+          "archetype": "Iberian algo trader",
+          "description": "Trader building Spanish BESS capability.",
+          "trigger": "Madrid BESS desk hiring",
+          "pain": "Cannot allocate without liquidity confidence.",
+          "matched_modo_asset": "Spain intraday continuous liquidity analysis",
+          "matched_ko_prompt": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+          "channel": "Direct outreach",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        },
+        {
+          "rank": 10,
+          "archetype": "Iberian algo trader",
+          "description": "Trader building Spanish BESS capability.",
+          "trigger": "Madrid BESS desk hiring",
+          "pain": "Cannot allocate without liquidity confidence.",
+          "matched_modo_asset": "Spain intraday continuous liquidity analysis",
+          "matched_ko_prompt": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+          "channel": "Direct outreach",
+          "priority": "high",
+          "reasoning": "Prioritized from recent signal relevance."
+        }
+      ],
+      "sequencing_note": "Start with high-priority profiles this week, then medium profiles in week two."
+    },
+    "assets": {
+      "starter_pack": [
+        {
+          "id": "p1",
+          "prompt_text": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+          "persona": "trader",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Liquidity analysis"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        },
+        {
+          "id": "p2",
+          "prompt_text": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+          "persona": "trader",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Liquidity analysis"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        },
+        {
+          "id": "p3",
+          "prompt_text": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+          "persona": "trader",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Liquidity analysis"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        },
+        {
+          "id": "p4",
+          "prompt_text": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+          "persona": "trader",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Liquidity analysis"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        },
+        {
+          "id": "p5",
+          "prompt_text": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+          "persona": "trader",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Liquidity analysis"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        },
+        {
+          "id": "p6",
+          "prompt_text": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+          "persona": "trader",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Liquidity analysis"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        },
+        {
+          "id": "p7",
+          "prompt_text": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+          "persona": "trader",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Liquidity analysis"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        },
+        {
+          "id": "p8",
+          "prompt_text": "How deep is Spain's intraday continuous market by hour and what does that imply for a 100 MW BESS strategy?",
+          "persona": "trader",
+          "why_this_prompt": "Targets a decision a growth team needs to make this week.",
+          "benchmarks_exercised": [
+            "Liquidity analysis"
+          ],
+          "expected_answer_preview": "Ko would provide benchmark-backed directional guidance and key sensitivities."
+        }
+      ],
+      "curation_logic": "Prompts selected to balance near-term outreach and market-structure understanding."
+    },
+    "outreach": {
+      "emails": [
+        {
+          "to_archetype": "Iberian algo trader",
+          "subject": "Spain signal worth discussing",
+          "body": "We have been tracking a fresh Spain signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+          "cta_type": "research_link",
+          "cta_line": "Open to me sending the two-minute brief?",
+          "signal_reference": "Intraday liquidity debate becomes investable"
+        },
+        {
+          "to_archetype": "Iberian algo trader",
+          "subject": "Spain signal worth discussing",
+          "body": "We have been tracking a fresh Spain signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+          "cta_type": "research_link",
+          "cta_line": "Open to me sending the two-minute brief?",
+          "signal_reference": "Intraday liquidity debate becomes investable"
+        },
+        {
+          "to_archetype": "Iberian algo trader",
+          "subject": "Spain signal worth discussing",
+          "body": "We have been tracking a fresh Spain signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+          "cta_type": "research_link",
+          "cta_line": "Open to me sending the two-minute brief?",
+          "signal_reference": "Intraday liquidity debate becomes investable"
+        },
+        {
+          "to_archetype": "Iberian algo trader",
+          "subject": "Spain signal worth discussing",
+          "body": "We have been tracking a fresh Spain signal and built a concise view on what it means for your route-to-market assumptions. If useful, I can share the short note and tailored Ko prompt set.",
+          "cta_type": "research_link",
+          "cta_line": "Open to me sending the two-minute brief?",
+          "signal_reference": "Intraday liquidity debate becomes investable"
+        }
+      ],
+      "follow_up_variant": {
+        "context": "Iberian algo trader",
+        "subject": "Follow-up on Spain benchmark note",
+        "body": "One extra data point from this week changed our base case. Happy to send the updated cut."
+      }
+    },
+    "content": {
+      "linkedin_post": {
+        "hook": "Spain storage strategy just changed.",
+        "body": "Modo's latest market read points to a sharper entry window in Spain. The key is matching signals to the right outreach sequence.",
+        "cta": "Read the latest Modo research.",
+        "character_count": 260
+      },
+      "newsletter_blurb": {
+        "headline": "Spain market entry watch",
+        "body": "A new signal cluster in Spain changed outreach priorities this week. We mapped the top profiles and attached Ko-ready prompts."
+      },
+      "video_topic": {
+        "working_title": "Spain: the first-move playbook",
+        "thesis": "The first 30 days in Spain are won by signal speed and grounded outreach.",
+        "three_key_points": [
+          "Signal timing",
+          "Prospect sequencing",
+          "Asset-to-message mapping"
+        ],
+        "suggested_expert": "Market analyst with BESS GTM experience"
+      }
+    }
+  }
+}
