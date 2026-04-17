@@ -9,10 +9,27 @@ import { AnimatePresence, motion } from "framer-motion";
 import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
 import { Menu } from "lucide-react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 const STAGE_ORDER: StageId[] = ["context", "signals", "prospects", "assets", "outreach", "content"];
+const MARKET_COORDS: Record<string, { lat: number; lng: number }> = {
+  poland: { lat: 52.2297, lng: 21.0122 },
+  germany: { lat: 52.52, lng: 13.405 },
+  spain: { lat: 40.4168, lng: -3.7038 },
+  italy: { lat: 41.9028, lng: 12.4964 },
+  france: { lat: 48.8566, lng: 2.3522 },
+};
+
+const MarketGlobe = dynamic(() => import("@/components/agent/MarketGlobe"), {
+  ssr: false,
+  loading: () => (
+    <div className="mx-auto h-[500px] w-[500px] rounded border border-border bg-surface p-5">
+      <div className="h-full w-full animate-pulse rounded border border-border bg-surface-alt" />
+    </div>
+  ),
+});
 
 function stageLabel(stage: StageId) {
   return {
@@ -27,7 +44,7 @@ function stageLabel(stage: StageId) {
 
 export default function AgentPage() {
   const markets = Object.values(marketsData as MarketsMap);
-  const [selectedMarketId, setSelectedMarketId] = useState(markets[0]?.id ?? "poland");
+  const [selectedMarketId, setSelectedMarketId] = useState<string | null>(null);
   const [events, setEvents] = useState<StageEvent[]>([]);
   const [running, setRunning] = useState(false);
   const [toast, setToast] = useState("");
@@ -44,11 +61,24 @@ export default function AgentPage() {
   const [showInternals, setShowInternals] = useState(true);
   const [showShortcutHelp, setShowShortcutHelp] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [pickerMode, setPickerMode] = useState<"globe" | "list">("globe");
   const kitRef = useRef<HTMLDivElement>(null);
 
   const currentMarket = useMemo(
-    () => (marketsData as MarketsMap)[selectedMarketId] as Market,
+    () => ((selectedMarketId ? (marketsData as MarketsMap)[selectedMarketId] : null) as Market | null),
     [selectedMarketId],
+  );
+  const globeMarkets = useMemo(
+    () =>
+      markets
+        .filter((market) => MARKET_COORDS[market.id])
+        .map((market) => ({
+          id: market.id,
+          name: market.name,
+          tagline: market.tagline,
+          ...MARKET_COORDS[market.id],
+        })),
+    [markets],
   );
 
   const stageOutputs = useMemo(() => {
@@ -90,6 +120,10 @@ export default function AgentPage() {
   }
 
   async function runAgent(forceLive = false) {
+    if (!selectedMarketId) {
+      setToast("Select a market first.");
+      return;
+    }
     const runStartedAt = Date.now();
     setRunning(true);
     setEvents([]);
@@ -191,7 +225,7 @@ export default function AgentPage() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         question: chatQuestion,
-        market: currentMarket.name,
+        market: currentMarket?.name ?? "unknown",
         kit: stageOutputs,
       }),
     });
@@ -294,8 +328,25 @@ export default function AgentPage() {
 
         <section>
           <div className="mb-5 rounded border border-border bg-surface p-5">
-            <div className="micro mb-2">Market selector</div>
-            <div className="mb-4 flex flex-wrap gap-2">
+            <div className="mb-3 flex items-center justify-between">
+              <div className="micro">Market selector</div>
+              <button
+                onClick={() => setPickerMode((prev) => (prev === "globe" ? "list" : "globe"))}
+                className="border border-border px-3 py-1 text-xs text-text-2 hover:text-text"
+              >
+                {pickerMode === "globe" ? "List view" : "Globe view"}
+              </button>
+            </div>
+            {pickerMode === "globe" && (
+              <div className="hidden md:block">
+                <MarketGlobe
+                  markets={globeMarkets}
+                  selectedMarketId={selectedMarketId}
+                  onSelect={(marketId) => setSelectedMarketId(marketId)}
+                />
+              </div>
+            )}
+            <div className={`mb-4 flex flex-wrap gap-2 ${pickerMode === "globe" ? "md:hidden" : ""}`}>
               {markets.map((m) => (
                 <button
                   key={m.id}
@@ -310,16 +361,22 @@ export default function AgentPage() {
                 </button>
               ))}
             </div>
+            <div className="mb-4 text-center">
+              <div className="micro mb-1">Selected market</div>
+              <p className="serif text-2xl text-text">
+                {currentMarket ? currentMarket.name : <span className="text-text-3">Select a market</span>}
+              </p>
+            </div>
             <button
               onClick={() => runAgent(false)}
-              disabled={running}
+              disabled={running || !selectedMarketId}
               className="min-h-11 bg-accent px-5 py-2 font-medium text-bg hover:bg-accent-hover disabled:opacity-50"
             >
               {running ? "Running..." : "Run cached"}
             </button>
             <button
               onClick={() => runAgent(true)}
-              disabled={running}
+              disabled={running || !selectedMarketId}
               className="ml-3 min-h-11 border border-border px-5 py-2 text-text-2 hover:border-border-strong hover:text-text"
             >
               Run live
@@ -381,9 +438,11 @@ export default function AgentPage() {
           <section ref={kitRef} className="mt-10 space-y-8 rounded border border-border bg-surface p-6">
             <div>
               <div className="micro mb-2">Kit header</div>
-              <h2 className="h2">{currentMarket.name} market entry kit</h2>
+              <h2 className="h2">{currentMarket?.name ?? "Market"} market entry kit</h2>
               <p className="text-text-2">
-                Generated for {currentMarket.name}. {currentMarket.tagline}
+                {currentMarket
+                  ? `Generated for ${currentMarket.name}. ${currentMarket.tagline}`
+                  : "Select and run a market to generate a kit."}
               </p>
               {isCachedView && (
                 <p className="mt-2 inline-block border border-warning px-2 py-1 text-xs text-warning">cached</p>
@@ -401,7 +460,9 @@ export default function AgentPage() {
             </article>
             <article>
               <div className="micro mb-2">Market snapshot</div>
-              <pre className="overflow-auto text-sm text-text-2">{JSON.stringify(currentMarket.market_snapshot, null, 2)}</pre>
+              <pre className="overflow-auto text-sm text-text-2">
+                {JSON.stringify(currentMarket?.market_snapshot ?? {}, null, 2)}
+              </pre>
             </article>
             <article>
               <div className="micro mb-2">Active signals</div>
