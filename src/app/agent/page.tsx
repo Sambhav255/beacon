@@ -68,6 +68,14 @@ export default function AgentPage() {
     return true;
   }
 
+  function loadCachedStage(marketId: string, stage: StageId) {
+    const cache = (cacheData as Record<string, { stages: Record<string, unknown> }>)[marketId];
+    const cachedOutput = cache?.stages?.[stage];
+    if (cachedOutput === undefined) return false;
+    setEvents((prev) => [...prev, { stage, status: "complete", output: cachedOutput }]);
+    return true;
+  }
+
   async function runAgent(forceLive = false) {
     setRunning(true);
     setEvents([]);
@@ -101,6 +109,10 @@ export default function AgentPage() {
       for (const line of lines) {
         const data = JSON.parse(line.slice(6)) as StageEvent;
         setEvents((prev) => [...prev, data]);
+        if (data.status === "error" && data.stage !== "done" && data.stage !== "error") {
+          setToast(`Stage ${data.stage} failed, continuing with cached output.`);
+          loadCachedStage(selectedMarketId, data.stage);
+        }
         if (data.error) {
           setLiveFailureNotice("Live run failed, showing cached result.");
           shouldFallbackToCache = true;

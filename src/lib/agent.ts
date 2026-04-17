@@ -159,6 +159,15 @@ async function callGroqFallback(stage: StageId, context: Record<string, unknown>
   return response.choices[0]?.message?.content ?? "{}";
 }
 
+async function withTimeout<T>(promise: Promise<T>, timeoutMs: number, message: string): Promise<T> {
+  return await Promise.race([
+    promise,
+    new Promise<T>((_, reject) => {
+      setTimeout(() => reject(new Error(message)), timeoutMs);
+    }),
+  ]);
+}
+
 export async function* runAgent(market: Market): AsyncGenerator<StageEvent, Record<string, unknown>, void> {
   const outputs: Record<string, unknown> = {};
 
@@ -175,14 +184,24 @@ export async function* runAgent(market: Market): AsyncGenerator<StageEvent, Reco
       error = "No GROQ_API_KEY found. Using cached fallback output.";
     } else {
       try {
-        output = safeParseJSON(await callGroq(stage, input));
+        output = safeParseJSON(
+          await withTimeout(callGroq(stage, input), 15000, `${stage} exceeded 15s live timeout`),
+        );
       } catch (primaryError) {
         try {
-          output = safeParseJSON(await callGroqFallback(stage, input));
+          output = safeParseJSON(
+            await withTimeout(callGroqFallback(stage, input), 15000, `${stage} fallback exceeded 15s timeout`),
+          );
           error = `Primary model failed: ${String(primaryError)}. Fallback model used.`;
         } catch (fallbackError) {
           output = buildFallbackStageOutput(stage, market, outputs);
           error = `Live generation failed. Cached fallback used: ${String(fallbackError)}`;
+          yield {
+            stage,
+            status: "error",
+            error: `Stage ${stage} failed live. Continuing with cached output.`,
+            output,
+          };
         }
       }
     }
