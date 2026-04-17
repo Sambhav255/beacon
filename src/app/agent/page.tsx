@@ -36,6 +36,7 @@ export default function AgentPage() {
   const [selectedStage, setSelectedStage] = useState<StageId>("context");
   const [chatQuestion, setChatQuestion] = useState("");
   const [chatAnswer, setChatAnswer] = useState("");
+  const [chatOpen, setChatOpen] = useState(false);
   const [isCachedView, setIsCachedView] = useState(false);
   const [liveFailureNotice, setLiveFailureNotice] = useState("");
   const [commandOpen, setCommandOpen] = useState(false);
@@ -166,7 +167,9 @@ export default function AgentPage() {
   }, [selectedMarketId]);
 
   async function askFollowUp() {
-    const res = await fetch("/api/chat", {
+    setChatOpen(true);
+    setChatAnswer("");
+    const res = await fetch("/api/chat?stream=true", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -175,8 +178,27 @@ export default function AgentPage() {
         kit: stageOutputs,
       }),
     });
-    const data = (await res.json()) as { answer?: string };
-    setChatAnswer(data.answer ?? "No answer generated.");
+
+    if (!res.body) {
+      setChatAnswer("No response stream available.");
+      return;
+    }
+
+    const reader = res.body.getReader();
+    const decoder = new TextDecoder();
+    let done = false;
+    while (!done) {
+      const result = await reader.read();
+      done = result.done;
+      if (!result.value) continue;
+      const chunk = decoder.decode(result.value);
+      const lines = chunk.split("\n").filter((line) => line.startsWith("data: "));
+      for (const line of lines) {
+        const token = line.replace("data: ", "");
+        if (token === "[DONE]") continue;
+        setChatAnswer((prev) => prev + token);
+      }
+    }
   }
 
   async function exportPdf() {
@@ -471,6 +493,40 @@ export default function AgentPage() {
             </button>
             {chatAnswer && <p className="mt-4 whitespace-pre-wrap text-sm text-text-2">{chatAnswer}</p>}
           </section>
+          <section className="mt-8 rounded border border-border bg-surface p-5">
+            <div className="micro mb-3">Go deeper</div>
+            <div className="space-y-2">
+              <button
+                className="w-full border border-border px-3 py-2 text-left text-sm text-text-2 hover:text-text"
+                onClick={() => {
+                  const first = String(prospectList[0]?.archetype ?? "the top prospect");
+                  const second = String(prospectList[1]?.archetype ?? "the second prospect");
+                  setChatQuestion(`Why did you prioritize ${first} over ${second}?`);
+                  setChatOpen(true);
+                }}
+              >
+                Why did you prioritize [top prospect] over [second prospect]?
+              </button>
+              <button
+                className="w-full border border-border px-3 py-2 text-left text-sm text-text-2 hover:text-text"
+                onClick={() => {
+                  setChatQuestion("What if I lead with the FCA angle instead?");
+                  setChatOpen(true);
+                }}
+              >
+                What if I lead with the FCA angle instead?
+              </button>
+              <button
+                className="w-full border border-border px-3 py-2 text-left text-sm text-text-2 hover:text-text"
+                onClick={() => {
+                  setChatQuestion("Show me week 2 of the content calendar.");
+                  setChatOpen(true);
+                }}
+              >
+                Show me week 2 of the content calendar.
+              </button>
+            </div>
+          </section>
         </section>
 
         {showInternals && (
@@ -499,6 +555,20 @@ export default function AgentPage() {
               {JSON.stringify(stageOutputs[selectedStage] ?? {}, null, 2)}
             </pre>
           </div>
+          {chatOpen && (
+            <div className="mt-4 border-t border-border pt-3">
+              <div className="micro mb-2">Follow-up chat</div>
+              <textarea
+                value={chatQuestion}
+                onChange={(e) => setChatQuestion(e.target.value)}
+                className="min-h-20 w-full border border-border bg-bg p-2 text-xs"
+              />
+              <button onClick={askFollowUp} className="mt-2 w-full bg-accent px-3 py-2 text-xs text-bg">
+                Ask with this kit context
+              </button>
+              {chatAnswer && <p className="mt-3 whitespace-pre-wrap text-xs text-text-2">{chatAnswer}</p>}
+            </div>
+          )}
           </aside>
         )}
       </div>

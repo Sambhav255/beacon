@@ -38,6 +38,7 @@ export async function POST(req: NextRequest) {
     });
   }
 
+  let answer = "";
   try {
     const result = await groq.chat.completions.create({
       model: MODEL_PRIMARY,
@@ -45,8 +46,7 @@ export async function POST(req: NextRequest) {
       max_tokens: 500,
       messages,
     });
-
-    return Response.json({ answer: result.choices[0]?.message?.content ?? "No response generated." });
+    answer = result.choices[0]?.message?.content ?? "No response generated.";
   } catch {
     const fallback = await groq.chat.completions.create({
       model: MODEL_FALLBACK,
@@ -54,6 +54,32 @@ export async function POST(req: NextRequest) {
       max_tokens: 500,
       messages,
     });
-    return Response.json({ answer: fallback.choices[0]?.message?.content ?? "No response generated." });
+    answer = fallback.choices[0]?.message?.content ?? "No response generated.";
   }
+
+  const wantsStream = req.nextUrl.searchParams.get("stream") === "true";
+  if (!wantsStream) {
+    return Response.json({ answer });
+  }
+
+  const encoder = new TextEncoder();
+  const tokens = answer.split(" ");
+  const stream = new ReadableStream({
+    async start(controller) {
+      for (const token of tokens) {
+        controller.enqueue(encoder.encode(`data: ${token} \n\n`));
+        await new Promise((resolve) => setTimeout(resolve, 18));
+      }
+      controller.enqueue(encoder.encode("data: [DONE]\n\n"));
+      controller.close();
+    },
+  });
+
+  return new Response(stream, {
+    headers: {
+      "Content-Type": "text/event-stream",
+      "Cache-Control": "no-cache",
+      Connection: "keep-alive",
+    },
+  });
 }
