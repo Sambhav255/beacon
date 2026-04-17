@@ -487,6 +487,9 @@ export default function AgentPage() {
                   ? `Generated for ${currentMarket.name}. ${currentMarket.tagline}`
                   : "Select and run a market to generate a kit."}
               </p>
+              <p className="mt-2 text-sm text-text-2">
+                Automation scope: all six stages run autonomously, then a human reviews and ships.
+              </p>
               {isCachedView && (
                 <p className="mt-2 inline-block border border-warning px-2 py-1 text-xs text-warning">cached</p>
               )}

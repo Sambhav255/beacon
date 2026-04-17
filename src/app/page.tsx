@@ -54,6 +54,10 @@ export default function Home() {
           Built for Imrith&apos;s real job: expand Modo beyond five markets without lowering research quality.
           Grounded in published Modo research, live signals, and FCA-authorised benchmark context.
         </p>
+        <p className="mb-8 max-w-2xl text-sm text-text-2">
+          One operator sets direction. Beacon automates the first pass across context, prospects, outreach, and content
+          so judgment time stays focused on real decisions.
+        </p>
         <Link href="/agent" className="inline-block bg-accent px-6 py-3 font-medium text-bg hover:bg-accent-hover">
           Run agent
         </Link>
@@ -69,7 +73,7 @@ export default function Home() {
         <article>
           <div className="micro mb-3">Agentic</div>
           <h3 className="serif mb-2 text-xl">Six stages, visible</h3>
-          <p className="text-sm text-text-2">You can inspect prompts, inputs, output JSON, and latency per stage.</p>
+          <p className="text-sm text-text-2">The agent runs end-to-end automatically; you inspect and steer when needed.</p>
         </article>
         <article>
           <div className="micro mb-3">Shippable</div>

@@ -24,6 +24,10 @@ export default function AboutPage() {
           on everything else.
         </p>
         <p>
+          That is the leverage model: one operator can run breadth, keep quality, and still spend time on decisions
+          that move revenue.
+        </p>
+        <p>
           So the question is what that agent actually looks like. Not the idea of an agent. The specific, built,
           working version. The Day One version. The one you could deploy in week two of the role.
         </p>
@@ -59,6 +63,10 @@ export default function AboutPage() {
         <p>
           This is v1. The right operating model is weekly iteration: run it, inspect misses, tighten prompts, and
           improve coverage market by market.
+        </p>
+        <p>
+          It is deliberately narrow. The core loop is market in, six-stage run, execution kit out. Focus beats breadth
+          for this demo.
         </p>
         <p>
           Day 30 should run nightly across active expansion markets, pull live public signals, and close the loop into
