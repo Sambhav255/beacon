@@ -42,3 +42,5 @@
 - Paste deployed URL into Slack and verify OG card.
 - Open `/kit/poland?clean=true` and print preview once.
 - Verify Vercel env includes `GROQ_API_KEY` before live demo.
+
+Finalized after overnight polish sequence.
