@@ -88,6 +88,7 @@ export default function AgentPage() {
   }
 
   async function runAgent(forceLive = false) {
+    const runStartedAt = Date.now();
     setRunning(true);
     setEvents([]);
     setChatAnswer("");
@@ -140,6 +141,20 @@ export default function AgentPage() {
     }
     setRunning(false);
     setHistory((prev) => [{ marketId: selectedMarketId, ts: Date.now(), outputs: stageOutputs }, ...prev].slice(0, 8));
+    const stageCount = STAGE_ORDER.filter((stage) => {
+      const latest = [...events].reverse().find((event) => event.stage === stage);
+      return latest?.status === "complete";
+    }).length;
+    const tokenEstimate = events.reduce((sum, event) => sum + (event.tokenEstimate ?? 0), 0);
+    const logEntry = {
+      market: selectedMarketId,
+      timestamp: new Date().toISOString(),
+      durationMs: Date.now() - runStartedAt,
+      stagesCompleted: stageCount,
+      tokenEstimate,
+    };
+    const existing = JSON.parse(localStorage.getItem("beacon_run_logs") ?? "[]") as Array<Record<string, unknown>>;
+    localStorage.setItem("beacon_run_logs", JSON.stringify([logEntry, ...existing].slice(0, 10)));
     setTimeout(() => kitRef.current?.scrollIntoView({ behavior: "smooth" }), 250);
   }
 
@@ -234,6 +249,9 @@ export default function AgentPage() {
             </Link>
             <Link href="/prompts" className="hover:text-text">
               Prompts
+            </Link>
+            <Link href="/logs" className="hover:text-text">
+              Logs
             </Link>
           </div>
         </div>

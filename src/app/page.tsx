@@ -16,6 +16,9 @@ export default function Home() {
             <Link href="/prompts" className="hover:text-text">
               Prompts
             </Link>
+            <Link href="/logs" className="hover:text-text">
+              Logs
+            </Link>
           </div>
         </div>
       </nav>
