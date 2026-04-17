@@ -9,10 +9,20 @@ import { NextRequest } from "next/server";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
+const CHAT_TIMEOUT_MS = 15_000;
 
 function sanitizeTextInput(value: unknown, maxLength: number): string {
   if (typeof value !== "string") return "";
   return value.replace(/[\u0000-\u001F\u007F]/g, "").trim().slice(0, maxLength);
+}
+
+async function withTimeout<T>(promise: Promise<T>, timeoutMs: number, label: string): Promise<T> {
+  return await Promise.race([
+    promise,
+    new Promise<T>((_, reject) => {
+      setTimeout(() => reject(new Error(`${label} timed out after ${timeoutMs}ms`)), timeoutMs);
+    }),
+  ]);
 }
 
 export async function POST(req: NextRequest) {
@@ -54,21 +64,33 @@ export async function POST(req: NextRequest) {
 
   let answer = "";
   try {
-    const result = await groq.chat.completions.create({
-      model: MODEL_PRIMARY,
-      temperature: 0.3,
-      max_tokens: 500,
-      messages,
-    });
+    const result = await withTimeout(
+      groq.chat.completions.create({
+        model: MODEL_PRIMARY,
+        temperature: 0.3,
+        max_tokens: 500,
+        messages,
+      }),
+      CHAT_TIMEOUT_MS,
+      "Primary chat model",
+    );
     answer = result.choices[0]?.message?.content ?? "No response generated.";
   } catch {
-    const fallback = await groq.chat.completions.create({
-      model: MODEL_FALLBACK,
-      temperature: 0.3,
-      max_tokens: 500,
-      messages,
-    });
-    answer = fallback.choices[0]?.message?.content ?? "No response generated.";
+    try {
+      const fallback = await withTimeout(
+        groq.chat.completions.create({
+          model: MODEL_FALLBACK,
+          temperature: 0.3,
+          max_tokens: 500,
+          messages,
+        }),
+        CHAT_TIMEOUT_MS,
+        "Fallback chat model",
+      );
+      answer = fallback.choices[0]?.message?.content ?? "No response generated.";
+    } catch {
+      answer = "Live follow-up timed out. Please retry or rely on the generated kit sections.";
+    }
   }
 
   const wantsStream = req.nextUrl.searchParams.get("stream") === "true";

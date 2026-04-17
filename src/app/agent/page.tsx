@@ -6,8 +6,6 @@ import { STAGE_PROMPTS } from "@/lib/prompts";
 import type { Market, MarketsMap, StageEvent, StageId } from "@/lib/types";
 import { Command } from "cmdk";
 import { AnimatePresence, motion } from "framer-motion";
-import html2canvas from "html2canvas";
-import { jsPDF } from "jspdf";
 import { Menu } from "lucide-react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
@@ -98,6 +96,15 @@ export default function AgentPage() {
   const outreachEmails = ((stageOutputs.outreach as { emails?: Array<Record<string, unknown>> } | undefined)?.emails ??
     []) as Array<Record<string, unknown>>;
   const hasKitOutput = Object.keys(stageOutputs).length > 0;
+  const latestStageEvents = useMemo(() => {
+    const latest: Partial<Record<StageId, StageEvent>> = {};
+    for (const event of events) {
+      if (event.stage !== "done" && event.stage !== "error") {
+        latest[event.stage] = event;
+      }
+    }
+    return latest;
+  }, [events]);
 
   function loadCachedResult(marketId: string) {
     const cache = (cacheData as Record<string, { stages: Record<string, unknown> }>)[marketId];
@@ -256,6 +263,7 @@ export default function AgentPage() {
 
   async function exportPdf() {
     if (!kitRef.current) return;
+    const [{ default: html2canvas }, { jsPDF }] = await Promise.all([import("html2canvas"), import("jspdf")]);
     const canvas = await html2canvas(kitRef.current, { scale: 2, backgroundColor: "#0a0a0a" });
     const image = canvas.toDataURL("image/png");
     const pdf = new jsPDF({ orientation: "p", unit: "mm", format: "a4" });
@@ -405,7 +413,7 @@ export default function AgentPage() {
 
           <div className="space-y-3">
             {STAGE_ORDER.map((stage) => {
-              const latest = [...events].reverse().find((event) => event.stage === stage);
+              const latest = latestStageEvents[stage];
               const isRunning = running && latest?.status === "running";
               return (
                 <motion.div
