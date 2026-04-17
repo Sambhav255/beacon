@@ -533,21 +533,75 @@ export default function AgentPage() {
         )}
       </nav>
 
-      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-6 px-6 py-8 md:grid-cols-[220px_minmax(0,1fr)] 2xl:grid-cols-[220px_minmax(0,1fr)_minmax(260px,320px)]">
-        <aside className="rounded border border-border bg-surface p-4 md:row-start-1">
-          <div className="micro mb-3">Run history</div>
-          <div className="space-y-2 text-sm text-text-2">
-            {history.length === 0 && <p>No runs yet.</p>}
-            {history.map((run) => (
-              <div key={run.ts} className="rounded border border-border p-2">
-                <div>{run.marketId}</div>
-                <div className="text-xs text-text-3">{new Date(run.ts).toLocaleTimeString()}</div>
-              </div>
-            ))}
+      <div
+        className={`mx-auto grid w-full max-w-7xl grid-cols-1 gap-6 px-6 py-8 ${
+          pickerMode === "globe"
+            ? "md:grid-cols-[minmax(220px,260px)_minmax(0,1fr)_minmax(240px,280px)]"
+            : "md:grid-cols-[minmax(220px,260px)_minmax(0,1fr)]"
+        }`}
+      >
+        <aside className="flex min-h-0 flex-col gap-6 rounded border border-border bg-surface p-4 md:sticky md:top-24 md:max-h-[calc(100vh-6rem)] md:overflow-y-auto">
+          <div>
+            <div className="micro mb-3">Run history</div>
+            <div className="space-y-2 text-sm text-text-2">
+              {history.length === 0 && <p>No runs yet.</p>}
+              {history.map((run) => (
+                <div key={run.ts} className="rounded border border-border p-2">
+                  <div>{run.marketId}</div>
+                  <div className="text-xs text-text-3">{new Date(run.ts).toLocaleTimeString()}</div>
+                </div>
+              ))}
+            </div>
           </div>
+          {showInternals && (
+            <div className="border-t border-border pt-4">
+              <div className="micro mb-3">Agent internals · For the curious</div>
+              <div className="mb-2 flex flex-wrap gap-2">
+                {STAGE_ORDER.map((stage) => (
+                  <button
+                    key={stage}
+                    type="button"
+                    onClick={() => setSelectedStage(stage)}
+                    className={`border px-2 py-1 text-xs ${
+                      selectedStage === stage ? "border-accent text-accent" : "border-border text-text-2"
+                    }`}
+                  >
+                    {stage}
+                  </button>
+                ))}
+              </div>
+              <div className="space-y-2 text-xs">
+                <Link href="/prompts" className="text-accent hover:text-accent-hover">
+                  Open full prompts page
+                </Link>
+                <div className="text-text-2">System prompt</div>
+                <pre className="max-h-36 overflow-y-auto overflow-x-hidden whitespace-pre-wrap break-words border border-border bg-bg p-2">
+                  {STAGE_PROMPTS[selectedStage]}
+                </pre>
+                <div className="text-text-2">Stage output preview</div>
+                <div className="max-h-40 overflow-y-auto border border-border bg-bg p-2">
+                  {renderStagePreview(selectedStage, stageOutputs[selectedStage])}
+                </div>
+              </div>
+              {chatOpen && (
+                <div className="mt-4 border-t border-border pt-3">
+                  <div className="micro mb-2">Follow-up chat</div>
+                  <textarea
+                    value={chatQuestion}
+                    onChange={(e) => setChatQuestion(e.target.value)}
+                    className="min-h-20 w-full border border-border bg-bg p-2 text-xs"
+                  />
+                  <button type="button" onClick={askFollowUp} className="mt-2 w-full bg-accent px-3 py-2 text-xs text-bg">
+                    Ask with this kit context
+                  </button>
+                  {chatAnswer && <pre className={compactPre}>{chatAnswer}</pre>}
+                </div>
+              )}
+            </div>
+          )}
         </aside>
 
-        <section className="min-w-0 md:row-start-1">
+        <section className="min-w-0">
           <div className="mb-5 rounded border border-border bg-surface p-5">
             <div className="mb-3 flex items-center justify-between">
               <div className="micro">Market selector</div>
@@ -561,16 +615,18 @@ export default function AgentPage() {
               </button>
             </div>
             {pickerMode === "globe" && (
-              <div className="flex min-w-0 w-full flex-col items-center gap-4 overflow-x-auto pb-1 lg:flex-row lg:items-start lg:justify-start lg:gap-6">
-                <MarketGlobe
-                  markets={globeMarkets}
-                  selectedMarketId={selectedMarketId}
-                  onSelect={(marketId) => setSelectedMarketId(marketId)}
-                />
-                <aside className="flex w-full min-w-0 max-w-[280px] shrink-0 flex-col self-stretch rounded border border-border bg-bg p-3 lg:self-start">
+              <>
+                <div className="flex min-w-0 justify-center">
+                  <MarketGlobe
+                    markets={globeMarkets}
+                    selectedMarketId={selectedMarketId}
+                    onSelect={(marketId) => setSelectedMarketId(marketId)}
+                  />
+                </div>
+                <div className="mt-4 rounded border border-border bg-bg p-3 md:hidden">
                   <div className="micro mb-2">Markets</div>
-                  <p className="mb-3 text-xs text-text-3">Click a country to select it. The globe will zoom to that market.</p>
-                  <div className="max-h-[min(500px,70vh)] space-y-1 overflow-y-auto pr-1">
+                  <p className="mb-3 text-xs text-text-3">Tap a country to select it.</p>
+                  <div className="max-h-64 space-y-1 overflow-y-auto">
                     {globeMarketsSorted.map((m) => (
                       <button
                         key={m.id}
@@ -587,8 +643,8 @@ export default function AgentPage() {
                       </button>
                     ))}
                   </div>
-                </aside>
-              </div>
+                </div>
+              </>
             )}
             {pickerMode === "list" && (
               <div className="mb-4 flex flex-wrap gap-2">
@@ -636,11 +692,13 @@ export default function AgentPage() {
               </button>
             </div>
             <button
+              type="button"
               onClick={() => setShowInternals((prev) => !prev)}
               className="mt-3 min-h-11 border border-border px-5 py-2 text-text-2 hover:border-border-strong hover:text-text"
             >
               {showInternals ? "Hide transparency panel" : "Show transparency panel"}
             </button>
+            <p className="mt-2 text-xs text-text-3 md:hidden">Transparency panel appears under Run history when shown.</p>
           </div>
 
           <div className="space-y-3">
@@ -1038,49 +1096,27 @@ export default function AgentPage() {
           </section>
         </section>
 
-        {showInternals && (
-          <aside className="rounded border border-border bg-surface p-4 md:col-span-2 md:row-start-2 2xl:col-span-1 2xl:col-start-3 2xl:row-start-1 2xl:self-start">
-          <div className="micro mb-3">Agent internals · For the curious</div>
-          <div className="mb-2 flex flex-wrap gap-2">
-            {STAGE_ORDER.map((stage) => (
-              <button
-                key={stage}
-                onClick={() => setSelectedStage(stage)}
-                className={`border px-2 py-1 text-xs ${
-                  selectedStage === stage ? "border-accent text-accent" : "border-border text-text-2"
-                }`}
-              >
-                {stage}
-              </button>
-            ))}
-          </div>
-          <div className="space-y-2 text-xs">
-            <Link href="/prompts" className="text-accent hover:text-accent-hover">
-              Open full prompts page
-            </Link>
-            <div className="text-text-2">System prompt</div>
-            <pre className="max-h-36 overflow-y-auto overflow-x-hidden whitespace-pre-wrap break-words border border-border bg-bg p-2">
-              {STAGE_PROMPTS[selectedStage]}
-            </pre>
-            <div className="text-text-2">Stage output preview</div>
-            <div className="max-h-40 overflow-y-auto border border-border bg-bg p-2">
-              {renderStagePreview(selectedStage, stageOutputs[selectedStage])}
+        {pickerMode === "globe" && (
+          <aside className="hidden min-h-0 rounded border border-border bg-bg p-3 md:block md:sticky md:top-24 md:max-h-[calc(100vh-6rem)] md:overflow-y-auto">
+            <div className="micro mb-2">Markets</div>
+            <p className="mb-3 text-xs text-text-3">Click a country to select it. The globe zooms to that market.</p>
+            <div className="space-y-1">
+              {globeMarketsSorted.map((m) => (
+                <button
+                  key={m.id}
+                  type="button"
+                  onClick={() => setSelectedMarketId(m.id)}
+                  className={`min-h-11 w-full rounded border px-3 py-2.5 text-left text-sm transition-colors ${
+                    selectedMarketId === m.id
+                      ? "border-accent bg-surface-alt text-accent"
+                      : "border-border text-text-2 hover:border-border-strong hover:text-text"
+                  }`}
+                >
+                  <div className="font-medium text-text">{m.name}</div>
+                  <div className="mt-0.5 line-clamp-2 text-xs text-text-3">{m.tagline}</div>
+                </button>
+              ))}
             </div>
-          </div>
-          {chatOpen && (
-            <div className="mt-4 border-t border-border pt-3">
-              <div className="micro mb-2">Follow-up chat</div>
-              <textarea
-                value={chatQuestion}
-                onChange={(e) => setChatQuestion(e.target.value)}
-                className="min-h-20 w-full border border-border bg-bg p-2 text-xs"
-              />
-              <button onClick={askFollowUp} className="mt-2 w-full bg-accent px-3 py-2 text-xs text-bg">
-                Ask with this kit context
-              </button>
-              {chatAnswer && <pre className={compactPre}>{chatAnswer}</pre>}
-            </div>
-          )}
           </aside>
         )}
       </div>
