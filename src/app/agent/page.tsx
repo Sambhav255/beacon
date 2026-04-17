@@ -533,8 +533,8 @@ export default function AgentPage() {
         )}
       </nav>
 
-      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-6 px-6 py-8 lg:grid-cols-[220px_minmax(0,1fr)] 2xl:grid-cols-[220px_minmax(0,1fr)_minmax(260px,320px)]">
-        <aside className="rounded border border-border bg-surface p-4 lg:row-start-1">
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-6 px-6 py-8 md:grid-cols-[220px_minmax(0,1fr)] 2xl:grid-cols-[220px_minmax(0,1fr)_minmax(260px,320px)]">
+        <aside className="rounded border border-border bg-surface p-4 md:row-start-1">
           <div className="micro mb-3">Run history</div>
           <div className="space-y-2 text-sm text-text-2">
             {history.length === 0 && <p>No runs yet.</p>}
@@ -547,7 +547,7 @@ export default function AgentPage() {
           </div>
         </aside>
 
-        <section className="min-w-0 lg:row-start-1">
+        <section className="min-w-0 md:row-start-1">
           <div className="mb-5 rounded border border-border bg-surface p-5">
             <div className="mb-3 flex items-center justify-between">
               <div className="micro">Market selector</div>
@@ -561,13 +561,13 @@ export default function AgentPage() {
               </button>
             </div>
             {pickerMode === "globe" && (
-              <div className="hidden min-w-0 md:flex md:w-full md:flex-nowrap md:flex-row md:items-start md:justify-start md:gap-6 md:overflow-x-auto md:pb-1">
+              <div className="flex min-w-0 w-full flex-col items-center gap-4 overflow-x-auto pb-1 lg:flex-row lg:items-start lg:justify-start lg:gap-6">
                 <MarketGlobe
                   markets={globeMarkets}
                   selectedMarketId={selectedMarketId}
                   onSelect={(marketId) => setSelectedMarketId(marketId)}
                 />
-                <aside className="flex min-w-0 w-full max-w-[280px] shrink-0 flex-col rounded border border-border bg-bg p-3">
+                <aside className="flex w-full min-w-0 max-w-[280px] shrink-0 flex-col self-stretch rounded border border-border bg-bg p-3 lg:self-start">
                   <div className="micro mb-2">Markets</div>
                   <p className="mb-3 text-xs text-text-3">Click a country to select it. The globe will zoom to that market.</p>
                   <div className="max-h-[min(500px,70vh)] space-y-1 overflow-y-auto pr-1">
@@ -590,21 +590,23 @@ export default function AgentPage() {
                 </aside>
               </div>
             )}
-            <div className={`mb-4 flex flex-wrap gap-2 ${pickerMode === "globe" ? "md:hidden" : ""}`}>
-              {markets.map((m) => (
-                <button
-                  key={m.id}
-                  onClick={() => setSelectedMarketId(m.id)}
-                  className={`min-h-11 border px-3 py-2 text-sm ${
-                    selectedMarketId === m.id
-                      ? "border-accent bg-surface-alt text-accent"
-                      : "border-border text-text-2 hover:border-border-strong"
-                  }`}
-                >
-                  {m.name}
-                </button>
-              ))}
-            </div>
+            {pickerMode === "list" && (
+              <div className="mb-4 flex flex-wrap gap-2">
+                {markets.map((m) => (
+                  <button
+                    key={m.id}
+                    onClick={() => setSelectedMarketId(m.id)}
+                    className={`min-h-11 border px-3 py-2 text-sm ${
+                      selectedMarketId === m.id
+                        ? "border-accent bg-surface-alt text-accent"
+                        : "border-border text-text-2 hover:border-border-strong"
+                    }`}
+                  >
+                    {m.name}
+                  </button>
+                ))}
+              </div>
+            )}
             <div className="mb-4 text-center">
               <div className="micro mb-1">Selected market</div>
               <p className="serif text-2xl text-text">
@@ -1037,7 +1039,7 @@ export default function AgentPage() {
         </section>
 
         {showInternals && (
-          <aside className="rounded border border-border bg-surface p-4 lg:col-span-2 lg:row-start-2 2xl:col-span-1 2xl:col-start-3 2xl:row-start-1 2xl:self-start">
+          <aside className="rounded border border-border bg-surface p-4 md:col-span-2 md:row-start-2 2xl:col-span-1 2xl:col-start-3 2xl:row-start-1 2xl:self-start">
           <div className="micro mb-3">Agent internals · For the curious</div>
           <div className="mb-2 flex flex-wrap gap-2">
             {STAGE_ORDER.map((stage) => (
