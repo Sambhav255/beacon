@@ -168,10 +168,17 @@ export default function AgentPage() {
         })),
     [markets],
   );
-  const globeMarketsSorted = useMemo(
-    () => [...globeMarkets].sort((a, b) => a.name.localeCompare(b.name)),
-    [globeMarkets],
-  );
+  const globeMarketsSorted = useMemo(() => {
+    const featuredId = "poland";
+    const copy = [...globeMarkets];
+    copy.sort((a, b) => {
+      const aFeatured = a.id === featuredId ? -1 : 0;
+      const bFeatured = b.id === featuredId ? -1 : 0;
+      if (aFeatured !== bFeatured) return aFeatured - bFeatured;
+      return a.name.localeCompare(b.name);
+    });
+    return copy;
+  }, [globeMarkets]);
 
   const stageOutputs = useMemo(() => {
     const outputMap: Record<string, unknown> = {};
