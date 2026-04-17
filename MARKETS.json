@@ -1,0 +1,486 @@
+{
+  "_comment": "Curated market data for Beacon. All research URLs and statistics verified from Modo Energy published content. Sambhav can extend or verify these before the demo.",
+
+  "poland": {
+    "id": "poland",
+    "name": "Poland",
+    "flag": "PL",
+    "status": "emerging",
+    "tagline": "From 28 MW to 8-9 GW by 2030. Europe's fastest-growing BESS market.",
+
+    "market_snapshot": {
+      "current_operational_mw": 28,
+      "projected_operational_gw_2030": "8-9",
+      "pipeline_projects": 89,
+      "pipeline_total_gw": 12.5,
+      "contracted_via_capacity_auctions_gw": 5.1,
+      "state_subsidy_eur": "1B+",
+      "permit_window_months": 30,
+      "key_regulation": "UC84 Grid Act"
+    },
+
+    "modo_research": [
+      {
+        "title": "Poland's battery energy storage buildout outlook",
+        "url": "https://modoenergy.com/research/en/poland-battery-pipeline-buildout-queue-capacity-market-auctions-subsidy-grid-connection-queue",
+        "published": "2026-04-04",
+        "summary": "Modo projects operational utility-scale BESS in Poland could reach 8-9 GW by 2030, up from 28 MW today, driven by 89 projects totaling 12.5 GW and €1B+ in state subsidies. Capacity-market auctions between 2022 and 2025 contracted 5.1 GW of deliverable BESS capacity.",
+        "key_stats": [
+          "89 pipeline projects · 12.5 GW",
+          "5.1 GW contracted across four capacity auctions",
+          "€1B+ state subsidies"
+        ]
+      },
+      {
+        "title": "Poland's BESS investment case is shifting from capacity-backed to merchant-led",
+        "url": "https://modoenergy.com/research",
+        "summary": "Poland's investment thesis evolving as capacity market saturates. Merchant revenue opportunity expanding.",
+        "key_stats": [
+          "77% day-ahead price premium vs France",
+          "300+ hours of negative prices in 2025",
+          "Coal fleet set to halve"
+        ]
+      }
+    ],
+
+    "active_signals": [
+      {
+        "date": "2026-04",
+        "type": "regulation",
+        "headline": "UC84 Grid Act enforces 30-month permit window",
+        "so_what": "Developers holding grid connection agreements face imminent risk of losing them. Creates urgency for any tool that helps project selection and optimization.",
+        "source": "Polish transmission system operator filings"
+      },
+      {
+        "date": "2026-03",
+        "type": "market",
+        "headline": "Fourth capacity market auction contracted ~1.2 GW of BESS",
+        "so_what": "Winners need to validate revenue assumptions against regulated benchmarks. Modo's methodology framework is directly relevant even before Poland-specific indices exist.",
+        "source": "Capacity market auction results"
+      },
+      {
+        "date": "2026-Q1",
+        "type": "grid",
+        "headline": "110 kV substation capacity constraints across Mazovia and Silesia",
+        "so_what": "Cable pooling regulations create a technical-depth moat for any data provider who can map constraints.",
+        "source": "Modo research"
+      }
+    ],
+
+    "prospect_archetypes": [
+      {
+        "id": "pl-dev-1",
+        "archetype": "Capacity market winner",
+        "description": "Developer that won capacity in the 2024 or 2025 auction, now racing the 30-month permit clock",
+        "trigger": "Public capacity market registry showing recent allocation",
+        "pain": "Needs to validate that their revenue model holds as capacity prices compress in later auctions",
+        "priority": "high",
+        "channel": "LinkedIn + warm intro"
+      },
+      {
+        "id": "pl-dev-2",
+        "archetype": "Grid-constrained developer",
+        "description": "Developer with 100-500 MW pipeline facing substation constraints",
+        "trigger": "Public grid connection queue data showing stalled projects",
+        "pain": "Needs cable pooling intelligence and substation risk mapping",
+        "priority": "high",
+        "channel": "Direct email with constraint dashboard preview"
+      },
+      {
+        "id": "pl-fund-1",
+        "archetype": "Infrastructure fund entering Poland",
+        "description": "European infrastructure fund making first Polish BESS commitment",
+        "trigger": "Fund press release mentioning CEE or Polish energy transition",
+        "pain": "Needs bankable revenue forecasts and a regulated benchmark to reference in LP reporting",
+        "priority": "high",
+        "channel": "Warm intro via VC network"
+      },
+      {
+        "id": "pl-optim-1",
+        "archetype": "Optimiser expanding from GB/DE to Poland",
+        "description": "Route-to-market optimiser building Polish desk",
+        "trigger": "LinkedIn hiring signal — trader or analyst role based in Warsaw",
+        "pain": "Needs historical merchant price shape data and comparable market analogues",
+        "priority": "medium",
+        "channel": "Direct outreach to hiring manager"
+      },
+      {
+        "id": "pl-asset-1",
+        "archetype": "Utility with legacy coal retiring into BESS",
+        "description": "Large Polish utility converting coal sites to BESS",
+        "trigger": "Announced coal retirement schedule",
+        "pain": "Strategic diversification with no internal benchmarking capability",
+        "priority": "medium",
+        "channel": "Conference intro at enerG Expo Poland"
+      }
+    ],
+
+    "ko_starter_prompts": [
+      {
+        "text": "What's the expected clearing price trajectory for Poland's capacity market auctions between 2026 and 2030, and how does that compare to the UK T-4 auctions over the same horizon?",
+        "persona": "developer",
+        "why": "Developers need to stress-test revenue assumptions. Ko surfaces both Modo's Poland-specific outlook and comparable UK dynamics.",
+        "benchmarks_exercised": ["Capacity market analysis", "Cross-market comparison"]
+      },
+      {
+        "text": "Which Polish voivodeships have the tightest 110 kV substation capacity, and where are cable pooling regulations most likely to constrain new BESS projects?",
+        "persona": "developer",
+        "why": "Direct response to the grid constraint pain. Answers the specific question developers cannot answer from public data alone.",
+        "benchmarks_exercised": ["Grid constraint analysis"]
+      },
+      {
+        "text": "How do day-ahead price spreads in Poland compare to Germany over the last twelve months, and what does that imply for two-hour BESS revenue in 2026-2027?",
+        "persona": "trader",
+        "why": "Comparative market analysis that only Modo can do credibly because of regulated benchmarks.",
+        "benchmarks_exercised": ["Wholesale spread analysis", "Duration comparison"]
+      },
+      {
+        "text": "For a Polish 50 MW / 100 MWh BESS project coming online in Q3 2026, what's the most credible merchant revenue forecast under low, central, and high scenarios?",
+        "persona": "fund",
+        "why": "Forecasting question with scenario structure — exactly what infrastructure funds need for IC decks.",
+        "benchmarks_exercised": ["Merchant revenue forecast", "Scenario modelling"]
+      }
+    ],
+
+    "regulatory_context": {
+      "key_acts": ["UC84 Grid Act", "Capacity Market Regulation 2018", "Energy Law amendment 2024"],
+      "key_regulators": ["URE (Energy Regulatory Office)", "PSE (transmission operator)"],
+      "key_dates": [
+        {"date": "Next auction: Q4 2026", "note": "Fifth capacity market auction expected"},
+        {"date": "Permit deadline trigger: 2027", "note": "First wave of UC84 deadlines hits"}
+      ]
+    }
+  },
+
+  "germany": {
+    "id": "germany",
+    "name": "Germany",
+    "flag": "DE",
+    "status": "scaling",
+    "tagline": "The capacity pipeline is there. The grid connection process just changed.",
+
+    "market_snapshot": {
+      "new_grid_process": "Reifegradverfahren",
+      "process_launch_year": 2026,
+      "grid_forming_mandatory_timeline": "Emerging — paid in new projects, likely mandatory by 2027-2028",
+      "market_maturity": "Bankable routes to market now established"
+    },
+
+    "modo_research": [
+      {
+        "title": "How to apply for transmission grid connection under Germany's new Reifegradverfahren",
+        "url": "https://modoenergy.com/research",
+        "published": "2026-04",
+        "summary": "Germany's new grid connection process — Reifegradverfahren — changes how developers secure connection. Modo's guide explains eligibility, documentation, and timing.",
+        "key_stats": [
+          "New process from 2026",
+          "Documentation requirements up substantially",
+          "Phased rollout across TSOs"
+        ]
+      },
+      {
+        "title": "German BESS investment outlook Q1 2026: Bankable routes to market",
+        "url": "https://modoenergy.com/research",
+        "published": "2026-03",
+        "summary": "Quarterly outlook distilling bankable revenue routes for German BESS. Covers wholesale, aFRR, and capacity mechanisms.",
+        "key_stats": [
+          "aFRR a primary early revenue stream",
+          "Wholesale arbitrage scaling as spreads widen",
+          "Grid-forming capability now priced"
+        ]
+      }
+    ],
+
+    "active_signals": [
+      {
+        "date": "2026-Q1",
+        "type": "regulation",
+        "headline": "Reifegradverfahren changes grid connection application process",
+        "so_what": "Every developer with a connection application in flight needs to recalibrate. Creates an education opportunity and a content hook."
+      },
+      {
+        "date": "2026-03",
+        "type": "market",
+        "headline": "Grid-forming BESS now paid as distinct product category",
+        "so_what": "Developers with technology choices still open need to understand the ROI of grid-forming inverters. Modo's research is ahead of the market here."
+      },
+      {
+        "date": "2026-02",
+        "type": "capital",
+        "headline": "Multiple German BESS financings closed in H2 2025 and Q1 2026",
+        "so_what": "Debt market opening for German BESS. Funds looking to deploy need credible forecasts."
+      }
+    ],
+
+    "prospect_archetypes": [
+      {
+        "id": "de-dev-1",
+        "archetype": "Developer navigating Reifegradverfahren",
+        "description": "Mid-size German BESS developer with connection applications in flight",
+        "trigger": "Recent connection application submissions under old or new regime",
+        "pain": "Uncertainty about new process eligibility and documentation",
+        "priority": "high",
+        "channel": "Direct email with Reifegradverfahren guide"
+      },
+      {
+        "id": "de-fund-1",
+        "archetype": "European fund allocating to DACH BESS",
+        "description": "Fund with German mandate, building first BESS position",
+        "trigger": "LP commitment announcements or fund strategy updates mentioning storage",
+        "pain": "Needs bankable forecasts aligned with German market structure",
+        "priority": "high",
+        "channel": "Warm intro via Frankfurt network"
+      },
+      {
+        "id": "de-util-1",
+        "archetype": "Stadtwerke or utility building BESS pipeline",
+        "description": "Municipal utility or mid-size utility developing first BESS assets",
+        "trigger": "RFP releases or consultant engagements",
+        "pain": "Strategic entry, needs independent data provider",
+        "priority": "medium",
+        "channel": "BMWi-adjacent trade event"
+      },
+      {
+        "id": "de-optim-1",
+        "archetype": "aFRR-focused optimiser",
+        "description": "Optimiser building or scaling aFRR capability",
+        "trigger": "German trading desk hiring",
+        "pain": "Benchmarking against peer optimisers",
+        "priority": "medium",
+        "channel": "LinkedIn direct to trading lead"
+      }
+    ],
+
+    "ko_starter_prompts": [
+      {
+        "text": "What are the documentation requirements under Germany's new Reifegradverfahren for a 100 MW BESS project, and how does the timeline compare to the previous process?",
+        "persona": "developer",
+        "why": "Hyper-specific to the newest regulatory change. Exactly the question developers are trying to answer right now.",
+        "benchmarks_exercised": ["Regulatory analysis"]
+      },
+      {
+        "text": "How have German aFRR capacity prices evolved over the last twelve months, and what's the expected saturation timeline given the pipeline of BESS capacity?",
+        "persona": "trader",
+        "why": "Quantitative, forward-looking, requires Modo's proprietary aFRR price data.",
+        "benchmarks_exercised": ["aFRR analysis", "Saturation modelling"]
+      },
+      {
+        "text": "Compare grid-forming versus grid-following BESS revenue stacks in Germany over a 10-year asset life.",
+        "persona": "developer",
+        "why": "Technology-choice question with direct capex implications.",
+        "benchmarks_exercised": ["Technology comparison", "Long-term forecast"]
+      }
+    ],
+
+    "regulatory_context": {
+      "key_acts": ["Reifegradverfahren (2026)", "Energiewirtschaftsgesetz (EnWG)", "StromNEV"],
+      "key_regulators": ["Bundesnetzagentur", "BMWK"]
+    }
+  },
+
+  "spain": {
+    "id": "spain",
+    "name": "Spain",
+    "flag": "ES",
+    "status": "emerging",
+    "tagline": "The intraday market question is live. The algorithmic trading opportunity depends on the answer.",
+
+    "market_snapshot": {
+      "key_question": "Does the intraday continuous market have enough liquidity for algorithmic trading?",
+      "key_opportunity": "Technical restrictions market",
+      "solar_cannibalization_risk": "Elevated",
+      "regulatory_moment": "Decoupling from natural gas"
+    },
+
+    "modo_research": [
+      {
+        "title": "Does Spain's intraday continuous market have enough liquidity to support algorithmic trading?",
+        "url": "https://modoenergy.com/research",
+        "published": "2026-04-06",
+        "summary": "Analyses liquidity conditions in Spanish continuous intraday market. Directly addresses the critical question for algorithmic BESS trading strategies.",
+        "key_stats": ["Continuous market volumes analysed", "Participation concentration mapped"]
+      },
+      {
+        "title": "Has Spain decoupled from natural gas?",
+        "url": "https://modoenergy.com/research",
+        "summary": "CCGTs increasingly absent from day-ahead, but technical restrictions market creates opportunity for BESS.",
+        "key_stats": ["Technical restrictions cost passed to consumers", "Rises in lockstep with TTF"]
+      }
+    ],
+
+    "active_signals": [
+      {
+        "date": "2026-04",
+        "type": "market",
+        "headline": "Intraday continuous liquidity question becoming investable thesis",
+        "so_what": "Traders and optimisers need a definitive answer before scaling algo desks. First-mover advantage for any data provider that publishes clearly."
+      },
+      {
+        "date": "2026-02",
+        "type": "market",
+        "headline": "Solar capture rates falling sharply as cannibalisation accelerates",
+        "so_what": "Co-located BESS economics shifting. Modo's analysis is in-demand."
+      }
+    ],
+
+    "prospect_archetypes": [
+      {
+        "id": "es-trad-1",
+        "archetype": "Iberian algo trader expanding BESS exposure",
+        "description": "Proprietary or bank-backed trader building Spanish BESS trading capability",
+        "trigger": "Hiring for Madrid-based BESS desk roles",
+        "pain": "Cannot commit capital without liquidity certainty",
+        "priority": "high",
+        "channel": "Direct outreach to trading head"
+      },
+      {
+        "id": "es-dev-1",
+        "archetype": "Solar developer adding co-located storage",
+        "description": "Large Spanish solar developer facing cannibalisation risk",
+        "trigger": "New project announcements combining solar + storage",
+        "pain": "Needs co-location revenue model",
+        "priority": "high",
+        "channel": "Warm intro via solar trade association"
+      },
+      {
+        "id": "es-optim-1",
+        "archetype": "Optimiser moving from technical restrictions to continuous",
+        "description": "Iberian optimiser with CCGT expertise now targeting BESS",
+        "trigger": "Public commentary on market structure",
+        "pain": "Strategy transition requires new data stack",
+        "priority": "medium",
+        "channel": "Conference panel follow-up"
+      }
+    ],
+
+    "ko_starter_prompts": [
+      {
+        "text": "What's the depth and concentration of liquidity in Spain's intraday continuous market across different times of day, and how does that shape algorithmic trading viability for a 100 MW BESS?",
+        "persona": "trader",
+        "why": "Direct response to the liquidity thesis question. Ko can synthesise across Modo's published analysis.",
+        "benchmarks_exercised": ["Liquidity analysis", "Trading viability"]
+      },
+      {
+        "text": "How does co-located solar plus storage economics compare to standalone BESS in Spain given current capture rate trends?",
+        "persona": "developer",
+        "why": "Addresses the cannibalisation pain directly.",
+        "benchmarks_exercised": ["Co-location economics"]
+      }
+    ]
+  },
+
+  "italy": {
+    "id": "italy",
+    "name": "Italy",
+    "flag": "IT",
+    "status": "structuring",
+    "tagline": "MACSE auctions defined the capacity piece. Merchant tail is the open question.",
+
+    "market_snapshot": {
+      "capacity_mechanism": "MACSE (electricity storage capacity market)",
+      "merchant_exposure": "Increasing",
+      "key_market_feature": "TSO-procured capacity with merchant tail"
+    },
+
+    "modo_research": [
+      {
+        "title": "Italian BESS market analysis",
+        "url": "https://modoenergy.com/research",
+        "summary": "Modo research on Italy's structured capacity market and merchant evolution.",
+        "key_stats": ["MACSE mechanism assessed", "Merchant revenue share growing"]
+      }
+    ],
+
+    "active_signals": [
+      {
+        "date": "2026-Q1",
+        "type": "market",
+        "headline": "MACSE auction results reshape developer economics",
+        "so_what": "Capacity allocations now locked. Developers need to model merchant tail to justify full project economics."
+      }
+    ],
+
+    "prospect_archetypes": [
+      {
+        "id": "it-dev-1",
+        "archetype": "MACSE winner modelling merchant tail",
+        "description": "Developer with capacity allocation needing merchant revenue forecast",
+        "trigger": "Public MACSE auction results",
+        "pain": "Project IRR depends on merchant piece; no internal forecast capability",
+        "priority": "high",
+        "channel": "Direct email referencing MACSE win"
+      },
+      {
+        "id": "it-fund-1",
+        "archetype": "Italian infrastructure fund",
+        "description": "Fund with Italian mandate targeting BESS",
+        "trigger": "Fund structure announcements",
+        "pain": "Needs bankable forecasts",
+        "priority": "medium",
+        "channel": "Milan intermediary"
+      }
+    ],
+
+    "ko_starter_prompts": [
+      {
+        "text": "For a MACSE-winning 50 MW BESS in Italy, what's the expected merchant revenue contribution over the 2026-2030 period under central assumptions?",
+        "persona": "developer",
+        "why": "The MACSE tail question is the single most important unknown in Italian BESS economics.",
+        "benchmarks_exercised": ["Merchant tail modelling"]
+      }
+    ]
+  },
+
+  "france": {
+    "id": "france",
+    "name": "France",
+    "flag": "FR",
+    "status": "adjusting",
+    "tagline": "The solar CfD redesign reshapes co-located battery economics.",
+
+    "market_snapshot": {
+      "regulatory_change": "Solar CfD redesign to incentivise co-located batteries",
+      "mechanism_shift": "Reference price switch transfers cannibalisation risk to developers",
+      "relevant_precedent": "German hybrid tender trajectory"
+    },
+
+    "modo_research": [
+      {
+        "title": "France's solar CfD redesign and co-located battery economics",
+        "url": "https://modoenergy.com/research",
+        "summary": "CRE redesigning solar CfD to incentivise co-located storage. Reference price change shifts cannibalisation risk to developers. Germany's hybrid tender offers precedent.",
+        "key_stats": ["Reference price mechanism changing", "Cannibalisation risk shifted"]
+      }
+    ],
+
+    "active_signals": [
+      {
+        "date": "2026-Q1",
+        "type": "regulation",
+        "headline": "CRE confirms CfD redesign parameters",
+        "so_what": "Every French solar developer now has to model co-located storage to stay competitive in upcoming tenders."
+      }
+    ],
+
+    "prospect_archetypes": [
+      {
+        "id": "fr-dev-1",
+        "archetype": "French solar developer forced to consider co-location",
+        "description": "Mid-to-large solar developer modelling first BESS attachment",
+        "trigger": "CRE announcement responses",
+        "pain": "No internal BESS modelling capability",
+        "priority": "high",
+        "channel": "Direct email with co-location ROI template"
+      }
+    ],
+
+    "ko_starter_prompts": [
+      {
+        "text": "Under France's redesigned solar CfD, what's the expected revenue uplift from co-locating a 20 MW battery with a 100 MW solar project?",
+        "persona": "developer",
+        "why": "Specific, quantitative, critical for winning the next CRE tender.",
+        "benchmarks_exercised": ["Co-location economics", "CfD modelling"]
+      }
+    ]
+  }
+}

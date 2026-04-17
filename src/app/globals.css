@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap");
+@import "tailwindcss";
+
+:root {
+  --bg: #0a0a0a;
+  --surface: #141414;
+  --surface-alt: #1c1c1c;
+  --border: #2a2a2a;
+  --border-strong: #3a3a3a;
+  --text: #f5f5f0;
+  --text-2: #a0a0a0;
+  --text-3: #6a6a6a;
+  --accent: #d4a574;
+  --accent-hover: #e4b584;
+  --success: #7ab87a;
+  --warning: #c8945a;
+  --signal: #b07a3f;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-text: var(--text);
+  --color-text-2: var(--text-2);
+  --color-text-3: var(--text-3);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-signal: var(--signal);
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "Instrument Serif", serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.serif {
+  font-family: "Instrument Serif", serif;
+}
+
+.mono {
+  font-family: "JetBrains Mono", monospace;
+}
+
+.h1 {
+  font-family: "Instrument Serif", serif;
+  font-size: 48px;
+  line-height: 1.1;
+  font-weight: 400;
+}
+
+.h2 {
+  font-family: "Instrument Serif", serif;
+  font-size: 32px;
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+.h3 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.micro {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}

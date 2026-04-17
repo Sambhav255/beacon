@@ -1,0 +1,336 @@
+"use client";
+
+import marketsData from "@/data/markets.json";
+import { STAGE_PROMPTS } from "@/lib/prompts";
+import type { Market, MarketsMap, StageEvent, StageId } from "@/lib/types";
+import { AnimatePresence, motion } from "framer-motion";
+import html2canvas from "html2canvas";
+import { jsPDF } from "jspdf";
+import Link from "next/link";
+import { useMemo, useRef, useState } from "react";
+
+const STAGE_ORDER: StageId[] = ["context", "signals", "prospects", "assets", "outreach", "content"];
+
+function stageLabel(stage: StageId) {
+  return {
+    context: "Context building",
+    signals: "Signal gathering",
+    prospects: "Prospect triangulation",
+    assets: "Asset matching",
+    outreach: "Outreach generation",
+    content: "Content derivatives",
+  }[stage];
+}
+
+export default function AgentPage() {
+  const markets = Object.values(marketsData as MarketsMap);
+  const [selectedMarketId, setSelectedMarketId] = useState(markets[0]?.id ?? "poland");
+  const [events, setEvents] = useState<StageEvent[]>([]);
+  const [running, setRunning] = useState(false);
+  const [toast, setToast] = useState("");
+  const [history, setHistory] = useState<Array<{ marketId: string; ts: number; outputs: Record<string, unknown> }>>(
+    [],
+  );
+  const [selectedStage, setSelectedStage] = useState<StageId>("context");
+  const [chatQuestion, setChatQuestion] = useState("");
+  const [chatAnswer, setChatAnswer] = useState("");
+  const kitRef = useRef<HTMLDivElement>(null);
+
+  const currentMarket = useMemo(
+    () => (marketsData as MarketsMap)[selectedMarketId] as Market,
+    [selectedMarketId],
+  );
+
+  const stageOutputs = useMemo(() => {
+    const outputMap: Record<string, unknown> = {};
+    for (const event of events) {
+      if (event.status === "complete" && event.stage !== "done" && event.stage !== "error") {
+        outputMap[event.stage] = event.output;
+      }
+    }
+    return outputMap;
+  }, [events]);
+
+  async function runAgent() {
+    setRunning(true);
+    setEvents([]);
+    setChatAnswer("");
+    const res = await fetch("/api/agent", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ marketId: selectedMarketId }),
+    });
+
+    if (!res.body) {
+      setRunning(false);
+      return;
+    }
+
+    const reader = res.body.getReader();
+    const decoder = new TextDecoder();
+    let doneReading = false;
+    while (!doneReading) {
+      const { done, value } = await reader.read();
+      doneReading = done;
+      if (!value) continue;
+      const chunk = decoder.decode(value);
+      const lines = chunk.split("\n").filter((line) => line.startsWith("data: "));
+      for (const line of lines) {
+        const data = JSON.parse(line.slice(6)) as StageEvent;
+        setEvents((prev) => [...prev, data]);
+        if (data.stage !== "done" && data.stage !== "error" && data.status === "running") {
+          setSelectedStage(data.stage);
+        }
+      }
+    }
+    setRunning(false);
+    setHistory((prev) => [{ marketId: selectedMarketId, ts: Date.now(), outputs: stageOutputs }, ...prev].slice(0, 8));
+    setTimeout(() => kitRef.current?.scrollIntoView({ behavior: "smooth" }), 250);
+  }
+
+  async function askFollowUp() {
+    const res = await fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        question: chatQuestion,
+        market: currentMarket.name,
+        kit: stageOutputs,
+      }),
+    });
+    const data = (await res.json()) as { answer?: string };
+    setChatAnswer(data.answer ?? "No answer generated.");
+  }
+
+  async function exportPdf() {
+    if (!kitRef.current) return;
+    const canvas = await html2canvas(kitRef.current, { scale: 2, backgroundColor: "#0a0a0a" });
+    const image = canvas.toDataURL("image/png");
+    const pdf = new jsPDF({ orientation: "p", unit: "mm", format: "a4" });
+    const width = 190;
+    const height = (canvas.height * width) / canvas.width;
+    pdf.addImage(image, "PNG", 10, 10, width, height);
+    pdf.save(`beacon-${selectedMarketId}.pdf`);
+  }
+
+  async function copyValue(value: string) {
+    await navigator.clipboard.writeText(value);
+    setToast("Copied to clipboard");
+    setTimeout(() => setToast(""), 1200);
+  }
+
+  return (
+    <main className="min-h-screen">
+      <nav className="border-b border-border">
+        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-8 py-5">
+          <Link href="/" className="h3 serif">
+            Beacon
+          </Link>
+          <div className="flex gap-8 text-sm text-text-2">
+            <Link href="/about" className="hover:text-text">
+              About
+            </Link>
+            <Link href="/compare" className="hover:text-text">
+              Compare
+            </Link>
+            <Link href="/prompts" className="hover:text-text">
+              Prompts
+            </Link>
+          </div>
+        </div>
+      </nav>
+
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-6 px-6 py-8 lg:grid-cols-[220px_1fr_340px]">
+        <aside className="rounded border border-border bg-surface p-4">
+          <div className="micro mb-3">Run history</div>
+          <div className="space-y-2 text-sm text-text-2">
+            {history.length === 0 && <p>No runs yet.</p>}
+            {history.map((run) => (
+              <div key={run.ts} className="rounded border border-border p-2">
+                <div>{run.marketId}</div>
+                <div className="text-xs text-text-3">{new Date(run.ts).toLocaleTimeString()}</div>
+              </div>
+            ))}
+          </div>
+        </aside>
+
+        <section>
+          <div className="mb-5 rounded border border-border bg-surface p-5">
+            <div className="micro mb-2">Market selector</div>
+            <div className="mb-4 flex flex-wrap gap-2">
+              {markets.map((m) => (
+                <button
+                  key={m.id}
+                  onClick={() => setSelectedMarketId(m.id)}
+                  className={`border px-3 py-2 text-sm ${
+                    selectedMarketId === m.id
+                      ? "border-accent bg-surface-alt text-accent"
+                      : "border-border text-text-2 hover:border-border-strong"
+                  }`}
+                >
+                  {m.name}
+                </button>
+              ))}
+            </div>
+            <button
+              onClick={runAgent}
+              disabled={running}
+              className="bg-accent px-5 py-2 font-medium text-bg hover:bg-accent-hover disabled:opacity-50"
+            >
+              {running ? "Running..." : "Run agent"}
+            </button>
+            <button
+              onClick={exportPdf}
+              className="ml-3 border border-border px-5 py-2 text-text-2 hover:border-border-strong hover:text-text"
+            >
+              Export PDF
+            </button>
+          </div>
+
+          <div className="space-y-3">
+            {STAGE_ORDER.map((stage) => {
+              const latest = [...events].reverse().find((event) => event.stage === stage);
+              return (
+                <motion.div
+                  key={stage}
+                  layout
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="rounded border border-border bg-surface p-4"
+                >
+                  <div className="mb-2 flex items-center justify-between">
+                    <div className="text-sm">{stageLabel(stage)}</div>
+                    <div className="micro">{latest?.status ?? "pending"}</div>
+                  </div>
+                  {latest?.output !== undefined && (
+                    <pre className="max-h-44 overflow-auto text-xs text-text-2">
+                      {JSON.stringify(latest.output, null, 2)}
+                    </pre>
+                  )}
+                  {latest?.error && <p className="mt-2 text-xs text-warning">{latest.error}</p>}
+                </motion.div>
+              );
+            })}
+          </div>
+
+          <section ref={kitRef} className="mt-10 space-y-8 rounded border border-border bg-surface p-6">
+            <div>
+              <div className="micro mb-2">Kit header</div>
+              <h2 className="h2">{currentMarket.name} market entry kit</h2>
+              <p className="text-text-2">
+                Generated for {currentMarket.name}. {currentMarket.tagline}
+              </p>
+            </div>
+
+            <article>
+              <div className="micro mb-2">Executive summary</div>
+              <pre className="overflow-auto text-sm text-text-2">{JSON.stringify(stageOutputs.context, null, 2)}</pre>
+            </article>
+            <article>
+              <div className="micro mb-2">Market snapshot</div>
+              <pre className="overflow-auto text-sm text-text-2">{JSON.stringify(currentMarket.market_snapshot, null, 2)}</pre>
+            </article>
+            <article>
+              <div className="micro mb-2">Active signals</div>
+              <pre className="overflow-auto text-sm text-text-2">{JSON.stringify(stageOutputs.signals, null, 2)}</pre>
+            </article>
+            <article>
+              <div className="micro mb-2">Prospect deck</div>
+              <pre className="overflow-auto text-sm text-text-2">{JSON.stringify(stageOutputs.prospects, null, 2)}</pre>
+            </article>
+            <article>
+              <div className="micro mb-2">Ko starter pack</div>
+              <pre className="overflow-auto text-sm text-text-2">{JSON.stringify(stageOutputs.assets, null, 2)}</pre>
+            </article>
+            <article>
+              <div className="micro mb-2">Outreach drafts</div>
+              <pre className="overflow-auto text-sm text-text-2">{JSON.stringify(stageOutputs.outreach, null, 2)}</pre>
+              <div className="mt-3 flex gap-3">
+                <button
+                  className="border border-border px-3 py-1 text-xs text-text-2 hover:text-text"
+                  onClick={() => copyValue(JSON.stringify(stageOutputs.outreach, null, 2))}
+                >
+                  Copy outreach drafts
+                </button>
+              </div>
+            </article>
+            <article>
+              <div className="micro mb-2">Content calendar</div>
+              <pre className="overflow-auto text-sm text-text-2">{JSON.stringify(stageOutputs.content, null, 2)}</pre>
+              <div className="mt-3 flex flex-wrap gap-3">
+                <button
+                  className="border border-border px-3 py-1 text-xs text-text-2 hover:text-text"
+                  onClick={() => copyValue(JSON.stringify((stageOutputs.content as any)?.linkedin_post ?? {}, null, 2))}
+                >
+                  Copy LinkedIn post
+                </button>
+                <button
+                  className="border border-border px-3 py-1 text-xs text-text-2 hover:text-text"
+                  onClick={() =>
+                    copyValue(JSON.stringify((stageOutputs.content as any)?.newsletter_blurb ?? {}, null, 2))
+                  }
+                >
+                  Copy newsletter blurb
+                </button>
+              </div>
+            </article>
+          </section>
+
+          <section className="mt-8 rounded border border-border bg-surface p-5">
+            <div className="micro mb-2">Ask Beacon anything about this kit</div>
+            <textarea
+              value={chatQuestion}
+              onChange={(e) => setChatQuestion(e.target.value)}
+              placeholder="Why did you prioritize this archetype?"
+              className="min-h-24 w-full border border-border bg-bg p-3 text-sm"
+            />
+            <button onClick={askFollowUp} className="mt-3 bg-accent px-4 py-2 text-bg">
+              Ask
+            </button>
+            {chatAnswer && <p className="mt-4 whitespace-pre-wrap text-sm text-text-2">{chatAnswer}</p>}
+          </section>
+        </section>
+
+        <aside className="rounded border border-border bg-surface p-4">
+          <div className="micro mb-3">Agent internals · For the curious</div>
+          <div className="mb-2 flex flex-wrap gap-2">
+            {STAGE_ORDER.map((stage) => (
+              <button
+                key={stage}
+                onClick={() => setSelectedStage(stage)}
+                className={`border px-2 py-1 text-xs ${
+                  selectedStage === stage ? "border-accent text-accent" : "border-border text-text-2"
+                }`}
+              >
+                {stage}
+              </button>
+            ))}
+          </div>
+          <div className="space-y-2 text-xs">
+            <div className="text-text-2">System prompt</div>
+            <pre className="max-h-36 overflow-auto border border-border bg-bg p-2">
+              {STAGE_PROMPTS[selectedStage]}
+            </pre>
+            <div className="text-text-2">Raw JSON output</div>
+            <pre className="max-h-40 overflow-auto border border-border bg-bg p-2">
+              {JSON.stringify(stageOutputs[selectedStage] ?? {}, null, 2)}
+            </pre>
+          </div>
+        </aside>
+      </div>
+
+      <AnimatePresence>
+        {toast && (
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 8 }}
+            className="fixed bottom-6 right-6 border border-border bg-surface px-3 py-2 text-xs text-text-2"
+          >
+            {toast}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </main>
+  );
+}
